@@ -1,5 +1,5 @@
 [submodule "themesterminal"]
-	path = themesterminal
+	path = themes/terminal
 	url = https://github.com/asongtoruin/hugo-theme-terminal
 [submodule "public"]
 	path = public
