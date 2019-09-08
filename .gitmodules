@@ -1,0 +1,3 @@
+[submodule "themesterminal"]
+	path = themesterminal
+	url = https://github.com/asongtoruin/hugo-theme-terminal
