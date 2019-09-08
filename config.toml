@@ -1,0 +1,59 @@
+baseurl = "https://asongtoruin.github.io"
+languageCode = "en-uk"
+theme = "terminal"
+paginate = 5
+
+[params]
+  # dir name of your blog content (default is `content/posts`)
+  contentTypeName = "Posts"
+  # ["orange", "blue", "red", "green", "pink"]
+  themeColor = "green"
+  # if you set this to 0, only submenu trigger will be visible
+  showMenuItems = 2
+  # show selector to switch language
+  showLanguageSelector = false
+  # set theme to full screen width
+  fullWidthTheme = false
+  # center theme with default width
+  centerTheme = true
+  # set a custom favicon (default is a `themeColor` square)
+  # favicon = "favicon.ico"
+  avatarurl = "https://avatars1.githubusercontent.com/u/20771863"
+  author = "Adam Ruszkowski"
+
+[[params.social]]
+  name = "Github"
+  icon = "fab fa-github"
+  weight = 1
+  url = "https://github.com/asongtoruin/"
+
+[[params.social]]
+  name = "Instagram"
+  icon = "fab fa-instagram"
+  weight = 2
+  url = "https://instagram.com/asongtoruin/"
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    title = "ruszkow.ski"
+    subtitle = "A place for nonsense"
+    keywords = ""
+    copyright = ""
+    menuMore = "Show more"
+    readMore = "Read more"
+    readOtherPosts = "Read other posts"
+
+    [languages.en.params.logo]
+      logoText = "ruszkow.ski"
+      logoHomeLink = "/"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/posts"
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
