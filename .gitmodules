@@ -1,3 +1,6 @@
 [submodule "themesterminal"]
 	path = themesterminal
 	url = https://github.com/asongtoruin/hugo-theme-terminal
+[submodule "public"]
+	path = public
+	url = https://github.com/asongtoruin/asongtoruin.github.io.git
