@@ -6,7 +6,7 @@ install:
 script:
   - hugo
 
-deploy:
+after_success:
   - provider: script
     script: ./deploy.sh
     skip_cleanup: true
