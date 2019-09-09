@@ -65,3 +65,38 @@ a.read-more{
 .footer .copyright {
     font-size: 0.8rem
 }
+
+.hover-highlight{
+  background-color: var(--accent);
+  transition: all ease-in-out 0.5s;
+  transition-delay: 0.5s;
+}
+
+.hover-highlight img{
+  mix-blend-mode: multiply;
+}
+
+.hover-highlight::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hover-highlight:hover::after, .hover-highlight:hover, .hover-highlight:hover img{
+  background: transparent;
+  transition: all ease-in-out 0.5s;
+}
+
+
+.img-outer {
+  border: 20px solid var(--accent);
+  background: transparent;
+  margin: 40px 0;
+  padding: 20px;
+
+  @media (--phone) {
+    padding: 10px;
+    border-width: 10px;
+  }
+}
