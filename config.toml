@@ -37,7 +37,7 @@ paginate = 5
   [languages.en]
     languageName = "English"
     title = "ruszkow.ski"
-    subtitle = "A place for nonsense"
+    subtitle = "data, graphs and other nonsense"
     keywords = ""
     copyright = ""
     menuMore = "Show more"
