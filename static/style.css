@@ -35,9 +35,13 @@
   }
 }
 
+
 .icon-link{
-  text-decoration: none;
   padding: 3px;
+}
+
+.hidden-link{
+  text-decoration: none;
 }
 
 .posts {
@@ -77,10 +81,10 @@ a.read-more{
 }
 
 .hover-highlight::after{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .hover-highlight:hover::after, .hover-highlight:hover, .hover-highlight:hover img{
@@ -92,6 +96,64 @@ a.read-more{
 .img-outer {
   border: 10px solid var(--accent);
   background: transparent;
-  margin: 20px 0;
+  margin: 20px auto;
   padding: 15px;
+  width: fit-content;
+}
+
+
+/* Working for image thumbnails on graph page */
+.thumbs {
+  text-align:center;
+  width: 100%;
+  margin-top: 10px
+}
+
+.thumbs::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.thumbnail-outer {
+  width: 18vw;
+  height: 18vw;
+  min-width: 200px;
+  min-height: 200px;
+  margin: 10px;
+  display:inline-block;
+}
+
+.thumbnail {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  display: inline-flex;
+}
+
+.thumbnail img {
+  max-width: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+.thumbnail-outer h1 {
+    mix-blend-mode: lighten;
+    opacity: 1;
+    transition: all ease-in-out 0.5s;
+    transition-delay: 0.5s;
+    margin: auto;
+}
+
+.thumbnail-outer:hover h1 {
+    opacity:0;
+    transition: all ease-in-out 0.5s;
 }
