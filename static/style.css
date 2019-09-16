@@ -150,9 +150,14 @@ a.read-more{
   transition: all ease-in-out 0.5s;
   transition-delay: 0.5s;
   margin: auto;
+  background-color: var(--accent);
 }
 
 .thumbnail-outer:hover h1 {
   opacity:0;
   transition: all ease-in-out 0.5s;
+}
+
+.scaled-img {
+  max-height: 50vh;
 }
