@@ -7,6 +7,8 @@ code: ""
 type: "Graphs"
 ---
 
+*Update 2019-10-22: PyWaffle version updated to allow use of `vertical`*
+
 # What?
 A waffle chart showing the number of astronauts to have achieved distance
 milestones in space.
@@ -24,8 +26,8 @@ Nothing fancy here - a manually written dictionary and a short bit of `pywaffle`
 code.
 
 # Libraries / Resources
-- [`matplotlib`](<https://matplotlib.org/>)
-- [`pywaffle`](<https://github.com/gyli/PyWaffle>)
+- [`matplotlib`](<https://matplotlib.org/>) (I used 3.1.1)
+- [`pywaffle`](<https://github.com/gyli/PyWaffle>) (>0.4.0)
 
 # Data Sources
 As noted earlier and on the graph itself, the data here comes from
@@ -45,36 +47,43 @@ data = {
     'Beyond Low Earth Orbit': 12, 'Walked On The Moon': 12
 }
 
+SOURCE = ('Correct as of 2013-11-06, '
+          'source: en.wikipedia.org/wiki/List_of_space_travelers_by_name')
+
 fig = plt.figure(
     FigureClass=Waffle,
-    rows=20,
+    rows=23,
     values=data,
     colors=('#028090', '#C6D8D3', '#145C9E', '#D81E5B'),
     labels=["{0} ({1})".format(k, v) for k, v in data.items()],
     legend={
         'loc': 'upper center',
-        'bbox_to_anchor': (0.5, 0),
+        'bbox_to_anchor': (0.5, -0.02),
         'ncol': len(data) // 2,
         'framealpha': 0
     },
     icons='user-astronaut',
     icon_legend=True,
     icon_size=17,
-    plot_direction='NW',
+    starting_location='SW',
     figsize=(8, 8),
-    facecolor='#001021'
+    facecolor='#001021',
+    vertical=True
 )
 
-plt.suptitle(
-    'Furthest Distance Travelled by Astronaut',
-    y=0.90, size='x-large', weight='bold'
+plt.title(
+    'Furthest Distance Reached Per Astronaut',
+     size='x-large', weight='bold'
 )
 
-fig.gca().set_title(
-    'Correct as of 2013-11-06'
-    '\nSource: en.wikipedia.org/wiki/List_of_space_travelers_by_name',
-    fontsize='small'
+plt.text(
+    fig.subplotpars.left*.6, 0, SOURCE,
+    fontsize='x-small', style='italic', ha='left', va='baseline',
+    alpha=.8,
+    transform=plt.gcf().transFigure
 )
 
-plt.savefig('Astro.png', bbox_inches='tight')
+plt.subplots_adjust(bottom=0.05, right=20)
+
+plt.savefig('astro.png', bbox_inches='tight')
 ```
