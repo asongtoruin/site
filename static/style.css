@@ -133,27 +133,25 @@ a.read-more{
 }
 
 .thumbnail img {
-  max-width: none;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 100%;
-  width: auto;
-  -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
+  object-fit: cover;
+  object-position: center;
 }
 
-.thumbnail-outer h1 {
+.thumbnail-outer .thumb-label {
   mix-blend-mode: lighten;
   opacity: 1;
   transition: all ease-in-out 0.5s;
   transition-delay: 0.5s;
   margin: auto;
   background-color: var(--accent);
+  align-self: center;
+  width: 100%;
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
-.thumbnail-outer:hover h1 {
+.thumbnail-outer:hover .thumb-label {
   opacity:0;
   transition: all ease-in-out 0.5s;
 }
