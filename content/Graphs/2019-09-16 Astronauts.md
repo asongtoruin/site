@@ -28,6 +28,8 @@ code.
 # Libraries / Resources
 - [`matplotlib`](<https://matplotlib.org/>) (I used 3.1.1)
 - [`pywaffle`](<https://github.com/gyli/PyWaffle>) (>0.4.0)
+- [Nasalization Regular](<https://www.fontspring.com/fonts/typodermic/nasalization>)
+  to get the labels looking just right, available free from Fontspring
 
 # Data Sources
 As noted earlier and on the graph itself, the data here comes from
@@ -37,8 +39,14 @@ As noted earlier and on the graph itself, the data here comes from
 ```python
 import matplotlib.pyplot as plt
 from pywaffle import Waffle
+import matplotlib.font_manager as font_manager
 
 
+# Update font list
+font_manager._rebuild()
+
+plt.rcParams['font.family'] = 'sans-serif'
+plt.rcParams['font.sans-serif'] = 'Nasalization'
 plt.rcParams['savefig.facecolor'] = '#001021'
 plt.rcParams['text.color'] = 'w'
 
