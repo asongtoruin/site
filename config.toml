@@ -29,9 +29,9 @@ paginate = 5
 
 [[params.social]]
   name = "Instagram"
-  icon = "fab fa-instagram"
+  icon = "fab fa-stack-overflow"
   weight = 2
-  url = "https://instagram.com/asongtoruin/"
+  url = "https://stackoverflow.com/users/5309300/asongtoruin"
 
 [languages]
   [languages.en]
