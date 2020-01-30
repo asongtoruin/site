@@ -3,8 +3,8 @@ languageCode = "en-uk"
 theme = "terminal"
 paginate = 5
 
-# Make URLs case insensitive
-disablePathToLower = true
+# Make URLs case insensitive - NEEDS FIXING
+# disablePathToLower = true
 
 [params]
   # dir name of your blog content (default is `content/posts`)
