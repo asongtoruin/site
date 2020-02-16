@@ -7,6 +7,8 @@ code: ""
 type: "Graphs"
 ---
 
+*Update 2020-02-16: Graphs updated with 2019 data*
+
 # What?
 The NFL puts out injury data each year, covering three areas. The cover image
 for this post provides the headline stat of concussions, but information is also
