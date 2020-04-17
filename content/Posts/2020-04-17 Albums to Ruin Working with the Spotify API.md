@@ -12,7 +12,7 @@ showFullContent: false
 This post is a continuation of the development of my _Albums to Ruin_ Twitter 
 bot. This is the first part of actual development of the bot - information 
 on the concept and outline can be found in the
-[Initial Concept post]({{<ref "Posts\2020-04-14 Albums to Ruin Initial Concept.md">}}).
+[Initial Concept post]({{<relref "2020-04-14 Albums to Ruin Initial Concept.md">}}).
 
 In this post, I'm going to cover the process required for getting the recently 
 played tracks from Spotify and the URL for the album art.
