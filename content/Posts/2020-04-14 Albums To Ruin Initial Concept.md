@@ -1,9 +1,9 @@
 ---
 title: "Albums to Ruin: Initial Concept"
-date: "2020-04-14"
+date: 2020-04-14T11:00:00+01:00
 author: "Adam"
 cover: ""
-tags: ["python", "albums to ruin"]
+tags: ["Albums to Ruin"]
 description: "An initial concept for approximately my millionth twitter bot."
 showFullContent: false
 ---
@@ -40,9 +40,9 @@ actually having somewhere to run the bot itself. For that I'm planning on using
 one of the numerous Raspberry Pi I have lying about the flat, with a simple
 SQLite database to log albums that have already been posted.
 
-Ultimately, this leaves us with four broad sections:
+Ultimately, this leaves us with four broad sections (click for links):
 
-1. Getting the recently played tracks from Spotify and link to the album art;
+1. [Getting the recently played tracks from Spotify and link to the album art]({{<ref "Posts\2020-04-17 Albums to Ruin Working with the Spotify API.md">}});
 2. Checking against our database to see if we've already enountered this album,
    discarding if we have or adding it in if we have not;
 3. Downloading the image, getting its dominant colours and combining these in a
