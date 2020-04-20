@@ -503,7 +503,7 @@ class AlbumDatabase:
 
 ## Putting it into use
 Now that we're adding complexity into our processing, it makes sense to use 
-Python's module structure to organise it. Seeing as the procvess is ultimately
+Python's module structure to organise it. Seeing as the process is ultimately
 to pull colours from album artwork, I've called the module `colour_puller`.
 At present, it contains three files:
 
