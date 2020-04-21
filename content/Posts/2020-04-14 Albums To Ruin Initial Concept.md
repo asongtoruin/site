@@ -43,8 +43,8 @@ SQLite database to log albums that have already been posted.
 Ultimately, this leaves us with four broad sections (click for links):
 
 1. [Getting the recently played tracks from Spotify and link to the album art]({{<relref "2020-04-17 Albums to Ruin Working with the Spotify API.md">}});
-2. Checking against our database to see if we've already enountered this album,
-   discarding if we have or adding it in if we have not;
+2. [Checking against our database to see if we've already enountered this album,
+   discarding if we have or adding it in if we have not]({{<relref "2020-04-20 Albums to Ruin Database Operations.md">}});
 3. Downloading the image, getting its dominant colours and combining these in a
    visually appealing way; and
 4. Posting to twitter.
