@@ -1,6 +1,6 @@
 baseurl = "https://ruszkow.ski"
 languageCode = "en-uk"
-theme = "terminal"
+theme = ["terminal", "reveal-hugo"]
 paginate = 5
 
 # Make URLs case insensitive - NEEDS FIXING
@@ -67,3 +67,12 @@ paginate = 5
         name = "About"
         url = "/about"
         weight = 40
+
+[outputFormats.Reveal]
+  baseName = "index"
+  mediaType = "text/html"
+  isHTML = true
+
+[reveal_hugo]
+custom_theme = "pvfc-slides.scss"
+custom_theme_compile =  true
