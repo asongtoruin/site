@@ -87,7 +87,7 @@ a.read-more{
 }
 
 .hover-highlight:hover::after, .hover-highlight:hover, .hover-highlight:hover img{
-  background: transparent;
+  background: #ffffff;
   transition: all ease-in-out 0.5s;
 }
 
