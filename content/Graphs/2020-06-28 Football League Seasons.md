@@ -29,7 +29,11 @@ out top...
 
 # How?
 A straightforward horizontal bar chart, so nothing complicated here. Labelling
-both the teams and season counts was slightly fiddly, 
+both the teams and season counts was slightly fiddly, but just required keeping
+track of what needed to be aligned in what way. The description at the top is 
+also fairly manual - it took trial and error to work out where to place the line 
+break so that it filled the width without adding extra whitespace after the 
+chart.
 
 # Libraries / Resources
 - `matplotlib`
