@@ -54,4 +54,14 @@ development of this graph, from as basic bar chart to our final image.
   released 2020-06-03
 
 # Code
-Find it on [Github](https://github.com/asongtoruin/data_analysis/blob/master/bi%20history/uk_bi_population.py)
+Find the main processing code on [Github](https://github.com/asongtoruin/data_analysis/blob/master/bi%20history/uk_bi_population.py)
+
+To create the gif seen above, I used [ImageMagick](<https://imagemagick.org>)
+and the following command prompt:
+
+```shell
+magick convert -delay 1x5 2020*.png -delay 400 "20200701 221149.png" output.gif
+```
+
+This sets the frequency to 5 frames per second and then adds a large delay for 
+showing the final image again.
