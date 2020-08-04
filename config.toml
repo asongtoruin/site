@@ -31,9 +31,15 @@ paginate = 5
   url = "https://github.com/asongtoruin/"
 
 [[params.social]]
-  name = "Instagram"
-  icon = "fab fa-stack-overflow"
+  name = "Twitter"
+  icon = "fab fa-twitter"
   weight = 2
+  url = "https://twitter.com/adam_rusz"
+
+[[params.social]]
+  name = "Stack Overflow"
+  icon = "fab fa-stack-overflow"
+  weight = 3
   url = "https://stackoverflow.com/users/5309300/asongtoruin"
 
 [languages]
