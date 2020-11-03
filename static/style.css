@@ -119,6 +119,8 @@ a.read-more{
   height: 18vw;
   min-width: 200px;
   min-height: 200px;
+  max-width: 230px;
+  max-height: 230px;
   margin: 10px;
   display:inline-block;
 }
