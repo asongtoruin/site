@@ -71,13 +71,13 @@ of our extremes come from the same release (2008's stellar
 and that TTNG's songs are generally high-energy (that definitely checks out).
 
 What conclusions can we draw from this though? I'll give you two. Firstly, if we
-just use Spotify's measures then we can safely declare that:
+just use our most extreme values then we can safely declare that:
 
 > Zebra Is Dancier Than Quetzal
 
 Which, I'll be honest, has a fairly nice ring to it. One other thing that we 
-can read off this graph that also fits my desire for high _energy_ to dance, 
-gives us something much more fun to you. May I instead provide my own curious 
-declaration:
+can read off this graph that also fits my desire for high _energy_ to dance 
+gives us something much more fun to use though. May I instead provide my own 
+curious declaration:
 
 > Panda Is Dancier Than 26 Is Dancier Than 4
