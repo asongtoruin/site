@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://kit.fontawesome.com/5063c00b10.js"></script>
+  
+    <title>2019 Gigs :: ruszkow.ski — data, graphs and other nonsense</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="What? A calendar plot showing every gig I went to last year, including festivals. Every orange square represents a day where I saw live music, in effect. Mid-September to mid-December was a bit of a wild time.
+How? The two steps needed to produce this are almost entirely separate:
+ Getting and processing the data Producing the graph  Getting the data Google allows you to download an ICS file of all of your calendar events via its export functionality."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://ruszkow.ski/graphs/2020-01-28-2019-gigs/" />
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/assets/style.css">
+
+  <link rel="stylesheet" href="https://ruszkow.ski/assets/green.css">
+
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ruszkow.ski/img/apple-touch-icon-144-precomposed.png">
+
+<link rel="shortcut icon" href="https://ruszkow.ski/img/favicon/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="2019 Gigs :: ruszkow.ski — data, graphs and other nonsense" />
+<meta name="twitter:description" content="What? A calendar plot showing every gig I went to last year, including festivals. Every orange square represents a day where I saw live music, in effect. Mid-September to mid-December was a bit of a wild time.
+How? The two steps needed to produce this are almost entirely separate:
+ Getting and processing the data Producing the graph  Getting the data Google allows you to download an ICS file of all of your calendar events via its export functionality." />
+<meta name="twitter:site" content="https://ruszkow.ski" />
+<meta name="twitter:creator" content="Adam" />
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="2019 Gigs :: ruszkow.ski — data, graphs and other nonsense">
+<meta property="og:description" content="What? A calendar plot showing every gig I went to last year, including festivals. Every orange square represents a day where I saw live music, in effect. Mid-September to mid-December was a bit of a wild time.
+How? The two steps needed to produce this are almost entirely separate:
+ Getting and processing the data Producing the graph  Getting the data Google allows you to download an ICS file of all of your calendar events via its export functionality." />
+<meta property="og:url" content="https://ruszkow.ski/graphs/2020-01-28-2019-gigs/" />
+<meta property="og:site_name" content="2019 Gigs" />
+<meta property="og:image" content="">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2020-01-28 22:24:30 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+
+<div class="container center">
+
+
+  
+    <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    ruszkow.ski
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/graphs">Graphs</a></li>
+        
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts">Posts</a></li>
+      
+    
+      
+        <li><a href="/graphs">Graphs</a></li>
+      
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+  
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+  <a href="https://ruszkow.ski/graphs/2020-01-28-2019-gigs/">2019 Gigs</a></h1>
+<div class="post-meta">
+    
+    <span class="post-date">
+      <i class="fas fa-calendar-day"></i> 2020-01-28
+    </span>
+    
+    
+    <span class="post-author">::
+      <i class="fas fa-user"></i> Adam
+    </span>
+    
+    <span class='post-reading-time'>::
+     <i class="fas fa-clock"></i> 2 minutes
+    </span>
+</div>
+
+
+
+  
+  <div class="img-outer">
+    <a href="https://ruszkow.ski/img/graphs/2019-Gig-Calendar.png" target="_blank">
+      <img class="scaled-img" src="https://ruszkow.ski/img/graphs/2019-Gig-Calendar.png">
+    </a>
+  </div>
+  
+  <div class="post-content">
+    
+
+<h1 id="what">What?</h1>
+
+<p>A calendar plot showing every gig I went to last year, including festivals.
+Every orange square represents a day where I saw live music, in effect.
+Mid-September to mid-December was a bit of a wild time.</p>
+
+<h1 id="how">How?</h1>
+
+<p>The two steps needed to produce this are almost entirely separate:</p>
+
+<ol>
+<li>Getting and processing the data</li>
+<li>Producing the graph</li>
+</ol>
+
+<h2 id="getting-the-data">Getting the data</h2>
+
+<p>Google allows you to download an ICS file of all of your calendar events via its
+<a href="https://calendar.google.com/calendar/r/settings/export">export</a> functionality.
+This, however, contains <em>all</em> events from your calendar, so it needs a bit of
+work. I wrote a short script to extract all of the 2019 events, and then
+manually deleted rows that didn&rsquo;t relate to gigs. Is it elegant? No, but the
+majority of events in my calendar are indeed gigs, so it wasn&rsquo;t too much effort.</p>
+
+<h2 id="producing-the-graph">Producing the graph</h2>
+
+<p><code>calmap</code> is one of my favourite libraries, but I rarely get to use it outside
+work so this was more or less an excuse for me to play with it a bit and make
+something that looks nice. A little rejigging was required to make sure that
+multi-day events (basically just the two festivals I attend every year)
+were properly represented, but otherwise this part was fairly straightforward.</p>
+
+<h1 id="libraries-resources">Libraries / Resources</h1>
+
+<ul>
+<li><code>ics</code></li>
+<li><code>calmap</code>, specifically a <a href="https://github.com/AECOM-EDB-TP/calmap">fork</a> I
+generated at work, with nice dividers between the months</li>
+<li><a href="https://www.fontspring.com/fonts/radomir-tinkov/gilroy">Gilroy</a>, a font
+available for free</li>
+</ul>
+
+<h1 id="data-sources">Data Sources</h1>
+
+<p>As previously mentioned, this relied on my Google calendar for the dates of
+individual gigs, though obviously I don&rsquo;t want to share that here. Instead,
+here&rsquo;s a playlist featuring one song that was played at each event, in order of
+attendance.
+
+  <div class="img-outer">
+    <iframe src="https://open.spotify.com/embed/user/valeadam/playlist/1i187Xnw9jbpNcH1xflIzL" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  </div>
+
+</p>
+
+<h1 id="code">Code</h1>
+
+<p>Find it on <a href="https://github.com/asongtoruin/data_analysis/tree/master/gig%20calendar/2019">GitHub</a></p>
+
+  </div>
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span
+        class="pagination__title-h">Read other posts</span>
+      <hr />
+    </div>
+    <div class="pagination__buttons">
+      
+      <span class="button previous">
+        <a href="https://ruszkow.ski/graphs/2020-06-28-football-league-seasons/">
+          <span class="button__icon">←</span>
+          <span class="button__text">Football League Seasons</span>
+        </a>
+      </span>
+      
+      
+      <span class="button next">
+        <a href="https://ruszkow.ski/graphs/2019-10-29-english-footballs-top-goalscorers/">
+          <span class="button__text">English Football&#39;s Top Goalscorers</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+      
+    </div>
+  </div>
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    
+      <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://ruszkow.ski/assets/main.js"></script>
+<script src="https://ruszkow.ski/assets/prism.js"></script>
+
+
+
+
+
+    
+  
+</div>
+
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://kit.fontawesome.com/5063c00b10.js"></script>
+  
+    <title>Dance, Dancier, Danciest :: ruszkow.ski — data, graphs and other nonsense</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Back in the heady days of 2008, Oxford&amp;rsquo;s finest math-rock band TTNG (back then still known as This Town Needs Guns) opened their self-titled release with a (fantastic) song providing a rather curious declaration - 26 Is Dancier Than 4.
+Jump forward 12 years to 2020, and I&amp;rsquo;ve been digging around a bit in the Spotify API to better understand what data it provides and try to find some fun things to plot."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://ruszkow.ski/posts/2020-11-17-dance-dancier-danciest/" />
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/assets/style.css">
+
+  <link rel="stylesheet" href="https://ruszkow.ski/assets/green.css">
+
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ruszkow.ski/img/apple-touch-icon-144-precomposed.png">
+
+<link rel="shortcut icon" href="https://ruszkow.ski/img/favicon/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Dance, Dancier, Danciest :: ruszkow.ski — data, graphs and other nonsense" />
+<meta name="twitter:description" content="Back in the heady days of 2008, Oxford&amp;rsquo;s finest math-rock band TTNG (back then still known as This Town Needs Guns) opened their self-titled release with a (fantastic) song providing a rather curious declaration - 26 Is Dancier Than 4.
+Jump forward 12 years to 2020, and I&amp;rsquo;ve been digging around a bit in the Spotify API to better understand what data it provides and try to find some fun things to plot." />
+<meta name="twitter:site" content="https://ruszkow.ski" />
+<meta name="twitter:creator" content="Adam" />
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Dance, Dancier, Danciest :: ruszkow.ski — data, graphs and other nonsense">
+<meta property="og:description" content="Back in the heady days of 2008, Oxford&amp;rsquo;s finest math-rock band TTNG (back then still known as This Town Needs Guns) opened their self-titled release with a (fantastic) song providing a rather curious declaration - 26 Is Dancier Than 4.
+Jump forward 12 years to 2020, and I&amp;rsquo;ve been digging around a bit in the Spotify API to better understand what data it provides and try to find some fun things to plot." />
+<meta property="og:url" content="https://ruszkow.ski/posts/2020-11-17-dance-dancier-danciest/" />
+<meta property="og:site_name" content="Dance, Dancier, Danciest" />
+<meta property="og:image" content="">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2020-11-17 21:50:05 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+
+<div class="container center">
+
+
+  
+    <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    ruszkow.ski
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/graphs">Graphs</a></li>
+        
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts">Posts</a></li>
+      
+    
+      
+        <li><a href="/graphs">Graphs</a></li>
+      
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+  
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+  <a href="https://ruszkow.ski/posts/2020-11-17-dance-dancier-danciest/">Dance, Dancier, Danciest</a></h1>
+<div class="post-meta">
+    
+    <span class="post-date">
+      <i class="fas fa-calendar-day"></i> 2020-11-17
+    </span>
+    
+    
+    <span class="post-author">::
+      <i class="fas fa-user"></i> Adam
+    </span>
+    
+    <span class='post-reading-time'>::
+     <i class="fas fa-clock"></i> 3 minutes
+    </span>
+</div>
+
+
+<span class="post-tags">
+  
+  #<a href="https://ruszkow.ski/tags/python/">Python</a>&nbsp;
+  
+</span>
+
+
+  
+  <div class="post-content">
+    
+
+<p>Back in the heady days of 2008, Oxford&rsquo;s finest math-rock band TTNG (back then
+still known as This Town Needs Guns) opened their
+<a href="https://open.spotify.com/album/2217d2VN6Nn3zzU9mlApdK?si=nfr6tlwHQfKoMAmIfsSrtQ">self-titled release</a>
+with a (fantastic) song providing a rather curious declaration -
+<a href="https://open.spotify.com/track/2g14gU0ZxGZ3Te9EjFsT25?si=efWS3BTTQziLPyavvecTcw"><em>26 Is Dancier Than 4</em></a>.</p>
+
+<p>Jump forward 12 years to 2020, and I&rsquo;ve been digging around a bit in the Spotify
+API to better understand what data it provides and try to find some fun things
+to plot. In doing so, I spotted (geddit?) that within the object model, every
+track has a series of attributes, one of which is called <em>danceability</em>.</p>
+
+<p><em>Danceability</em>. Such an unknowable concept has been distilled down by Spotify to
+a single number between 0 and 1. If you&rsquo;re anything like me, this concept
+immediately brought up the idea that we&rsquo;d use this to verify the statement
+provided by TTNG, namely:</p>
+
+<blockquote>
+<p>Is 26 dancier than 4?</p>
+</blockquote>
+
+<p>But, alas, Spotify doesn&rsquo;t provide the <em>danceability</em> analysis for numbers
+alone, only songs. So instead, we can ask a slightly different question:</p>
+
+<blockquote>
+<p>How danceable is <em>26 Is Dancier Than 4</em>?</p>
+</blockquote>
+
+<p>Is this a strangely convoluted excuse to make some graphs? Sure. Just go with me
+on this one.</p>
+
+<h2 id="but-what-does-the-number-mean">But what does the number <em>mean</em>?</h2>
+
+<p>Right okay. We should probably have at least some sense of how the
+<em>danceability</em> value is calculated. Fortunately, Spotify provides one in its
+<a href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">documentation</a>:</p>
+
+<blockquote>
+<p>Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.</p>
+</blockquote>
+
+<p>This differs somewhat from my own stance on what makes a song danceable (stable
+rhythms are for cowards) but this is what we have to work with.</p>
+
+<p>First, let&rsquo;s look at how <em>26 Is Dancier Than 4</em> compares to other tracks on
+<em>This Town Needs Guns</em>.</p>
+
+
+  <div class="img-outer">
+    <a href="https://ruszkow.ski/img/posts/ttng/ttng-album-danceability.png" target="_blank">
+      <img class="scaled-img" src="https://ruszkow.ski/img/posts/ttng/ttng-album-danceability.png">
+    </a>
+  </div>
+
+
+
+<p>Oh. So, it appears that <em>26 Is Dancier Than 4</em> is not very danceable. Moreover,
+there are several more danceable tracks on this release alone. Maybe instead we
+should try to find the most danceable TTNG track. But as I mentioned earlier,
+I don&rsquo;t think Spotify&rsquo;s rating of <em>danceability</em> quite works for me, so I think
+we should look at another attribute Spotify assigns to each track - <em>energy</em>.
+This is defined by Spotify as follows:</p>
+
+<blockquote>
+<p>Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</p>
+</blockquote>
+
+<p>That feels a bit more like it. High energy would make me want to dance. Let&rsquo;s
+instead plot the <em>danceability</em> and <em>energy</em> of every TTNG song. I&rsquo;ve added
+labels to the tracks with the highest and lowest rating for each measure.</p>
+
+
+  <div class="img-outer">
+    <a href="https://ruszkow.ski/img/posts/ttng/ttng-dance-energy.png" target="_blank">
+      <img class="scaled-img" src="https://ruszkow.ski/img/posts/ttng/ttng-dance-energy.png">
+    </a>
+  </div>
+
+
+
+<p>Now this is a little more interesting - <em>26 Is Dancier Than 4</em>&rsquo;s high energy
+makes up somewhat for its low <em>danceability</em>. It&rsquo;s interesting to see that all
+of our extremes come from the same release (2008&rsquo;s stellar
+<a href="https://open.spotify.com/album/7n8f4VpR5BAC9IiLiiIWKl?si=Pva3JpmkRtK_5staUpEKKQ">Animals</a>)
+and that TTNG&rsquo;s songs are generally high-energy (that definitely checks out).</p>
+
+<p>What conclusions can we draw from this though? I&rsquo;ll give you two. Firstly, if we
+just use our most extreme values then we can safely declare that:</p>
+
+<blockquote>
+<p>Zebra Is Dancier Than Quetzal</p>
+</blockquote>
+
+<p>Which, I&rsquo;ll be honest, has a fairly nice ring to it. One other thing that we
+can read off this graph that also fits my desire for high <em>energy</em> to dance
+gives us something much more fun to use though. May I instead provide my own
+curious declaration:</p>
+
+<blockquote>
+<p>Panda Is Dancier Than 26 Is Dancier Than 4</p>
+</blockquote>
+
+  </div>
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span
+        class="pagination__title-h">Read other posts</span>
+      <hr />
+    </div>
+    <div class="pagination__buttons">
+      
+      
+      <span class="button next">
+        <a href="https://ruszkow.ski/posts/2020-04-20-albums-to-ruin-database-operations/">
+          <span class="button__text">Albums to Ruin: database operations</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+      
+    </div>
+  </div>
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    
+      <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://ruszkow.ski/assets/main.js"></script>
+<script src="https://ruszkow.ski/assets/prism.js"></script>
+
+
+
+
+
+    
+  
+</div>
+
+</body>
+</html>

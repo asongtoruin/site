@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://kit.fontawesome.com/5063c00b10.js"></script>
+  
+    <title>Albums to Ruin: database operations :: ruszkow.ski — data, graphs and other nonsense</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Introduction This post is a continuation of the development of my Albums to Ruin Twitter bot. This is the first part of actual development of the bot - information on the concept and outline can be found in the Initial Concept post.
+In this post, I&amp;rsquo;m going to cover the database operations required to power the Twitter bot and keep track of what has already been posted and the queue of albums to post."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://ruszkow.ski/posts/2020-04-20-albums-to-ruin-database-operations/" />
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/assets/style.css">
+
+  <link rel="stylesheet" href="https://ruszkow.ski/assets/green.css">
+
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ruszkow.ski/img/apple-touch-icon-144-precomposed.png">
+
+<link rel="shortcut icon" href="https://ruszkow.ski/img/favicon/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Albums to Ruin: database operations :: ruszkow.ski — data, graphs and other nonsense" />
+<meta name="twitter:description" content="Introduction This post is a continuation of the development of my Albums to Ruin Twitter bot. This is the first part of actual development of the bot - information on the concept and outline can be found in the Initial Concept post.
+In this post, I&amp;rsquo;m going to cover the database operations required to power the Twitter bot and keep track of what has already been posted and the queue of albums to post." />
+<meta name="twitter:site" content="https://ruszkow.ski" />
+<meta name="twitter:creator" content="Adam" />
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Albums to Ruin: database operations :: ruszkow.ski — data, graphs and other nonsense">
+<meta property="og:description" content="Introduction This post is a continuation of the development of my Albums to Ruin Twitter bot. This is the first part of actual development of the bot - information on the concept and outline can be found in the Initial Concept post.
+In this post, I&amp;rsquo;m going to cover the database operations required to power the Twitter bot and keep track of what has already been posted and the queue of albums to post." />
+<meta property="og:url" content="https://ruszkow.ski/posts/2020-04-20-albums-to-ruin-database-operations/" />
+<meta property="og:site_name" content="Albums to Ruin: database operations" />
+<meta property="og:image" content="">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2020-04-20 10:30:00 &#43;0100 &#43;0100" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+
+<div class="container center">
+
+
+  
+    <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    ruszkow.ski
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/graphs">Graphs</a></li>
+        
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts">Posts</a></li>
+      
+    
+      
+        <li><a href="/graphs">Graphs</a></li>
+      
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+  
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+  <a href="https://ruszkow.ski/posts/2020-04-20-albums-to-ruin-database-operations/">Albums to Ruin: database operations</a></h1>
+<div class="post-meta">
+    
+    <span class="post-date">
+      <i class="fas fa-calendar-day"></i> 2020-04-20
+    </span>
+    
+    
+    <span class="post-author">::
+      <i class="fas fa-user"></i> Adam
+    </span>
+    
+    <span class='post-reading-time'>::
+     <i class="fas fa-clock"></i> 12 minutes
+    </span>
+</div>
+
+
+<span class="post-tags">
+  
+  #<a href="https://ruszkow.ski/tags/albums-to-ruin/">Albums to Ruin</a>&nbsp;
+  
+  #<a href="https://ruszkow.ski/tags/python/">Python</a>&nbsp;
+  
+</span>
+
+
+  
+  <div class="post-content">
+    
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This post is a continuation of the development of my <em>Albums to Ruin</em> Twitter
+bot. This is the first part of actual development of the bot - information
+on the concept and outline can be found in the
+<a href="/posts/2020-04-14-albums-to-ruin-initial-concept/">Initial Concept post</a>.</p>
+
+<p>In this post, I&rsquo;m going to cover the database operations required to power the
+Twitter bot and keep track of what has already been posted and the queue of
+albums to post. This carries on from some of the work done in
+<a href="/posts/2020-04-17-albums-to-ruin-working-with-the-spotify-api/">the previous post</a>.</p>
+
+<p>Also, a quick thanks to my eternal boy <a href="https://twitter.com/calrgn">@calrgn</a>
+for help with some of the database stuff in this post.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>For simplicity&rsquo;s sake, I&rsquo;m just going to use an SQLite database. It&rsquo;s included
+with Python and is uncomplicated and lightweight.</p>
+
+<p>My initial idea is that there will be two separate processes running - one to
+get the data from Spotify and another to process the artwork and post to
+Twitter. These will both need to interact with the same database, and the
+duration of the processes may overlap. As such, each album in the database will
+be either:</p>
+
+<ul>
+<li>In the queue of albums waiting to be processed;</li>
+<li>Currently being processed; or</li>
+<li>Already processed.</li>
+</ul>
+
+<p>If each album is represented by a single record in our database, this
+information can be added by having an extra column that keeps track of this.
+This lets us keep our albums in a single table, which can be accessed by both
+processes, which in turn makes our database structure much simpler.</p>
+
+<p>To make both of our processes fully functional, we&rsquo;ll need to consider the
+following actions:</p>
+
+<ul>
+<li><a href="#check-exists">Checking if an album already exists in the table</a>;</li>
+<li><a href="#add-album">Adding new album(s) to the table</a>;</li>
+<li><a href="#get-album">Getting album(s) from the table</a>; and</li>
+<li><a href="#update-album">Updating the status of an album in the table</a>.</li>
+</ul>
+
+<p>I&rsquo;d considered (and initially wrote some methods) using dictionaries to do some
+of these operations, but ultimately this is intended to be a specialised
+database and as such it makes sense to just directly use our <code>SpotifyAlbum</code>
+class in our methods. This will make the code we use to actually run each
+process simpler, though could make updating the processing under the hood a
+little harder.</p>
+
+<h2 id="creating-the-table">Creating the table</h2>
+
+<p>Before we can think about any of those actions, we need to start by setting up
+the table containing all of our albums. Again I&rsquo;m going to use a class to
+represent our database, so in initialising our class we need to:</p>
+
+<ul>
+<li>Connect to the database;</li>
+<li>Do any associated set-up we need; and</li>
+<li>Check that our table exists, creating it if it doesn&rsquo;t.</li>
+</ul>
+
+<p>Python&rsquo;s <code>sqlite3</code> module (from the standard library) helps to simplify this, as
+its standard method for connecting to a database will automatically create one
+if it doesn&rsquo;t already exist. SQLite also supports the <code>IF NOT EXISTS</code> option
+when creating a table within a database. This allows us to effectively use the
+same code whether the table (and database) already exists or not, making this
+constructor fairly simple. Initialising our database object, then, looks like
+the following:</p>
+
+<pre><code class="language-python">import sqlite3
+
+from .album import SpotifyAlbum
+
+
+class AlbumDatabase:
+    def __init__(self, db_path='spotify albums.sqlite'):
+        self.conn = sqlite3.connect(db_path)
+        # Get responses as dictionary
+        self.conn.row_factory = sqlite3.Row
+
+        self.cursor = self.conn.cursor()
+
+        self.cursor.execute('''
+            CREATE TABLE IF NOT EXISTS albums (
+                name text NOT NULL,
+                artists text NOT NULL,
+                release_date text NOT NULL,
+                link text,
+                art_link text NOT NULL,
+                status text DEFAULT &quot;queued&quot;
+            )
+            '''
+        )
+
+        self.conn.commit()
+</code></pre>
+
+<p>Here I&rsquo;ve named each column directly in line with the attributes we gave to the
+<code>SpotifyAlbum</code> class in the previous post. This set-up will help us translate
+between database records and object instances later on.</p>
+
+<p>There&rsquo;s one additional part of this that I&rsquo;ve not detailed yet - as noted in the
+comment alongside it, setting <code>self.conn.row_factory = sqlite3.Row</code> allows us to
+get rows returned from the database as Python dictionaries. Again, this will
+make life easier later on.</p>
+
+<p>Now we can start to write methods for this object corresponding to each of our
+actions. Each of the following sections should be considered as adding onto the
+initial class outline above.</p>
+
+<h2 id="check-exists">Checking if an album already exists in the table</h2>
+
+<p>We don&rsquo;t want to have duplicate albums in the table, so the first step before
+adding any album in should be to check whether it&rsquo;s already present. This method
+could look something like the following:</p>
+
+<pre><code class="language-python">class AlbumDatabase:
+    def __init__(self, db_path='spotify albums.sqlite'):
+        # ...
+
+    def contains_album(self, album: SpotifyAlbum):
+        self.cursor.execute('''
+            SELECT * FROM albums 
+            WHERE
+                name = ?
+                AND artists = ?
+                AND release_date = ?
+            LIMIT 1
+            ''',
+            (album.name, album.artists, album.release_date)
+        )
+
+        resp = self.cursor.fetchone()
+
+        return resp and len(resp) &gt; 0
+</code></pre>
+
+<p>You&rsquo;ll notice I haven&rsquo;t matched on all columns in the database when trying to
+find an album. I&rsquo;ve excluded them for the following reasons:</p>
+
+<ul>
+<li><code>link</code> <em>could</em> change but as long as the existing link in the database is
+valid, we don&rsquo;t mind it being different</li>
+<li><code>art_link</code> is similar</li>
+<li><code>status</code> we don&rsquo;t care about in this context - if it&rsquo;s in the database, then
+it&rsquo;s either been, being or waiting to be processed. We don&rsquo;t need to add it
+again</li>
+</ul>
+
+<p>This leaves us with <code>name</code>, <code>artists</code> and <code>release_date</code> to identify a unique
+album. In writing this down, I&rsquo;ve realised there might actually be edge cases
+where this isn&rsquo;t enough - for example, a single and an album with the same name
+and the same release date. There&rsquo;s also a chance that these three columns may
+be updated if the information was originally input incorrectly. Spotify does
+provide a <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">unique(?) ID</a>
+for different objects including albums which seems as though it would be less
+likely to change. We should be using this instead to identify our albums.</p>
+
+<p>To use this, we will need to go back and update our <code>SpotifyAlbum</code> object from
+the previous post. Fortunately, <code>id</code> is a key available directly from each
+<code>album</code> object in the response. So we can simply make the change by adding a
+single extra line when we create our album object:</p>
+
+<pre><code class="language-python">class SpotifyAlbum:
+    def __init__(self, resp_dict):
+        self.name = resp_dict.get('name', None)
+        self.release_date = resp_dict.get('release_date', 'Unknown')
+        self.id = resp_dict.get('id', None)
+</code></pre>
+
+<p>This means we will also need to change the creation of the <code>albums</code> table above,
+but in turn this simplifies our <code>contains_album()</code> method:</p>
+
+<pre><code class="language-python">class AlbumDatabase:
+    def __init__(self, db_path='spotify albums.sqlite'):
+        # ...
+        self.cursor.execute('''
+            CREATE TABLE IF NOT EXISTS albums (
+                id text NOT NULL,
+                name text NOT NULL,
+                artists text NOT NULL,
+                release_date text NOT NULL,
+                link text,
+                art_link text NOT NULL,
+                status text DEFAULT &quot;queued&quot;
+            )
+            '''
+        )
+        #...
+
+    def contains_album(self, album: SpotifyAlbum):
+        self.cursor.execute('''
+            SELECT * FROM albums 
+            WHERE
+                id = ?
+            LIMIT 1
+            ''',
+            (album.id, )
+        )
+
+        resp = self.cursor.fetchone()
+
+        return resp and len(resp) &gt; 0
+</code></pre>
+
+<p>This should give us something that mitigates for our edge case! It will return
+<code>True</code> if the album is in our database, and <code>False</code> if it isn&rsquo;t.</p>
+
+<h2 id="add-album">Adding new album(s) to the table</h2>
+
+<p>When we add to our database, there are going to be situations where we need to
+add multiple albums to the database at once. With up to 50 tracks returned by
+the Spotify API this seems like it could be quite likely, particularly when the
+bot first starts running and the database isn&rsquo;t highly populated. With that in
+mind, it makes sense to use a set-up that allows us to batch-insert records into
+the database to keep processes running quickly and smoothly. Again, <code>sqlite3</code>
+allows us to do this simply with the <code>executemany()</code> method.</p>
+
+<p>We will also want to use the method defined in the previous section to check the
+albums aren&rsquo;t already in the database before we add them in. This double-checks
+we&rsquo;re not accidentally bringing in duplicates.</p>
+
+<p>Combining these ideas gives us the following:</p>
+
+<pre><code class="language-python">class AlbumDatabase:
+    def __init__(self, db_path='spotify albums.sqlite'):
+        # ...
+
+    def contains_album(self, album: SpotifyAlbum):
+        # ...
+
+    def add_albums(self, albums):
+        filter_new = [
+            album for album in albums if not self.contains_album(album)
+        ]
+
+        # Catch in case we have nothing new to add
+        if filter_new:
+            self.cursor.executemany('''
+                INSERT INTO albums (
+                    id, name, artists, release_date, link, art_link
+                )
+                VALUES (?, ?, ?, ?, ?, ?)
+                ''',
+                [
+                    (
+                        album.id, album.name, album.artists, album.release_date,
+                        album.link, album.art_link
+                    )
+                    for album in filter_new
+                ]
+            )
+
+            self.conn.commit()
+</code></pre>
+
+<p>We filter to only albums not already contained in the database, then add them in
+as one batch operation. If there are no new albums to add (i.e.
+<code>filter_new = []</code>) then the call is skipped. Nothing complicated, nice and easy.</p>
+
+<h2 id="get-album">Getting album(s) from the table</h2>
+
+<p>The previous two sections address the process that checks and updates our
+database, so now we can move onto the process that gets data from it.</p>
+
+<p>When we query the database, we want to pull out the next album that&rsquo;s queued up
+to be posted. Now ideally, this will already be a <code>SpotifyAlbum</code> object that we
+can apply any operations to and pull attributes from. This is one of the reasons
+to have our rows returned as dictionaries - our <code>SpotifyAlbum</code> constructor
+already takes a dictionary, the one returned by the Spotify API. Unfortunately,
+that dictionary is nested for various attributes while the dictionary we return
+from our database has all of the keys directly available. We could modify this
+dictionary, but it&rsquo;s easy to instead add a flag to our constructor that lets us
+use this kind of dictionary.</p>
+
+<p>So, our <code>SpotifyAlbum</code> constructor changes again to be as follows:</p>
+
+<pre><code class="language-python">class SpotifyAlbum:
+    def __init__(self, resp_dict, from_api=True):
+        self.name = resp_dict.get('name', None)
+        self.release_date = resp_dict.get('release_date', 'Unknown')
+        self.id = resp_dict.get('id', None)
+
+        if from_api:
+            # Handle possibility of many artists
+            artists = resp_dict['artists']
+            if len(artists) &gt; 5:
+                self.artists = 'Various'
+            else:
+                self.artists = ', '.join(
+                    art.get('name', 'Unknown') for art in artists
+                )
+            
+            urls = resp_dict.get('external_urls', {'spotify': None})
+            self.link = urls['spotify']
+            
+            # Get the largest version of the album artwork
+            images = resp_dict.get('images', [{'url': None, 'height': 0}])
+            images.sort(key=lambda x: x['height'], reverse=True)
+            self.art_link = images[0]['url']
+        else:
+            self.artists = resp_dict.get('artists', 'Unknown')
+            self.link = resp_dict.get('link', None)
+            self.art_link = resp_dict.get('art_link', None)
+</code></pre>
+
+<p>This flag lets us easily pull the values from our flat dictionary without
+altering any of the functionality for processing responses from the API.</p>
+
+<p>Now we can get our next queued album from the database and return it as a
+<code>SpotifyAlbum</code> object ready for processing:</p>
+
+<pre><code class="language-python">class AlbumDatabase:
+    def __init__(self, db_path='spotify albums.sqlite'):
+        # ...
+
+    def contains_album(self, album: SpotifyAlbum):
+        # ...
+
+    def add_albums(self, albums):
+        # ...
+
+    def get_from_queue(self):
+        self.cursor.execute('''
+            SELECT * FROM albums
+            WHERE
+                status=&quot;queued&quot;
+            LIMIT 1
+            '''
+        )
+
+        resp = self.cursor.fetchone()
+        if resp is not None:
+            # convert from Row to dict
+            resp_dict = dict(resp)
+
+            # return Album object
+            return SpotifyAlbum(resp_dict, from_api=False)
+        else:
+            return None
+</code></pre>
+
+<p>Note that we <code>LIMIT</code> our query to a single row to ensure we only get one album
+back and use the <code>fetchone()</code> method anyway, just to be super-sure we&rsquo;re only
+getting one album back. Combined these will hopefully keep our queries speedy!</p>
+
+<h2 id="update-album">Updating the status of an album in the table</h2>
+
+<p>Lastly, we need a method to let us update an album&rsquo;s status. As mentioned
+earlier, we have three main states - queued, being processed or completed. To
+mitigate for unforseen errors, we&rsquo;re going to allow a 4th status - one that
+simply lets us know that there has been some kind of error. Hopefully we won&rsquo;t
+get any, but if there is some issue with an album (e.g. the links changing) then
+we don&rsquo;t want it to go back into the queue. This leaves us with the following:</p>
+
+<pre><code class="language-python">class AlbumDatabase:
+    def __init__(self, db_path='spotify albums.sqlite'):
+        # ...
+
+    def contains_album(self, album: SpotifyAlbum):
+        # ...
+
+    def add_albums(self, albums):
+        # ...
+
+    def get_from_queue(self):
+        # ...
+
+    def update_album(self, album: SpotifyAlbum, status='processing'):
+        if not status in ('queued', 'processing', 'completed', 'error'):
+            raise ValueError(
+                'status should be one of &quot;queued&quot;, &quot;processing&quot;, &quot;completed&quot; '
+                f'or &quot;error&quot;, received {status}'
+            )
+        
+        self.cursor.execute('''
+            UPDATE albums
+            SET status=?
+            WHERE
+                id = ?
+            ''',
+            (status, album.id)
+        )
+
+        self.conn.commit()
+</code></pre>
+
+<h2 id="final-script">Final script</h2>
+
+<p>Combining all of this we get the following script:</p>
+
+<pre><code class="language-python">import sqlite3
+
+from .album import SpotifyAlbum
+
+
+class AlbumDatabase:
+    def __init__(self, db_path='spotify albums.sqlite'):
+        self.conn = sqlite3.connect(db_path)
+        # Get responses as dictionary
+        self.conn.row_factory = sqlite3.Row
+
+        self.cursor = self.conn.cursor()
+
+        self.cursor.execute('''
+            CREATE TABLE IF NOT EXISTS albums (
+                id text NOT NULL,
+                name text NOT NULL,
+                artists text NOT NULL,
+                release_date text NOT NULL,
+                link text,
+                art_link text NOT NULL,
+                status text DEFAULT &quot;queued&quot;
+            )
+            '''
+        )
+
+        self.conn.commit()
+
+    def contains_album(self, album: SpotifyAlbum):
+        self.cursor.execute('''
+            SELECT * FROM albums 
+            WHERE
+                id = ?
+            LIMIT 1
+            ''',
+            (album.id, )
+        )
+
+        resp = self.cursor.fetchone()
+
+        return resp and len(resp) &gt; 0
+
+    def add_albums(self, albums):
+        filter_new = [
+            album for album in albums if not self.contains_album(album)
+        ]
+
+        # Catch in case we have nothing new to add
+        if filter_new:
+            self.cursor.executemany('''
+                INSERT INTO albums (
+                    id, name, artists, release_date, link, art_link
+                )
+                VALUES (?, ?, ?, ?, ?, ?)
+                ''',
+                [
+                    (
+                        album.id, album.name, album.artists, album.release_date,
+                        album.link, album.art_link
+                    )
+                    for album in filter_new
+                ]
+            )
+
+            self.conn.commit()
+
+    def update_album(self, album: SpotifyAlbum, status='processing'):
+        if not status in ('queued', 'processing', 'completed', 'error'):
+            raise ValueError(
+                'status should be one of &quot;queued&quot;, &quot;processing&quot;, &quot;completed&quot; '
+                f'or &quot;error&quot;, received {status}'
+            )
+        
+        self.cursor.execute('''
+            UPDATE albums
+            SET status=?
+            WHERE
+                id = ?
+            ''',
+            (status, album.id)
+        )
+
+        self.conn.commit()
+    
+    def get_from_queue(self):
+        self.cursor.execute('''
+            SELECT * FROM albums
+            WHERE
+                status=&quot;queued&quot;
+            LIMIT 1
+            '''
+        )
+
+        resp = self.cursor.fetchone()
+        if resp is not None:
+            # convert from Row to dict
+            resp_dict = dict(resp)
+
+            # return Album object
+            return SpotifyAlbum(resp_dict, from_api=False)
+        else:
+            return None
+</code></pre>
+
+<h2 id="putting-it-into-use">Putting it into use</h2>
+
+<p>Now that we&rsquo;re adding complexity into our processing, it makes sense to use
+Python&rsquo;s module structure to organise it. Seeing as the process is ultimately
+to pull colours from album artwork, I&rsquo;ve called the module <code>colour_puller</code>.
+At present, it contains three files:</p>
+
+<ul>
+<li>An empty <code>__init__.py</code>;</li>
+<li><code>album.py</code>, which contains our <code>SpotifyAlbum</code> class; and</li>
+<li><code>database.py</code>, which contains our <code>AlbumDatabase</code> class.</li>
+</ul>
+
+<p>With this structure in place, we can more-or-less finalise the process for
+adding new albums from the Spotify API:</p>
+
+<pre><code class="language-python">import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+
+from colour_puller.album import SpotifyAlbum
+from colour_puller.database import AlbumDatabase
+
+
+auth = spotipy.SpotifyOAuth(
+    redirect_uri='http://localhost:8888/callback', username='valeadam'
+)
+
+sp = spotipy.Spotify(auth_manager=auth)
+
+recently_played = sp.current_user_recently_played()
+
+recent_albums = []
+
+for item in recently_played['items'][::-1]:
+    album = SpotifyAlbum(item['track']['album'])
+    if album.art_link and not any(prev == album for prev in recent_albums):
+        recent_albums.append(album)
+
+ad = AlbumDatabase()
+
+ad.add_albums(recent_albums)
+</code></pre>
+
+<p>With this in place, we can move on to extracting the colour palette from the
+album artwork and posting it.</p>
+
+  </div>
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span
+        class="pagination__title-h">Read other posts</span>
+      <hr />
+    </div>
+    <div class="pagination__buttons">
+      
+      <span class="button previous">
+        <a href="https://ruszkow.ski/posts/2020-11-17-dance-dancier-danciest/">
+          <span class="button__icon">←</span>
+          <span class="button__text">Dance, Dancier, Danciest</span>
+        </a>
+      </span>
+      
+      
+      <span class="button next">
+        <a href="https://ruszkow.ski/posts/2020-04-17-albums-to-ruin-working-with-the-spotify-api/">
+          <span class="button__text">Albums to Ruin: working with the Spotify API</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+      
+    </div>
+  </div>
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    
+      <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://ruszkow.ski/assets/main.js"></script>
+<script src="https://ruszkow.ski/assets/prism.js"></script>
+
+
+
+
+
+    
+  
+</div>
+
+</body>
+</html>

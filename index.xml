@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ruszkow.ski</title>
+    <link>https://ruszkow.ski/</link>
+    <description>Recent content on ruszkow.ski</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Tue, 17 Nov 2020 21:50:05 +0000</lastBuildDate>
+    
+	<atom:link href="https://ruszkow.ski/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dance, Dancier, Danciest</title>
+      <link>https://ruszkow.ski/posts/2020-11-17-dance-dancier-danciest/</link>
+      <pubDate>Tue, 17 Nov 2020 21:50:05 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/posts/2020-11-17-dance-dancier-danciest/</guid>
+      <description>Back in the heady days of 2008, Oxford&amp;rsquo;s finest math-rock band TTNG (back then still known as This Town Needs Guns) opened their self-titled release with a (fantastic) song providing a rather curious declaration - 26 Is Dancier Than 4.
+Jump forward 12 years to 2020, and I&amp;rsquo;ve been digging around a bit in the Spotify API to better understand what data it provides and try to find some fun things to plot.</description>
+    </item>
+    
+    <item>
+      <title>Halloween Heartrate</title>
+      <link>https://ruszkow.ski/graphs/2020-11-03-halloween-heartrate/</link>
+      <pubDate>Tue, 03 Nov 2020 22:30:31 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2020-11-03-halloween-heartrate/</guid>
+      <description>What? After watching the films I mentioned in my Halloween timetable graph, I realised that my watch would have been tracking my heart rate right the way through each film, and thought it might be fun to see if my heart rate had been particularly affected by any of the films.
+On looking at the data, nothing seemed particularly out of the ordinary - except one massive spike during Scream.</description>
+    </item>
+    
+    <item>
+      <title>Halloween Timetable</title>
+      <link>https://ruszkow.ski/graphs/2020-11-03-halloween-timetable/</link>
+      <pubDate>Tue, 03 Nov 2020 21:39:52 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2020-11-03-halloween-timetable/</guid>
+      <description>What? Generally, I&amp;rsquo;m not very into horror films - I&amp;rsquo;m just not that into getting scared, and I tend to scare quite easily. Spooky season is spooky season though, and when my pal Mike decided to run a vote to pick films for a Halloween movie marathon on our Discord server (thanks Mike!), I couldn&amp;rsquo;t help but make a timetable for it.
+How? Hello there matplotlib, my old friend. As if it would be anything else.</description>
+    </item>
+    
+    <item>
+      <title>Biffy Clyro Chart Positions</title>
+      <link>https://ruszkow.ski/graphs/2020-09-26-biffy-clyro-chart-positions/</link>
+      <pubDate>Sat, 26 Sep 2020 16:43:18 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2020-09-26-biffy-clyro-chart-positions/</guid>
+      <description>What? This graph shows the peak UK chart position reached by each release from Scotland&amp;rsquo;s greatest band, Biffy Clyro, to have cracked the top 100. Each point is scaled in line with the number of weeks the release has spent in the top 100.
+I first came across the idea of a &amp;ldquo;lollipop&amp;rdquo; charts through Spotify&amp;rsquo;s chartify library a while ago, and have been trying to think of something that would look good as one.</description>
+    </item>
+    
+    <item>
+      <title>Download Headliners</title>
+      <link>https://ruszkow.ski/graphs/2020-09-12-download-headliners/</link>
+      <pubDate>Sat, 12 Sep 2020 17:24:49 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2020-09-12-download-headliners/</guid>
+      <description>What? The first festival I ever went to was Download at Donington Park, in 2005. My dad and I returned in 2006 and 2007 - he&amp;rsquo;s been back a few more times since, I&amp;rsquo;ve not but it still holds a special place in my heart.
+One criticism that gets levelled at the festival is that its headliners tend to be taken from a small pool of bands, so I decided to actually graph it.</description>
+    </item>
+    
+    <item>
+      <title>Big Five Champions</title>
+      <link>https://ruszkow.ski/graphs/2020-07-30-big-five-champions/</link>
+      <pubDate>Thu, 30 Jul 2020 18:36:00 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2020-07-30-big-five-champions/</guid>
+      <description>What? Yet another football graph, and yet another bar chart. This one needs to be viewed in full-screen to get the full effect!
+As the (Coronavirus-prolonged) 2019-2020 football season finally draws to a close across Europe the traditional &amp;ldquo;big five&amp;rdquo; leagues (England, France, Germany, Italy and Spain) seemed to be won by the expected teams, with Liverpool&amp;rsquo;s first English title for 30 years proving somewhat of an outlier.
+With that in mind, I decided to look at how frequently teams had won those leagues in recent years, with the 1999-2000 season seeming like a convenient starting point.</description>
+    </item>
+    
+    <item>
+      <title>UK Bisexual Population</title>
+      <link>https://ruszkow.ski/graphs/2020-07-07-uk-bisexual-population/</link>
+      <pubDate>Tue, 07 Jul 2020 19:07:59 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2020-07-07-uk-bisexual-population/</guid>
+      <description>What? Some friends of mine run the excellent Bi History Instagram account that provides useful information and resources about bisexuality. I&amp;rsquo;ve been trying to think of a way I could produce some nice graphs for them, but sadly there seems to be a dearth of good, reliable data sources on this topic. There is, however, an ONS survey on &amp;ldquo;Sexual Orientation&amp;rdquo; that provides estimates of the UK&amp;rsquo;s LGB population across various classifications.</description>
+    </item>
+    
+    <item>
+      <title>Football League Seasons</title>
+      <link>https://ruszkow.ski/graphs/2020-06-28-football-league-seasons/</link>
+      <pubDate>Sun, 28 Jun 2020 18:35:59 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2020-06-28-football-league-seasons/</guid>
+      <description>What? Generally, I like to complain about my football club. Being a Port Vale fan is exhilirating at the best of times but heartbreaking at the worst. There is, at time of writing, a slightly hidden presentation on this very site that talks a bit about that. See if you can find it (or, ask me and I&amp;rsquo;ll probably just send you the link).
+A good while ago, I heard the stat that Vale were the team who had spent the most seasons in the Football League (as in, the top four tiers of professional football in England) without ever playing in the top flight.</description>
+    </item>
+    
+    <item>
+      <title>Albums to Ruin: database operations</title>
+      <link>https://ruszkow.ski/posts/2020-04-20-albums-to-ruin-database-operations/</link>
+      <pubDate>Mon, 20 Apr 2020 10:30:00 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/posts/2020-04-20-albums-to-ruin-database-operations/</guid>
+      <description>Introduction This post is a continuation of the development of my Albums to Ruin Twitter bot. This is the first part of actual development of the bot - information on the concept and outline can be found in the Initial Concept post.
+In this post, I&amp;rsquo;m going to cover the database operations required to power the Twitter bot and keep track of what has already been posted and the queue of albums to post.</description>
+    </item>
+    
+    <item>
+      <title>Albums to Ruin: working with the Spotify API</title>
+      <link>https://ruszkow.ski/posts/2020-04-17-albums-to-ruin-working-with-the-spotify-api/</link>
+      <pubDate>Fri, 17 Apr 2020 11:30:00 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/posts/2020-04-17-albums-to-ruin-working-with-the-spotify-api/</guid>
+      <description>Introduction This post is a continuation of the development of my Albums to Ruin Twitter bot. This is the first part of actual development of the bot - information on the concept and outline can be found in the Initial Concept post.
+In this post, I&amp;rsquo;m going to cover the process required for getting the recently played tracks from Spotify and the URL for the album art.
+Getting Started First of all, we need to register an application with Spotify.</description>
+    </item>
+    
+    <item>
+      <title>Albums to Ruin: Initial Concept</title>
+      <link>https://ruszkow.ski/posts/2020-04-14-albums-to-ruin-initial-concept/</link>
+      <pubDate>Tue, 14 Apr 2020 11:00:00 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/posts/2020-04-14-albums-to-ruin-initial-concept/</guid>
+      <description>Inspiration Recently, I&amp;rsquo;ve seen a few posts shared around from the Instagram account colorpalette.cinema. I&amp;rsquo;m a big fan of a nice colour palette (indeed, a few years ago I had a Twitter bot running that did something similar with Marvel comics covers) and it got me thinking about whether I could do something similar of my own.
+The idea, and an initial outline As you might have guessed from the post title, my plan is to make something similar for album covers.</description>
+    </item>
+    
+    <item>
+      <title>2019 Gigs</title>
+      <link>https://ruszkow.ski/graphs/2020-01-28-2019-gigs/</link>
+      <pubDate>Tue, 28 Jan 2020 22:24:30 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2020-01-28-2019-gigs/</guid>
+      <description>What? A calendar plot showing every gig I went to last year, including festivals. Every orange square represents a day where I saw live music, in effect. Mid-September to mid-December was a bit of a wild time.
+How? The two steps needed to produce this are almost entirely separate:
+ Getting and processing the data Producing the graph  Getting the data Google allows you to download an ICS file of all of your calendar events via its export functionality.</description>
+    </item>
+    
+    <item>
+      <title>English Football&#39;s Top Goalscorers</title>
+      <link>https://ruszkow.ski/graphs/2019-10-29-english-footballs-top-goalscorers/</link>
+      <pubDate>Mon, 28 Oct 2019 23:13:40 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2019-10-29-english-footballs-top-goalscorers/</guid>
+      <description>What? The top 8 all-time goalscorers in English football. Why 8? Well, I wanted to do the top 10 but couldn&amp;rsquo;t get PyWaffle to play well with subplots and 10 or more figures. Plus, nobody wants to see 9 figures, so 8 it is.
+How? The &amp;ldquo;What&amp;rdquo; section kind of gave this away, but it comes through using subplots in PyWaffle, as suggested by the docs.
+The main issue with this was trying to use the flat version of the font for the individual waffle titles and the 3D font for the main header.</description>
+    </item>
+    
+    <item>
+      <title>Travis &#43; PyInstaller &#43; GitHub Releases</title>
+      <link>https://ruszkow.ski/posts/2019-10-21-travis-&#43;-pyinstaller-&#43;-github-releases/</link>
+      <pubDate>Mon, 21 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/posts/2019-10-21-travis-&#43;-pyinstaller-&#43;-github-releases/</guid>
+      <description>Part of one of the projects I&amp;rsquo;ve been working on in my day job recently has involved taking over the development of a tool that implements some simple data anonymisation. This includes the deployment of an executable that can be used by non-technical staff, who will likely be the main users of the tool. It&amp;rsquo;s also highly likely that all of those staff will be working on Windows PCs. As the executable is created through PyInstaller, this means the executable needs to be built in a Windows environment.</description>
+    </item>
+    
+    <item>
+      <title>Edinburgh 2017 Temperatures</title>
+      <link>https://ruszkow.ski/graphs/2019-10-10-edinburgh-2017-temperatures/</link>
+      <pubDate>Thu, 10 Oct 2019 23:15:26 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2019-10-10-edinburgh-2017-temperatures/</guid>
+      <description>What? A ridge plot (i.e. overlapping distributions) showing the average hourly temperatures at a particular location in Edinburgh in 2017, for the roughly daytime hours of 7am-7pm.
+How? This is based quite heavily on an example given as part of the seaborn documentation. The only real tweaks made to This are to use the average temperature to determine the hue rather than just the row and some neat labelling.</description>
+    </item>
+    
+    <item>
+      <title>NFL Injury Data</title>
+      <link>https://ruszkow.ski/graphs/2019-10-07-nfl-injury-data/</link>
+      <pubDate>Mon, 07 Oct 2019 21:47:04 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2019-10-07-nfl-injury-data/</guid>
+      <description>Update 2020-02-16: Graphs updated with 2019 data
+What? The NFL puts out injury data each year, covering three areas. The cover image for this post provides the headline stat of concussions, but information is also provided for ACL Tears:   and MCL Tears:   How? A stacked bar chart in matplotlib, with a bit of post-processing to make the graphs look nice. Honestly, the biggest hassle involved in making these graphs was getting the data itself, as the NFL inexplicably only seems to embed the values as images.</description>
+    </item>
+    
+    <item>
+      <title>Astronauts</title>
+      <link>https://ruszkow.ski/graphs/2019-09-16-astronauts/</link>
+      <pubDate>Mon, 16 Sep 2019 23:13:29 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2019-09-16-astronauts/</guid>
+      <description>Update 2019-10-22: PyWaffle version updated to allow use of vertical
+What? A waffle chart showing the number of astronauts to have achieved distance milestones in space.
+Space is cool, humans travelling in space is extra cool and this gives an interesting way to see that a perhaps surprisingly large number of humans have travelled to space, though very few have actually set foot on the moon.
+It was somewhat difficult to find precise details about this - hence the slightly old date associated with the values.</description>
+    </item>
+    
+    <item>
+      <title>An Initial Set-Up of PiHole</title>
+      <link>https://ruszkow.ski/posts/pihole-setup/</link>
+      <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/posts/pihole-setup/</guid>
+      <description>PiHole Set-Up Equipment  Already had most of the things required, needed:  Micro-USB to Ethernet cable microSD card Short Ethernet cable   Setting up the Raspberry Pi  Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://ruszkow.ski/about/</link>
+      <pubDate>Sun, 08 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/about/</guid>
+      <description>Hello! I&amp;rsquo;m Adam. By day a transport planner, by night a self-taught amateur programmer. In both situations I try and use Python as much as possible, though once I&amp;rsquo;ve got a few projects out of the way (such as this site) I&amp;rsquo;m planning on learning R.
+This site is intended mostly as a place to detail the various projects I end up working on for the handful of people who ask me how they&amp;rsquo;re done.</description>
+    </item>
+    
+  </channel>
+</rss>

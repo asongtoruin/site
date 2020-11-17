@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://kit.fontawesome.com/5063c00b10.js"></script>
+  
+    <title>Halloween Heartrate :: ruszkow.ski — data, graphs and other nonsense</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="What? After watching the films I mentioned in my Halloween timetable graph, I realised that my watch would have been tracking my heart rate right the way through each film, and thought it might be fun to see if my heart rate had been particularly affected by any of the films.
+On looking at the data, nothing seemed particularly out of the ordinary - except one massive spike during Scream."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://ruszkow.ski/graphs/2020-11-03-halloween-heartrate/" />
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/assets/style.css">
+
+  <link rel="stylesheet" href="https://ruszkow.ski/assets/green.css">
+
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ruszkow.ski/img/apple-touch-icon-144-precomposed.png">
+
+<link rel="shortcut icon" href="https://ruszkow.ski/img/favicon/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Halloween Heartrate :: ruszkow.ski — data, graphs and other nonsense" />
+<meta name="twitter:description" content="What? After watching the films I mentioned in my Halloween timetable graph, I realised that my watch would have been tracking my heart rate right the way through each film, and thought it might be fun to see if my heart rate had been particularly affected by any of the films.
+On looking at the data, nothing seemed particularly out of the ordinary - except one massive spike during Scream." />
+<meta name="twitter:site" content="https://ruszkow.ski" />
+<meta name="twitter:creator" content="Adam" />
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Halloween Heartrate :: ruszkow.ski — data, graphs and other nonsense">
+<meta property="og:description" content="What? After watching the films I mentioned in my Halloween timetable graph, I realised that my watch would have been tracking my heart rate right the way through each film, and thought it might be fun to see if my heart rate had been particularly affected by any of the films.
+On looking at the data, nothing seemed particularly out of the ordinary - except one massive spike during Scream." />
+<meta property="og:url" content="https://ruszkow.ski/graphs/2020-11-03-halloween-heartrate/" />
+<meta property="og:site_name" content="Halloween Heartrate" />
+<meta property="og:image" content="">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2020-11-03 22:30:31 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+
+<div class="container center">
+
+
+  
+    <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    ruszkow.ski
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/graphs">Graphs</a></li>
+        
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts">Posts</a></li>
+      
+    
+      
+        <li><a href="/graphs">Graphs</a></li>
+      
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+  
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+  <a href="https://ruszkow.ski/graphs/2020-11-03-halloween-heartrate/">Halloween Heartrate</a></h1>
+<div class="post-meta">
+    
+    <span class="post-date">
+      <i class="fas fa-calendar-day"></i> 2020-11-03
+    </span>
+    
+    
+    <span class="post-author">::
+      <i class="fas fa-user"></i> Adam
+    </span>
+    
+    <span class='post-reading-time'>::
+     <i class="fas fa-clock"></i> 2 minutes
+    </span>
+</div>
+
+
+
+  
+  <div class="img-outer">
+    <a href="https://ruszkow.ski/img/graphs/halloween/heartbeats.png" target="_blank">
+      <img class="scaled-img" src="https://ruszkow.ski/img/graphs/halloween/heartbeats.png">
+    </a>
+  </div>
+  
+  <div class="post-content">
+    
+
+<h1 id="what">What?</h1>
+
+<p>After watching the films I mentioned in my
+<a href="/graphs/2020-11-03-halloween-timetable/">Halloween timetable</a> graph,
+I realised that my watch would have been tracking my heart rate right the way
+through each film, and thought it might be fun to see if my heart rate had been
+particularly affected by any of the films.</p>
+
+<p>On looking at the data, nothing seemed particularly out of the ordinary - except
+one massive spike during Scream. Thinking about it, this also happened to
+correspond to a parcel arriving at the flat - so the buzzer going managed to
+scare me more than any film. Sounds about right.</p>
+
+<h1 id="how">How?</h1>
+
+<p>This was surprisingly fiddly to do. <code>fitparse</code> is a great library, but it&rsquo;s
+geared towards &ldquo;activity&rdquo; recording, rather than passive data recording. That
+made finding the right fields for the timestamps a bit difficult, and then those
+in turn are stored in quite a confusing way. I wouldn&rsquo;t have been able to get
+the times out properly without the help of a rather excellent Stack Overflow
+answer, but thankfully once that was done the rest of it was relatively
+painless.</p>
+
+<h1 id="libraries-resources">Libraries / Resources</h1>
+
+<ul>
+<li><code>matplotlib</code></li>
+<li><a href="https://github.com/dtcooper/python-fitparse"><code>python-fitparse</code></a>, a library
+for parsing the files that come directly from Garin watches.</li>
+<li><code>pandas</code></li>
+<li><a href="https://www.atipofoundry.com/fonts/geomanist">Geomanist</a> once more (it&rsquo;s
+more or less my go-to font now)</li>
+<li><a href="https://www.dafont.com/groovy-ghosties.font">&ldquo;Groovy Ghosties&rdquo;</a>, a free
+font for the title</li>
+<li><a href="https://stackoverflow.com/a/57836047">This</a> excellent Stack Overflow answer
+about converting Garmin timestamps to &ldquo;human-readable&rdquo; ones.</li>
+</ul>
+
+<h1 id="data-sources">Data Sources</h1>
+
+<ul>
+<li>I pulled the heartrate data directly from my watch - a
+<a href="https://buy.garmin.com/en-GB/GB/p/641121">Garmin Forerunner 45</a></li>
+</ul>
+
+<h1 id="code">Code</h1>
+
+<p>Find it on <a href="https://github.com/asongtoruin/data_analysis/blob/master/halloween/heartrate.py">Github</a></p>
+
+  </div>
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span
+        class="pagination__title-h">Read other posts</span>
+      <hr />
+    </div>
+    <div class="pagination__buttons">
+      
+      
+      <span class="button next">
+        <a href="https://ruszkow.ski/graphs/2020-11-03-halloween-timetable/">
+          <span class="button__text">Halloween Timetable</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+      
+    </div>
+  </div>
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    
+      <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://ruszkow.ski/assets/main.js"></script>
+<script src="https://ruszkow.ski/assets/prism.js"></script>
+
+
+
+
+
+    
+  
+</div>
+
+</body>
+</html>

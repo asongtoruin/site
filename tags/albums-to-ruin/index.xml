@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Albums to Ruin on ruszkow.ski</title>
+    <link>https://ruszkow.ski/tags/albums-to-ruin/</link>
+    <description>Recent content in Albums to Ruin on ruszkow.ski</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Mon, 20 Apr 2020 10:30:00 +0100</lastBuildDate>
+    
+	<atom:link href="https://ruszkow.ski/tags/albums-to-ruin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Albums to Ruin: database operations</title>
+      <link>https://ruszkow.ski/posts/2020-04-20-albums-to-ruin-database-operations/</link>
+      <pubDate>Mon, 20 Apr 2020 10:30:00 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/posts/2020-04-20-albums-to-ruin-database-operations/</guid>
+      <description>Introduction This post is a continuation of the development of my Albums to Ruin Twitter bot. This is the first part of actual development of the bot - information on the concept and outline can be found in the Initial Concept post.
+In this post, I&amp;rsquo;m going to cover the database operations required to power the Twitter bot and keep track of what has already been posted and the queue of albums to post.</description>
+    </item>
+    
+    <item>
+      <title>Albums to Ruin: working with the Spotify API</title>
+      <link>https://ruszkow.ski/posts/2020-04-17-albums-to-ruin-working-with-the-spotify-api/</link>
+      <pubDate>Fri, 17 Apr 2020 11:30:00 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/posts/2020-04-17-albums-to-ruin-working-with-the-spotify-api/</guid>
+      <description>Introduction This post is a continuation of the development of my Albums to Ruin Twitter bot. This is the first part of actual development of the bot - information on the concept and outline can be found in the Initial Concept post.
+In this post, I&amp;rsquo;m going to cover the process required for getting the recently played tracks from Spotify and the URL for the album art.
+Getting Started First of all, we need to register an application with Spotify.</description>
+    </item>
+    
+    <item>
+      <title>Albums to Ruin: Initial Concept</title>
+      <link>https://ruszkow.ski/posts/2020-04-14-albums-to-ruin-initial-concept/</link>
+      <pubDate>Tue, 14 Apr 2020 11:00:00 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/posts/2020-04-14-albums-to-ruin-initial-concept/</guid>
+      <description>Inspiration Recently, I&amp;rsquo;ve seen a few posts shared around from the Instagram account colorpalette.cinema. I&amp;rsquo;m a big fan of a nice colour palette (indeed, a few years ago I had a Twitter bot running that did something similar with Marvel comics covers) and it got me thinking about whether I could do something similar of my own.
+The idea, and an initial outline As you might have guessed from the post title, my plan is to make something similar for album covers.</description>
+    </item>
+    
+  </channel>
+</rss>

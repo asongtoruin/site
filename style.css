@@ -1,0 +1,163 @@
+.about {
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  list-style: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.splash.header__logo::after {
+  content: '';
+  background: repeating-linear-gradient(90deg, var(--accent), var(--accent) 2px, transparent 0, transparent 10px);
+  display: block;
+  width: 100%;
+  right: 10px;
+}
+.splash.header__logo::before {
+  content: '';
+  background: repeating-linear-gradient(90deg, var(--accent), var(--accent) 2px, transparent 0, transparent 10px);
+  display: block;
+  width: 100%;
+  right: 10px;
+}
+
+.avatar img{
+  width: 15rem;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 30%;
+  padding:10px;
+  @media only screen and (max-width : 768px) {
+    width: 10rem;
+  }
+}
+
+
+.icon-link{
+  padding: 3px;
+}
+
+.hidden-link{
+  text-decoration: none;
+}
+
+.posts {
+  width: 100%;
+}
+
+.container {
+  flex: 1;
+}
+
+.index {
+  flex: 1;
+}
+
+.post {
+  margin: 0;
+  flex: 1;
+  width: 100%;
+}
+
+a.read-more{
+  text-decoration: underline;
+}
+
+.footer .copyright {
+  font-size: 0.8rem
+}
+
+.hover-highlight{
+  background-color: var(--accent);
+  transition: all ease-in-out 0.5s;
+  transition-delay: 0.5s;
+}
+
+.hover-highlight img{
+  mix-blend-mode: multiply;
+}
+
+.hover-highlight::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hover-highlight:hover::after, .hover-highlight:hover, .hover-highlight:hover img{
+  background: #ffffff;
+  transition: all ease-in-out 0.5s;
+}
+
+
+.img-outer {
+  border: 10px solid var(--accent);
+  background: transparent;
+  margin: 20px auto;
+  padding: 15px;
+  width: fit-content;
+}
+
+
+/* Working for image thumbnails on graph page */
+.thumbs {
+  text-align:center;
+  width: 100%;
+  margin-top: 10px
+}
+
+.thumbs::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.thumbnail-outer {
+  width: 18vw;
+  height: 18vw;
+  min-width: 200px;
+  min-height: 200px;
+  max-width: 230px;
+  max-height: 230px;
+  margin: 10px;
+  display:inline-block;
+}
+
+.thumbnail {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  display: inline-flex;
+}
+
+.thumbnail img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.thumbnail-outer .thumb-label {
+  mix-blend-mode: lighten;
+  opacity: 1;
+  transition: all ease-in-out 0.5s;
+  transition-delay: 0.5s;
+  margin: auto;
+  background-color: var(--accent);
+  align-self: center;
+  width: 100%;
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.thumbnail-outer:hover .thumb-label {
+  opacity:0;
+  transition: all ease-in-out 0.5s;
+}
+
+.scaled-img {
+  max-height: 50vh;
+}

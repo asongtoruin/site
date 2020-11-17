@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://kit.fontawesome.com/5063c00b10.js"></script>
+  
+    <title>Travis &#43; PyInstaller &#43; GitHub Releases :: ruszkow.ski — data, graphs and other nonsense</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Part of one of the projects I&amp;rsquo;ve been working on in my day job recently has involved taking over the development of a tool that implements some simple data anonymisation. This includes the deployment of an executable that can be used by non-technical staff, who will likely be the main users of the tool. It&amp;rsquo;s also highly likely that all of those staff will be working on Windows PCs. As the executable is created through PyInstaller, this means the executable needs to be built in a Windows environment."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://ruszkow.ski/posts/2019-10-21-travis-&#43;-pyinstaller-&#43;-github-releases/" />
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/assets/style.css">
+
+  <link rel="stylesheet" href="https://ruszkow.ski/assets/green.css">
+
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ruszkow.ski/img/apple-touch-icon-144-precomposed.png">
+
+<link rel="shortcut icon" href="https://ruszkow.ski/img/favicon/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Travis &#43; PyInstaller &#43; GitHub Releases :: ruszkow.ski — data, graphs and other nonsense" />
+<meta name="twitter:description" content="Part of one of the projects I&amp;rsquo;ve been working on in my day job recently has involved taking over the development of a tool that implements some simple data anonymisation. This includes the deployment of an executable that can be used by non-technical staff, who will likely be the main users of the tool. It&amp;rsquo;s also highly likely that all of those staff will be working on Windows PCs. As the executable is created through PyInstaller, this means the executable needs to be built in a Windows environment." />
+<meta name="twitter:site" content="https://ruszkow.ski" />
+<meta name="twitter:creator" content="Adam" />
+<meta name="twitter:image" content="https://ruszkow.ski/img/posts/travis-pyinstaller/travis-text.png">
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Travis &#43; PyInstaller &#43; GitHub Releases :: ruszkow.ski — data, graphs and other nonsense">
+<meta property="og:description" content="Part of one of the projects I&amp;rsquo;ve been working on in my day job recently has involved taking over the development of a tool that implements some simple data anonymisation. This includes the deployment of an executable that can be used by non-technical staff, who will likely be the main users of the tool. It&amp;rsquo;s also highly likely that all of those staff will be working on Windows PCs. As the executable is created through PyInstaller, this means the executable needs to be built in a Windows environment." />
+<meta property="og:url" content="https://ruszkow.ski/posts/2019-10-21-travis-&#43;-pyinstaller-&#43;-github-releases/" />
+<meta property="og:site_name" content="Travis &#43; PyInstaller &#43; GitHub Releases" />
+<meta property="og:image" content="https://ruszkow.ski/img/posts/travis-pyinstaller/travis-text.png">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2019-10-21 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+
+<div class="container center">
+
+
+  
+    <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    ruszkow.ski
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/graphs">Graphs</a></li>
+        
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts">Posts</a></li>
+      
+    
+      
+        <li><a href="/graphs">Graphs</a></li>
+      
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+  
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+  <a href="https://ruszkow.ski/posts/2019-10-21-travis-&#43;-pyinstaller-&#43;-github-releases/">Travis + PyInstaller + GitHub Releases</a></h1>
+<div class="post-meta">
+    
+    <span class="post-date">
+      <i class="fas fa-calendar-day"></i> 2019-10-21
+    </span>
+    
+    
+    <span class="post-author">::
+      <i class="fas fa-user"></i> Adam
+    </span>
+    
+    <span class='post-reading-time'>::
+     <i class="fas fa-clock"></i> 5 minutes
+    </span>
+</div>
+
+
+<span class="post-tags">
+  
+  #<a href="https://ruszkow.ski/tags/python/">Python</a>&nbsp;
+  
+  #<a href="https://ruszkow.ski/tags/github/">GitHub</a>&nbsp;
+  
+</span>
+
+
+  
+  <div class="img-outer">
+    <a href="https://ruszkow.ski/img/posts/travis-pyinstaller/travis-text.png" target="_blank">
+      <img class="scaled-img" src="https://ruszkow.ski/img/posts/travis-pyinstaller/travis-text.png">
+    </a>
+  </div>
+  
+  <div class="post-content">
+    
+
+<p>Part of one of the projects I&rsquo;ve been working on in my day job recently has
+involved taking over the development of a tool that implements some simple data
+anonymisation. This includes the deployment of an executable that can be used by
+non-technical staff, who will likely be the main users of the tool. It&rsquo;s also
+highly likely that all of those staff will be working on Windows PCs. As the
+executable is created through PyInstaller, this means the executable needs to
+be built in a Windows environment. Initially, I&rsquo;d just been doing this locally
+on my PC to create the executable for distribution.</p>
+
+<p>As the client has a remit to encourage the development of open-source tools,
+the whole project is hosted on GitHub. I figured this was a good excuse to set
+up some continuous integration via <a href="https://travis-ci.org/">Travis</a>,
+alongside a few other tools that should aid with any future development of the
+project (which I might cover at a later date). When I subsequently learned that
+Travis can push to GitHub Releases as part of its <code>deploy</code> phase I realised
+this could be a way to simplify the deployment part of the project, particularly
+if it is taken over by someone unfamiliar with PyInstaller.</p>
+
+<p>This&hellip; turned out to be quite a bit fiddlier than expected, so I&rsquo;ve created
+<a href="https://github.com/asongtoruin/travis-pyinstaller-setup">a very basic repo</a>
+providing a minimal working set-up. In this post I&rsquo;m going to run through the
+various parts of getting this repo working with Travis, and perhaps some of the
+less clear elements.</p>
+
+<h2 id="setting-up-the-repo-on-travis">Setting up the repo on Travis</h2>
+
+<p>On the Travis itself, the repo is fairly straightforward to set up. Once the
+repository is activated, we need to add an environmental variable to store a
+private key to allow Travis to push to GitHub releases. The Environment
+Variables can either be accessed through &ldquo;More Options&rdquo; and then &ldquo;Settings&rdquo; from
+the repo dashboard, or more generally through</p>
+
+<p><code>https://travis-ci.org/user_name/repo_name/settings</code></p>
+
+<p>For this example, we&rsquo;ll use the variable name <code>RELEASE_TOKEN</code>. To get our value,
+we need to go to GitHub and
+<a href="https://github.com/settings/tokens">add a new token</a>. This will need to have
+Repo scope, but doesn&rsquo;t require anything further. Copy the key provided into the
+&ldquo;VALUE&rdquo; field in Travis. Make sure you keep &ldquo;DISPLAY VALUE IN BUILD LOG&rdquo;
+unticked to keep the value out of your logs, and thus not visible to anyone
+else.</p>
+
+<h2 id="preparing-the-github-repository">Preparing the GitHub repository</h2>
+
+<p>For this setup, we&rsquo;ll assume there&rsquo;s a <code>requirements.txt</code> file in the GitHub
+repository to detail the required modules. We also have a PyInstaller spec file,
+in this example called <code>hello.spec</code>, generated the first time PyInstaller is
+run (and modified if needs be). Assuming we want to build our executable with
+Python 3.7, our <code>.travis.yml</code> file looks as follows:</p>
+
+<pre><code class="language-yaml">os: windows
+language: shell
+before_install:
+  - choco install python --version=3.7
+  - python -m pip install --upgrade pip
+env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
+install:
+  - pip install -r requirements.txt
+script:
+  - bash -c echo &quot;Tests would go here&quot;
+before_deploy:
+  - pyinstaller &quot;hello.spec&quot;
+deploy:
+  provider: releases
+  api_key: $RELEASE_TOKEN
+  file_glob: true
+  file: dist/*.exe
+  skip_cleanup: true
+  draft: true
+  on:
+    tags: true
+</code></pre>
+
+<p>This is a fairly typical Travis file, but with a couple of  unusual parts to
+it. First, you&rsquo;ll notice our language is listed as <code>shell</code> rather than <code>python</code>.
+This is because, unlike the OSX and Linx builds, Travis&rsquo; Windows build doesn&rsquo;t
+include a version of Python by default. However, it does include
+<a href="https://chocolatey.org/">chocolatey</a> which allows us to install Python fairly
+easily. If you have a more complicated Python set-up, chocolatey also has
+support for <a href="https://www.anaconda.com/">Anaconda</a>, through</p>
+
+<p><code>choco install anaconda3</code></p>
+
+<p>We then also need to add the Python install location to our <code>PATH</code> environment
+variable. As we&rsquo;re using Python 3.7, this is at <code>C:\Python37</code> but it should
+be easy to see how this could be modified for other Python versions. Our
+<code>install</code> phase uses <code>requirements.txt</code> as mentioned earlier. We have no
+tests to run but these would fit into the <code>script</code> phase.</p>
+
+<p>Our <code>before_deploy</code> phase is where we build our executable - PyInstaller puts
+this into a <code>dist</code> folder, hence our <code>deploy</code> phase uses a wildcard to select
+any <code>.exe</code> files in here, by setting <code>file_glob: true</code>. In terms of our other
+settings here, we use:</p>
+
+<ul>
+<li><code>provider: releases</code> to ensure our output becomes a GitHub release;</li>
+<li><code>api_key: $RELEASE_TOKEN</code> to authorise the process to issue a release;</li>
+<li><code>skip_cleanup: true</code> to ensure our files aren&rsquo;t deleted between phases;</li>
+<li><code>draft: true</code> to make the GitHub release a draft, only visible to users
+with write access to the repository; and</li>
+<li><code>on: tags: true</code> to ensure we only create a new release when we use Git Tags.</li>
+</ul>
+
+<p>The last of these is particularly important. This ensures we aren&rsquo;t issuing a
+release with every commit, which would probably be overkill. When we push a
+commit without a tag, our tests will still run but our build step is skipped:</p>
+
+
+  <div class="img-outer">
+    <a href="https://ruszkow.ski/img/posts/travis-pyinstaller/no-tag.png" target="_blank">
+      <img class="scaled-img" src="https://ruszkow.ski/img/posts/travis-pyinstaller/no-tag.png">
+    </a>
+  </div>
+
+
+
+<h2 id="the-first-draft">The first draft</h2>
+
+<p>So, when we push our first commit with a tag, we actually see two builds start
+on Travis, one for the commit and one for the tag:</p>
+
+
+  <div class="img-outer">
+    <a href="https://ruszkow.ski/img/posts/travis-pyinstaller/two-builds.png" target="_blank">
+      <img class="scaled-img" src="https://ruszkow.ski/img/posts/travis-pyinstaller/two-builds.png">
+    </a>
+  </div>
+
+
+
+<p>I&rsquo;m not entirely sure why this happens - ideally we&rsquo;d just have the one build,
+seeing as the two represent the same commit. Any suggestions here are welcomed.
+When the tagged build finishes it creates a new release on GitHub with our
+executable added, like so:</p>
+
+
+  <div class="img-outer">
+    <a href="https://ruszkow.ski/img/posts/travis-pyinstaller/initial-draft.png" target="_blank">
+      <img class="scaled-img" src="https://ruszkow.ski/img/posts/travis-pyinstaller/initial-draft.png">
+    </a>
+  </div>
+
+
+
+<p>So the set-up works. However, the name just being &ldquo;DRAFT&rdquo; is less than ideal.</p>
+
+<h2 id="improving-release-naming">Improving release naming</h2>
+
+<p>As it turns out, one of Travis&rsquo;
+<a href="https://docs.travis-ci.com/user/environment-variables/#default-environment-variables">default environment variables</a>
+is <code>TRAVIS_TAG</code>, which contains the Git Tag of a build if connected to one. This
+is perfect in our case, as we can add an extra line to our <code>.travis.yml</code> file:</p>
+
+<pre><code class="language-yaml"># ...
+deploy:
+  provider: releases
+  api_key: $RELEASE_TOKEN
+  file_glob: true
+  file: dist/*.exe
+  skip_cleanup: true
+  draft: true
+  on:
+    tags: true
+  name: $TRAVIS_TAG (DRAFT)
+</code></pre>
+
+<p>With this, our draft Release will contain the name of the Git Tag used to create
+it, like so:</p>
+
+
+  <div class="img-outer">
+    <a href="https://ruszkow.ski/img/posts/travis-pyinstaller/revised-draft.png" target="_blank">
+      <img class="scaled-img" src="https://ruszkow.ski/img/posts/travis-pyinstaller/revised-draft.png">
+    </a>
+  </div>
+
+
+
+<p>Which is pretty much exactly as we want it!</p>
+
+  </div>
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span
+        class="pagination__title-h">Read other posts</span>
+      <hr />
+    </div>
+    <div class="pagination__buttons">
+      
+      <span class="button previous">
+        <a href="https://ruszkow.ski/posts/2020-04-14-albums-to-ruin-initial-concept/">
+          <span class="button__icon">←</span>
+          <span class="button__text">Albums to Ruin: Initial Concept</span>
+        </a>
+      </span>
+      
+      
+      <span class="button next">
+        <a href="https://ruszkow.ski/posts/pihole-setup/">
+          <span class="button__text">An Initial Set-Up of PiHole</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+      
+    </div>
+  </div>
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    
+      <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://ruszkow.ski/assets/main.js"></script>
+<script src="https://ruszkow.ski/assets/prism.js"></script>
+
+
+
+
+
+    
+  
+</div>
+
+</body>
+</html>
