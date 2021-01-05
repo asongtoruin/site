@@ -12,3 +12,10 @@ To make a new Graphs post, with hugo on the PATH it's as straightforward as
 ```
 hugo new "Graphs\postname.md"
 ```
+
+## Creating new Slide posts
+To make a new Slides post, again with hugo on the PATH, we need a slightly 
+different syntax
+```
+hugo new --kind slides slides/name
+```
