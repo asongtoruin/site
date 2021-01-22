@@ -159,23 +159,17 @@ One criticism that gets levelled at the festival is that its headliners tend to 
   </div>
   
   <div class="post-content">
-    
-
-<h1 id="what">What?</h1>
-
+    <h1 id="what">What?</h1>
 <p>The first festival I ever went to was Download at Donington Park, in 2005. My
 dad and I returned in 2006 and 2007 - he&rsquo;s been back a few more times since,
 I&rsquo;ve not but it still holds a special place in my heart.</p>
-
 <p>One criticism that gets levelled at the festival is that its headliners tend to
 be taken from a small pool of bands, so I decided to actually graph it. What we
 see is that from around 2011 onwards new main stage headliners become decidedly
 less frequent, with one new headliner <em>at most</em> appearing in a given year.</p>
-
 <p>Something I noticed after producing this graph was that the bands looked
 decidedly male, so I decided to recreate the graph but only showing bands
 containing non-male members.</p>
-
 
   <div class="img-outer">
     <a href="https://ruszkow.ski/img/graphs/download-headliners/download-headliners-no_men.png" target="_blank">
@@ -184,52 +178,40 @@ containing non-male members.</p>
   </div>
 
 
-
 <p>Yep. Download&rsquo;s headliners across its 17 years (plus the announced headliners
 for 2021) have never featured someone non-male. This is genuinely maddening, and
 something Download needs to do better with.</p>
-
 <p>I realise that as a white man, I am not the best person to talk to about this
 so if this is something you&rsquo;re interested in (and you should be), then some
 additional resources can be found via:</p>
-
 <ul>
 <li><a href="https://vbain.co.uk/">Vick Bain</a>, and</li>
 <li><a href="https://www.keychange.eu/">Keychange</a></li>
 </ul>
-
 <p>Thanks to my good pal <a href="https://www.instagram.com/bethcraigblack/">Beth</a> of
 Glasgow&rsquo;s finest <a href="https://slowlightglasgow.bandcamp.com/">Slowlight</a>,
 <a href="https://10am.bandcamp.com/">10am</a>,
 <a href="https://flinchmusic.bandcamp.com/">Flinch</a> and many other great bands for
 these references.</p>
-
 <h1 id="how">How?</h1>
-
 <p><code>seaborn</code> truly does make producing heatmaps from <code>pandas</code> DataFrames very easy.
 As usual, there&rsquo;s a lot of fiddly bits for getting things just right - removing
 tick marks, moving labels around etc. In particular here,
 <code>LinearSegmentedColormap</code> from <code>matplotlib</code> was really useful in getting
 distinct colours for the different count values.</p>
-
-<h1 id="libraries-resources">Libraries / Resources</h1>
-
+<h1 id="libraries--resources">Libraries / Resources</h1>
 <ul>
 <li><code>matplotlib</code>, my one true love, with <code>seaborn</code> for ease of producing heatmaps.</li>
 <li>Who loves Atipo fonts? Adam loves Atipo fonts.
 <a href="https://www.atipofoundry.com/fonts/noway-round">Noway Round</a> again here.</li>
 </ul>
-
 <h1 id="data-sources">Data Sources</h1>
-
 <ul>
 <li>I copied the headliners out manually from <a href="https://en.wikipedia.org/wiki/Download_Festival">Wikipedia</a>.
 There are probably ways to automate that, but it wasn&rsquo;t enough data to be
 worth the effort.</li>
 </ul>
-
 <h1 id="code">Code</h1>
-
 <p>Find it on <a href="https://github.com/asongtoruin/data_analysis/blob/master/music/download%20headliners/headliner-repeats.py">Github</a></p>
 
   </div>
@@ -273,7 +255,7 @@ worth the effort.</li>
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>

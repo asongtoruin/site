@@ -162,28 +162,20 @@ With that in mind, I decided to look at how frequently teams had won those leagu
   </div>
   
   <div class="post-content">
-    
-
-<h1 id="what">What?</h1>
-
+    <h1 id="what">What?</h1>
 <p>Yet another football graph, and yet another bar chart. This one needs to be
 viewed in full-screen to get the full effect!</p>
-
 <p>As the (Coronavirus-prolonged) 2019-2020 football season finally draws to a
 close across Europe the traditional &ldquo;big five&rdquo; leagues (England, France,
 Germany, Italy and Spain) seemed to be won by the expected teams, with
 Liverpool&rsquo;s first English title for 30 years proving somewhat of an outlier.</p>
-
 <p>With that in mind, I decided to look at how frequently teams had won those
 leagues in recent years, with the 1999-2000 season seeming like a convenient
 starting point.</p>
-
 <p>It didn&rsquo;t come as much of a surprise to me that Bayern Münich and Juventus came
 out on top, though I was surprised by how relatively recent PSG&rsquo;s dominance of
 the French league has been.</p>
-
 <p>As with my last graph, here&rsquo;s a development gif!</p>
-
 
   <div class="img-outer">
     <a href="https://ruszkow.ski/img/graphs/big-five-champions/champions-process.gif" target="_blank">
@@ -192,30 +184,22 @@ the French league has been.</p>
   </div>
 
 
-
 <h1 id="how">How?</h1>
-
 <p>Really fiddly <code>matplotlib</code> code! What a surprise.</p>
-
 <p>Rounded bars aren&rsquo;t available directly in <code>matplotlib</code>, so it took a bit of
 faff to get them to look good. In short, you have to loop through each bar,
 use its coordinates to draw a <em>new</em> patch that has rounded corners, and then
 delete the old bar.</p>
-
 <p>Getting the badges and text onto the bars without awkward overlaps was similarly
 tricky. The canvas has to be redrawn to ensure the items are actually appearing
 in the correct place.</p>
-
-<h1 id="libraries-resources">Libraries / Resources</h1>
-
+<h1 id="libraries--resources">Libraries / Resources</h1>
 <ul>
 <li><code>matplotlib</code>, my one true love</li>
 <li><code>pillow</code> for recolouring and resizing the badges</li>
 <li>Another lovely Atipo font - <a href="https://www.atipofoundry.com/fonts/geomanist">Geomanist</a></li>
 </ul>
-
 <h1 id="data-sources">Data Sources</h1>
-
 <ul>
 <li><a href="http://www.rsssf.com">RSSSF</a> provided all of the data through its
 &ldquo;List of Champions&rdquo; page for each league. The England page, for example, is
@@ -223,11 +207,8 @@ found <a href="http://www.rsssf.com/tablese/engchamp.html">here</a></li>
 <li><a href="https://www.api-football.com/">api-football</a> was used to get the badges, as
 they provide nice PNGs of each team&rsquo;s logo with transparent backgrounds.</li>
 </ul>
-
 <h1 id="code">Code</h1>
-
 <p>Find the main processing code on <a href="https://github.com/asongtoruin/data_analysis/tree/master/football/big%20five%20champions">Github</a></p>
-
 <p>The gif generation code was identical to in the
 <a href="/graphs/2020-07-07-uk-bisexual-population/">UK Bisexual population post</a></p>
 
@@ -272,7 +253,7 @@ they provide nice PNGs of each team&rsquo;s logo with transparent backgrounds.</
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>

@@ -159,28 +159,21 @@ The idea, and an initial outline As you might have guessed from the post title, 
 
   
   <div class="post-content">
-    
-
-<h2 id="inspiration">Inspiration</h2>
-
+    <h2 id="inspiration">Inspiration</h2>
 <p>Recently, I&rsquo;ve seen a few posts shared around from the Instagram account
 <a href="https://www.instagram.com/colorpalette.cinema/">colorpalette.cinema</a>.
 I&rsquo;m a big fan of a nice colour palette (indeed, a few years ago I had a
 Twitter bot running that did something similar with
 <a href="https://www.twitter.com/marvelcovers">Marvel comics covers</a>) and it got me
 thinking about whether I could do something similar of my own.</p>
-
 <h2 id="the-idea-and-an-initial-outline">The idea, and an initial outline</h2>
-
 <p>As you might have guessed from the post title, my plan is to make something
 similar for album covers. I&rsquo;m a big music dork and pleasing covers are part of
 the reason why I still buy records, so this is a natural fit for me.</p>
-
 <p>I&rsquo;m far too lazy to actually manually produce posts, so it&rsquo;s going to be a bot.
 It&rsquo;d be great to run this as an Instagram account, seeing as we&rsquo;ll just be
 posting photos, but automating posts on there seems to be surprisingly difficult
 so I guess I&rsquo;ll stick with what I know and do a Twitter bot.</p>
-
 <p>One major part of the equation is keeping it active, so for that my plan is to
 connect it up to my Spotify account via the Spotify APIs. The
 <a href="https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-recently-played">Recently Played endpoint</a>
@@ -188,15 +181,12 @@ connect it up to my Spotify account via the Spotify APIs. The
 recently played tracks. As the track object includes album art, that makes life
 much easier for me, as it&rsquo;s only one endpoint to access rather than needing one
 to get the songs and another to get their art. Thanks, Spotify!</p>
-
 <p>There&rsquo;s also the question of tracking what&rsquo;s already been posted to make sure
 it&rsquo;s not just posting every <em>Joyce Manor</em> album cover a hundred times, and
 actually having somewhere to run the bot itself. For that I&rsquo;m planning on using
 one of the numerous Raspberry Pi I have lying about the flat, with a simple
 SQLite database to log albums that have already been posted.</p>
-
 <p>Ultimately, this leaves us with four broad sections (click for links):</p>
-
 <ol>
 <li><a href="/posts/2020-04-17-albums-to-ruin-working-with-the-spotify-api/">Getting the recently played tracks from Spotify and link to the album art</a>;</li>
 <li><a href="/posts/2020-04-20-albums-to-ruin-database-operations/">Checking against our database to see if we&rsquo;ve already enountered this album,
@@ -205,7 +195,6 @@ discarding if we have or adding it in if we have not</a>;</li>
 visually appealing way; and</li>
 <li>Posting to twitter.</li>
 </ol>
-
 <p>My plan is to dedicate a post to each of these sections and ultimately end up
 with a functional Twitter bot. How long will that take me? Only time will tell.</p>
 
@@ -250,7 +239,7 @@ with a functional Twitter bot. How long will that take me? Only time will tell.<
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>

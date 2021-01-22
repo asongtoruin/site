@@ -164,43 +164,33 @@ Getting Started First of all, we need to register an application with Spotify." 
 
   
   <div class="post-content">
-    
-
-<h2 id="introduction">Introduction</h2>
-
+    <h2 id="introduction">Introduction</h2>
 <p>This post is a continuation of the development of my <em>Albums to Ruin</em> Twitter
 bot. This is the first part of actual development of the bot - information
 on the concept and outline can be found in the
 <a href="/posts/2020-04-14-albums-to-ruin-initial-concept/">Initial Concept post</a>.</p>
-
 <p>In this post, I&rsquo;m going to cover the process required for getting the recently
 played tracks from Spotify and the URL for the album art.</p>
-
 <h2 id="getting-started">Getting Started</h2>
-
 <p>First of all, we need to register an application with Spotify. This is done via
 the <a href="https://developer.spotify.com/dashboard/applications">Developer Dashboard</a>
 and is relatively straightforward. This provides us with the <code>Client ID</code> and
 <code>Client Secret</code> keys that let us access the APIs.</p>
-
 <p>While we&rsquo;re here, we also need to set up a Redirect URI. For other Spotify apps,
 this will be the address the user is redirected to once they log in. For the
 time being, we&rsquo;ll only be using the account we&rsquo;re logged into the developer
 console with, so this is not critical, but we need <em>something</em> here to ensure
 we can connect properly later on.</p>
-
 <p>Clicking on the application and then clicking on <em>Edit Settings</em> should allow
 you to add in a Redirect URI. Setting this to <code>http://localhost:8888/callback</code>
 gives us something we can work with later on. The settings page will look
 something like this:</p>
-
 
   <div class="img-outer">
     <a href="https://ruszkow.ski/img/posts/albums-to-ruin/redirect_uri.png" target="_blank">
       <img class="scaled-img" src="https://ruszkow.ski/img/posts/albums-to-ruin/redirect_uri.png">
     </a>
   </div>
-
 
 
 <p>Next, we need to set up our Python environment. For the purposes of this project,
@@ -213,64 +203,50 @@ environment variables. The Spotipy documentation has good advice for setting
 this up, particularly for Windows. In Linux (e.g. on a Raspberry Pi), it&rsquo;s a
 little more fiddly than I&rsquo;m used to as you need to make sure it&rsquo;s set
 permanently. I did this through <code>~/etc/profile</code>. Now we should be ready to go.</p>
-
 <h2 id="authenticating">Authenticating</h2>
-
 <p>The first step in connecting to the API is authenticating. First, we&rsquo;ll request
 a token allowing access to the endpoint we require. Spotipy should be able to
 cache this token and refresh it when needed, so you should only need to call
 this section of the code once ever. This is the first time we need our Redirect
 URI, and if you want to run this code yourself you&rsquo;ll need to replace my
 username with your own.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> spotipy.util <span style="color:#f92672">as</span> util
 
-<pre><code class="language-python">import spotipy.util as util
-
-token = util.prompt_for_user_token(
-    'valeadam', scope='user-read-recently-played', 
-    redirect_uri='http://localhost:8888/callback'
+token <span style="color:#f92672">=</span> util<span style="color:#f92672">.</span>prompt_for_user_token(
+    <span style="color:#e6db74">&#39;valeadam&#39;</span>, scope<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;user-read-recently-played&#39;</span>, 
+    redirect_uri<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://localhost:8888/callback&#39;</span>
 )
-</code></pre>
-
-<p>If you run this, your web browser should load asking for permission to connect
+</code></pre></div><p>If you run this, your web browser should load asking for permission to connect
 your application to your Spotify account. Once this is approved, we should be
 clear to start accessing our information.</p>
-
 <p>Now we need to set up an authenticated connection. Spotipy makes this fairly
 easy via its <code>Spotify</code> and <code>SpotifyOAuth</code> classes. Again, if you wanted to run
 this you&rsquo;d need to replace my username with your own.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> spotipy
+<span style="color:#f92672">from</span> spotipy.oauth2 <span style="color:#f92672">import</span> SpotifyClientCredentials
 
-<pre><code class="language-python">import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
 
-
-auth = spotipy.SpotifyOAuth(
-    redirect_uri='http://localhost:8888/callback', username='valeadam'
+auth <span style="color:#f92672">=</span> spotipy<span style="color:#f92672">.</span>SpotifyOAuth(
+    redirect_uri<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://localhost:8888/callback&#39;</span>, username<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;valeadam&#39;</span>
 )
 
-sp = spotipy.Spotify(auth_manager=auth)
-print(sp.me())
-</code></pre>
-
-<p>This prints out some information about the connected user:</p>
-
-<pre><code class="language-python">{
-    'display_name': 'valeadam',
-    'external_urls': {'spotify': 'https://open.spotify.com/user/valeadam'},
-    'followers': {'href': None, 'total': 39},
-    'href': 'https://api.spotify.com/v1/users/valeadam',
-    'id': 'valeadam',
-    'images': [],
-    'type': 'user',
-    'uri': 'spotify:user:valeadam'
+sp <span style="color:#f92672">=</span> spotipy<span style="color:#f92672">.</span>Spotify(auth_manager<span style="color:#f92672">=</span>auth)
+<span style="color:#66d9ef">print</span>(sp<span style="color:#f92672">.</span>me())
+</code></pre></div><p>This prints out some information about the connected user:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">{
+    <span style="color:#e6db74">&#39;display_name&#39;</span>: <span style="color:#e6db74">&#39;valeadam&#39;</span>,
+    <span style="color:#e6db74">&#39;external_urls&#39;</span>: {<span style="color:#e6db74">&#39;spotify&#39;</span>: <span style="color:#e6db74">&#39;https://open.spotify.com/user/valeadam&#39;</span>},
+    <span style="color:#e6db74">&#39;followers&#39;</span>: {<span style="color:#e6db74">&#39;href&#39;</span>: None, <span style="color:#e6db74">&#39;total&#39;</span>: <span style="color:#ae81ff">39</span>},
+    <span style="color:#e6db74">&#39;href&#39;</span>: <span style="color:#e6db74">&#39;https://api.spotify.com/v1/users/valeadam&#39;</span>,
+    <span style="color:#e6db74">&#39;id&#39;</span>: <span style="color:#e6db74">&#39;valeadam&#39;</span>,
+    <span style="color:#e6db74">&#39;images&#39;</span>: [],
+    <span style="color:#e6db74">&#39;type&#39;</span>: <span style="color:#e6db74">&#39;user&#39;</span>,
+    <span style="color:#e6db74">&#39;uri&#39;</span>: <span style="color:#e6db74">&#39;spotify:user:valeadam&#39;</span>
 }
-</code></pre>
-
-<p>If it doesn&rsquo;t, there may be some error in your process. Double-check your
+</code></pre></div><p>If it doesn&rsquo;t, there may be some error in your process. Double-check your
 username is correct, and that the <code>SPOTIPY_CLIENT_ID</code> and
 <code>SPOTIPY_CLIENT_SECRET</code> environment variables are set up correctly.</p>
-
 <h2 id="getting-recently-played-tracks">Getting recently played tracks</h2>
-
 <p>Now we have our authenticated connection, we can use this to access our recently
 played tracks. This can be done through the <code>current_user_recently_played()</code>
 method of our <code>Spotify</code> object. This provides (a lot of) information on the 50
@@ -281,51 +257,48 @@ hand with ellipses, for a more complete example consult the
 <a href="https://developer.spotify.com/documentation/web-api/reference/player/get-recently-played/">Spotify web api reference</a>
 for this method.The information I&rsquo;ll want to access for the Twitter bot is
 structured as follows:</p>
-
-<pre><code class="language-python">{
-    'items':
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">{
+    <span style="color:#e6db74">&#39;items&#39;</span>:
         [
-            {'track': {'album': {'album_type': 'album',
-                                 'artists': [
-                                     {'external_urls': {'spotify': '...'},
-                                      'href': '...',
-                                      'id': '4xYk2flbrS0hDzDLyDimbO',
-                                      'name': 'Tubelord',
-                                      'type': 'artist',
-                                      'uri': 'spotify:artist:4xYk2flbrS0hDzDLyDimbO'
+            {<span style="color:#e6db74">&#39;track&#39;</span>: {<span style="color:#e6db74">&#39;album&#39;</span>: {<span style="color:#e6db74">&#39;album_type&#39;</span>: <span style="color:#e6db74">&#39;album&#39;</span>,
+                                 <span style="color:#e6db74">&#39;artists&#39;</span>: [
+                                     {<span style="color:#e6db74">&#39;external_urls&#39;</span>: {<span style="color:#e6db74">&#39;spotify&#39;</span>: <span style="color:#e6db74">&#39;...&#39;</span>},
+                                      <span style="color:#e6db74">&#39;href&#39;</span>: <span style="color:#e6db74">&#39;...&#39;</span>,
+                                      <span style="color:#e6db74">&#39;id&#39;</span>: <span style="color:#e6db74">&#39;4xYk2flbrS0hDzDLyDimbO&#39;</span>,
+                                      <span style="color:#e6db74">&#39;name&#39;</span>: <span style="color:#e6db74">&#39;Tubelord&#39;</span>,
+                                      <span style="color:#e6db74">&#39;type&#39;</span>: <span style="color:#e6db74">&#39;artist&#39;</span>,
+                                      <span style="color:#e6db74">&#39;uri&#39;</span>: <span style="color:#e6db74">&#39;spotify:artist:4xYk2flbrS0hDzDLyDimbO&#39;</span>
                                       }],
-                                 # ...
-                                 'external_urls': {'spotify': '...'},
-                                 # ...
-                                 'images': [{'height': 640,
-                                             'url': '...',
-                                             'width': 640
+                                 <span style="color:#75715e"># ...</span>
+                                 <span style="color:#e6db74">&#39;external_urls&#39;</span>: {<span style="color:#e6db74">&#39;spotify&#39;</span>: <span style="color:#e6db74">&#39;...&#39;</span>},
+                                 <span style="color:#75715e"># ...</span>
+                                 <span style="color:#e6db74">&#39;images&#39;</span>: [{<span style="color:#e6db74">&#39;height&#39;</span>: <span style="color:#ae81ff">640</span>,
+                                             <span style="color:#e6db74">&#39;url&#39;</span>: <span style="color:#e6db74">&#39;...&#39;</span>,
+                                             <span style="color:#e6db74">&#39;width&#39;</span>: <span style="color:#ae81ff">640</span>
                                              },
-                                            {'height': 300,
-                                             'url': '...',
-                                             'width': 300
+                                            {<span style="color:#e6db74">&#39;height&#39;</span>: <span style="color:#ae81ff">300</span>,
+                                             <span style="color:#e6db74">&#39;url&#39;</span>: <span style="color:#e6db74">&#39;...&#39;</span>,
+                                             <span style="color:#e6db74">&#39;width&#39;</span>: <span style="color:#ae81ff">300</span>
                                              },
-                                            {'height': 64,
-                                             'url': '...',
-                                             'width': 64
+                                            {<span style="color:#e6db74">&#39;height&#39;</span>: <span style="color:#ae81ff">64</span>,
+                                             <span style="color:#e6db74">&#39;url&#39;</span>: <span style="color:#e6db74">&#39;...&#39;</span>,
+                                             <span style="color:#e6db74">&#39;width&#39;</span>: <span style="color:#ae81ff">64</span>
                                              }],
-                                 'name': 'Our First American Friends',
-                                 'release_date': '2009',
-                                 'release_date_precision': 'year',
-                                 'total_tracks': 10,
-                                 'type': 'album',
-                                 'uri': 'spotify:album:4nXbDzk9hxR8aUMkBvpV6u'
+                                 <span style="color:#e6db74">&#39;name&#39;</span>: <span style="color:#e6db74">&#39;Our First American Friends&#39;</span>,
+                                 <span style="color:#e6db74">&#39;release_date&#39;</span>: <span style="color:#e6db74">&#39;2009&#39;</span>,
+                                 <span style="color:#e6db74">&#39;release_date_precision&#39;</span>: <span style="color:#e6db74">&#39;year&#39;</span>,
+                                 <span style="color:#e6db74">&#39;total_tracks&#39;</span>: <span style="color:#ae81ff">10</span>,
+                                 <span style="color:#e6db74">&#39;type&#39;</span>: <span style="color:#e6db74">&#39;album&#39;</span>,
+                                 <span style="color:#e6db74">&#39;uri&#39;</span>: <span style="color:#e6db74">&#39;spotify:album:4nXbDzk9hxR8aUMkBvpV6u&#39;</span>
                                  },
-                       # ...
+                       <span style="color:#75715e"># ...</span>
                        },
-             # ...
+             <span style="color:#75715e"># ...</span>
              },
-             # ...
+             <span style="color:#75715e"># ...</span>
         ]
 }
-</code></pre>
-
-<p>There&rsquo;s a few things we can note from this. Firstly, there&rsquo;s the possibility of
+</code></pre></div><p>There&rsquo;s a few things we can note from this. Firstly, there&rsquo;s the possibility of
 multiple artists showing up on one album. It would be nice to be able simply
 combine them all into a comma-separated list, as this is likely how I&rsquo;d want to
 include this information in the corresponding tweet. The only issue here is it&rsquo;s
@@ -333,148 +306,140 @@ unclear how compilations are dealt with - would 20 artists on a compilation each
 appear individually? If so, we might risk going past the tweet length limit. A
 simple way of avoiding this issue is to replace the returned set of artists if
 they exceed a certain length. We&rsquo;ll arbitrarily set this to 5.</p>
-
 <p>Secondly, multiple sizes of artwork are returned. For the best result, we want
 the largest image provided. It looks as though the images are ordered by size
 from largest to smallest, but it&rsquo;s not too complicated to add an extra bit of
 processing to ensure we do indeed get the largest.</p>
-
 <p>Now we can begin to construct our class for the album object. There are a few
 other things we might want to think about:</p>
-
 <ul>
-<li><p>If multiple tracks are played from the same album, the album will appear in
+<li>
+<p>If multiple tracks are played from the same album, the album will appear in
 the response multiple times. As such, we some way to check if two of our
 objects correspond to the same album so we can remove duplicates. Doing this
 through the <code>__eq__</code> magic method makes sense here, and allows us to directly
-use <code>==</code>.</p></li>
-
-<li><p>Thinking ahead for the tweets, we might also want a nice string version of the
+use <code>==</code>.</p>
+</li>
+<li>
+<p>Thinking ahead for the tweets, we might also want a nice string version of the
 album information to include with the image. We can use another magic method
-for this - <code>__str__</code> - so we&rsquo;ll add this too.</p></li>
-
-<li><p>If we&rsquo;re going to be adding the data to a database, it&rsquo;ll help to have a quick
+for this - <code>__str__</code> - so we&rsquo;ll add this too.</p>
+</li>
+<li>
+<p>If we&rsquo;re going to be adding the data to a database, it&rsquo;ll help to have a quick
 way to access all of the attributes of each album object. The <code>__dict__</code>
 magic method does this, but isn&rsquo;t a particularly nice method of access.
 Additionally, we may end up wanting to exclude certain attributes from the
-returned dictionary. Adding another method gives us this flexibilty.</p></li>
+returned dictionary. Adding another method gives us this flexibilty.</p>
+</li>
 </ul>
-
 <p>Putting these things together gets us the following class:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, resp_dict):
+        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, None)
+        self<span style="color:#f92672">.</span>release_date <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;release_date&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)
 
-<pre><code class="language-python">class SpotifyAlbum:
-    def __init__(self, resp_dict):
-        self.name = resp_dict.get('name', None)
-        self.release_date = resp_dict.get('release_date', 'Unknown')
-
-        # Handle possibility of many artists
-        artists = resp_dict['artists']
-        if len(artists) &gt; 5:
-            self.artists = 'Various'
-        else:
-            self.artists = ', '.join(
-                art.get('name', 'Unknown') for art in artists
+        <span style="color:#75715e"># Handle possibility of many artists</span>
+        artists <span style="color:#f92672">=</span> resp_dict[<span style="color:#e6db74">&#39;artists&#39;</span>]
+        <span style="color:#66d9ef">if</span> len(artists) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>:
+            self<span style="color:#f92672">.</span>artists <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Various&#39;</span>
+        <span style="color:#66d9ef">else</span>:
+            self<span style="color:#f92672">.</span>artists <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;, &#39;</span><span style="color:#f92672">.</span>join(
+                art<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>) <span style="color:#66d9ef">for</span> art <span style="color:#f92672">in</span> artists
             )
         
-        urls = resp_dict.get('external_urls', {'spotify': None})
-        self.link = urls['spotify']
+        urls <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;external_urls&#39;</span>, {<span style="color:#e6db74">&#39;spotify&#39;</span>: None})
+        self<span style="color:#f92672">.</span>link <span style="color:#f92672">=</span> urls[<span style="color:#e6db74">&#39;spotify&#39;</span>]
         
-        # Get the largest version of the album artwork
-        images = resp_dict.get('images', [{'url': None, 'height': 0}])
-        images.sort(key=lambda x: x['height'], reverse=True)
-        self.art_link = images[0]['url']
+        <span style="color:#75715e"># Get the largest version of the album artwork</span>
+        images <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;images&#39;</span>, [{<span style="color:#e6db74">&#39;url&#39;</span>: None, <span style="color:#e6db74">&#39;height&#39;</span>: <span style="color:#ae81ff">0</span>}])
+        images<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#e6db74">&#39;height&#39;</span>], reverse<span style="color:#f92672">=</span>True)
+        self<span style="color:#f92672">.</span>art_link <span style="color:#f92672">=</span> images[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;url&#39;</span>]
     
-    def __str__(self):
-        return (
-            f'Album Name: {self.name}\n'
-            f'Artist(s): {self.artists}\n'
-            f'Released: {self.release_date}\n'
-            f'Link: {self.link}'
+    <span style="color:#66d9ef">def</span> __str__(self):
+        <span style="color:#66d9ef">return</span> (
+            f<span style="color:#e6db74">&#39;Album Name: {self.name}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+            f<span style="color:#e6db74">&#39;Artist(s): {self.artists}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+            f<span style="color:#e6db74">&#39;Released: {self.release_date}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+            f<span style="color:#e6db74">&#39;Link: {self.link}&#39;</span>
         )
     
-    def __eq__(self, other):
-        if type(other) is type(self):
-            return self.__dict__ == other.__dict__
-        return NotImplemented
+    <span style="color:#66d9ef">def</span> __eq__(self, other):
+        <span style="color:#66d9ef">if</span> type(other) <span style="color:#f92672">is</span> type(self):
+            <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>__dict__ <span style="color:#f92672">==</span> other<span style="color:#f92672">.</span>__dict__
+        <span style="color:#66d9ef">return</span> NotImplemented
     
-    def to_dict(self):
-        return self.__dict__
-</code></pre>
-
-<p>This should give us the basic amount of information we need. As a last step for
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_dict</span>(self):
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>__dict__
+</code></pre></div><p>This should give us the basic amount of information we need. As a last step for
 this section, we might want to consider how we can get the unique albums from
 the most recent 50 played tracks. This API returns the most recently played
 track first in the list, whereas for my Twitter bot I want to have the albums
 posted in the order they&rsquo;ve been encountered. This means reversing the items
 passed by the API. It also means we can&rsquo;t just use <code>set</code>, as it ignores order.
 It&rsquo;s not a huge issue, as we need just a few lines of code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">recently_played <span style="color:#f92672">=</span> sp<span style="color:#f92672">.</span>current_user_recently_played()
 
-<pre><code class="language-python">recently_played = sp.current_user_recently_played()
+recent_albums <span style="color:#f92672">=</span> []
 
-recent_albums = []
-
-for item in recently_played['items'][::-1]:
-    album = SpotifyAlbum(item['track']['album'])
-    if album.art_link and not any(prev == album for prev in recent_albums):
-        recent_albums.append(album)
-</code></pre>
-
-<p>Now, via <code>recent_albums</code>, we have a list of unique recently played albums in the
+<span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> recently_played[<span style="color:#e6db74">&#39;items&#39;</span>][::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+    album <span style="color:#f92672">=</span> SpotifyAlbum(item[<span style="color:#e6db74">&#39;track&#39;</span>][<span style="color:#e6db74">&#39;album&#39;</span>])
+    <span style="color:#66d9ef">if</span> album<span style="color:#f92672">.</span>art_link <span style="color:#f92672">and</span> <span style="color:#f92672">not</span> any(prev <span style="color:#f92672">==</span> album <span style="color:#66d9ef">for</span> prev <span style="color:#f92672">in</span> recent_albums):
+        recent_albums<span style="color:#f92672">.</span>append(album)
+</code></pre></div><p>Now, via <code>recent_albums</code>, we have a list of unique recently played albums in the
 order in which they&rsquo;ve been played. This gives us the starting point for the
 rest of the project. Putting all the code together, we get the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> spotipy
+<span style="color:#f92672">from</span> spotipy.oauth2 <span style="color:#f92672">import</span> SpotifyClientCredentials
 
-<pre><code class="language-python">import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
 
-
-class SpotifyAlbum:
-    def __init__(self, resp_dict):
-        self.name = resp_dict.get('name', None)
-        self.release_date = resp_dict.get('release_date', 'Unknown')
-        self.artists = ', '.join(
-            a.get('name', 'Unknown') for a in resp_dict['artists']
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, resp_dict):
+        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, None)
+        self<span style="color:#f92672">.</span>release_date <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;release_date&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)
+        self<span style="color:#f92672">.</span>artists <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;, &#39;</span><span style="color:#f92672">.</span>join(
+            a<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>) <span style="color:#66d9ef">for</span> a <span style="color:#f92672">in</span> resp_dict[<span style="color:#e6db74">&#39;artists&#39;</span>]
         )
         
-        urls = resp_dict.get('external_urls', {'spotify': None})
-        self.link = urls['spotify']
+        urls <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;external_urls&#39;</span>, {<span style="color:#e6db74">&#39;spotify&#39;</span>: None})
+        self<span style="color:#f92672">.</span>link <span style="color:#f92672">=</span> urls[<span style="color:#e6db74">&#39;spotify&#39;</span>]
         
-        images = resp_dict.get('images', [{'url': None, 'height': 0}])
-        images.sort(key=lambda x: x['height'], reverse=True)
-        self.art_link = images[0]['url']
+        images <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;images&#39;</span>, [{<span style="color:#e6db74">&#39;url&#39;</span>: None, <span style="color:#e6db74">&#39;height&#39;</span>: <span style="color:#ae81ff">0</span>}])
+        images<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#e6db74">&#39;height&#39;</span>], reverse<span style="color:#f92672">=</span>True)
+        self<span style="color:#f92672">.</span>art_link <span style="color:#f92672">=</span> images[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;url&#39;</span>]
     
-    def __str__(self):
-        return (
-            f'Album: {self.name}\n'
-            f'Artist(s): {self.artists}\n'
-            f'Released: {self.release_date}\n'
-            f'Link: {self.link}'
+    <span style="color:#66d9ef">def</span> __str__(self):
+        <span style="color:#66d9ef">return</span> (
+            f<span style="color:#e6db74">&#39;Album: {self.name}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+            f<span style="color:#e6db74">&#39;Artist(s): {self.artists}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+            f<span style="color:#e6db74">&#39;Released: {self.release_date}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+            f<span style="color:#e6db74">&#39;Link: {self.link}&#39;</span>
         )
     
-    def __eq__(self, other):
-        if type(other) is type(self):
-            return self.__dict__ == other.__dict__
-        return NotImplemented
+    <span style="color:#66d9ef">def</span> __eq__(self, other):
+        <span style="color:#66d9ef">if</span> type(other) <span style="color:#f92672">is</span> type(self):
+            <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>__dict__ <span style="color:#f92672">==</span> other<span style="color:#f92672">.</span>__dict__
+        <span style="color:#66d9ef">return</span> NotImplemented
     
-    def to_dict(self):
-        return self.__dict__
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_dict</span>(self):
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>__dict__
 
-if __name__ == '__main__':
-    auth = spotipy.SpotifyOAuth(
-        redirect_uri='http://localhost:8888', username='valeadam'
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    auth <span style="color:#f92672">=</span> spotipy<span style="color:#f92672">.</span>SpotifyOAuth(
+        redirect_uri<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://localhost:8888&#39;</span>, username<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;valeadam&#39;</span>
     )
 
-    sp = spotipy.Spotify(auth_manager=auth)
+    sp <span style="color:#f92672">=</span> spotipy<span style="color:#f92672">.</span>Spotify(auth_manager<span style="color:#f92672">=</span>auth)
 
-    recently_played = sp.current_user_recently_played()
+    recently_played <span style="color:#f92672">=</span> sp<span style="color:#f92672">.</span>current_user_recently_played()
 
-    recent_albums = []
+    recent_albums <span style="color:#f92672">=</span> []
 
-    for item in recently_played['items'][::-1]:
-        album = SpotifyAlbum(item['track']['album'])
-        if album.art_link and not any(prev == album for prev in recent_albums):
-            recent_albums.append(album)
-</code></pre>
-
+    <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> recently_played[<span style="color:#e6db74">&#39;items&#39;</span>][::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+        album <span style="color:#f92672">=</span> SpotifyAlbum(item[<span style="color:#e6db74">&#39;track&#39;</span>][<span style="color:#e6db74">&#39;album&#39;</span>])
+        <span style="color:#66d9ef">if</span> album<span style="color:#f92672">.</span>art_link <span style="color:#f92672">and</span> <span style="color:#f92672">not</span> any(prev <span style="color:#f92672">==</span> album <span style="color:#66d9ef">for</span> prev <span style="color:#f92672">in</span> recent_albums):
+            recent_albums<span style="color:#f92672">.</span>append(album)
+</code></pre></div>
   </div>
   
   <div class="pagination">
@@ -516,7 +481,7 @@ if __name__ == '__main__':
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>

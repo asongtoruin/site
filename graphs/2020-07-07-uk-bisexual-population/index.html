@@ -156,20 +156,16 @@
   </div>
   
   <div class="post-content">
-    
-
-<h1 id="what">What?</h1>
-
+    <h1 id="what">What?</h1>
 <p>Some friends of mine run the excellent <a href="https://www.instagram.com/bihistory/">Bi History</a>
 Instagram account that provides useful information and resources about
 bisexuality. I&rsquo;ve been trying to think of a way I could produce some nice graphs
 for them, but sadly there seems to be a dearth of good, reliable data sources on
 this topic. There is, however, an ONS survey on &ldquo;Sexual Orientation&rdquo; that
 provides estimates of the UK&rsquo;s LGB population across various classifications.
-The sections offering the most interesting and &ldquo;reliable&rdquo; (ONS&rsquo; definition, not
+The sections offering the most interesting and &ldquo;reliable&rdquo; (ONS' definition, not
 mine) populations for bisexuality were the total UK population by year, and the
 population by age group for the latest available year of 2018.</p>
-
 
   <div class="img-outer">
     <a href="https://ruszkow.ski/img/graphs/uk-bisexual-population/2018%20age%20groups.png" target="_blank">
@@ -178,27 +174,21 @@ population by age group for the latest available year of 2018.</p>
   </div>
 
 
-
 <h1 id="how">How?</h1>
-
 <p>As with a lot of my graphs recently this is just a well-labelled bar plot, but
 there were a few new <code>matplotlib</code> features for me here.</p>
-
 <p>Adding the watermark for the account required use of <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figimage.html"><code>fig.figimage</code></a>
 and making sure it stayed in the correct position between drawing and saving
 required setting <code>plt.rcParams['figure.dpi']</code> to the same as our output DPI.</p>
-
 <p>Additionally, I used a <a href="https://matplotlib.org/api/_as_gen/matplotlib.colors.LinearSegmentedColormap.html"><code>LinearSegmentedColourmap</code></a>
 in two separate places. First, to colour the bars with the bisexual flag colours
 (which look absolutely lovely here), and secondly to set our supporting colours.
 The background colour is a very lightened form of the pink of the flag, and the
 text is a darkened form. I think this gives it some nice aesthetic consistency.</p>
-
 <p>For a bit of extra fun, while prototyping the yearly graph I saved it with a
 full time and date stamp at each stage (the age group graph largely used the
 same code so this is much less interesting). This lets us see the full
 development of this graph, from as basic bar chart to our final image.</p>
-
 
   <div class="img-outer">
     <a href="https://ruszkow.ski/img/graphs/uk-bisexual-population/population%20development.gif" target="_blank">
@@ -207,39 +197,29 @@ development of this graph, from as basic bar chart to our final image.</p>
   </div>
 
 
-
-<h1 id="libraries-resources">Libraries / Resources</h1>
-
+<h1 id="libraries--resources">Libraries / Resources</h1>
 <ul>
 <li><code>matplotlib</code></li>
 <li>Some more lovely fonts from Atipo:
-
 <ul>
 <li><a href="https://www.atipofoundry.com/fonts/salome">Salomé</a> for the title</li>
 <li><a href="https://www.atipofoundry.com/fonts/bariol-serif">Bariol Serif</a> everywhere else</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h1 id="data-sources">Data Sources</h1>
-
 <ul>
 <li>HTML codes for the bisexual flag colours came from <a href="https://en.wikipedia.org/wiki/Bisexual_pride_flag">Wikipedia</a></li>
-<li>As mentioned earlier, I used the ONS&rsquo; &ldquo;Sexual Orientation&rdquo;
+<li>As mentioned earlier, I used the ONS' &ldquo;Sexual Orientation&rdquo;
 <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/culturalidentity/sexuality/datasets/sexualidentityuk">dataset</a>,
 released 2020-06-03</li>
 </ul>
-
 <h1 id="code">Code</h1>
-
 <p>Find the main processing code on <a href="https://github.com/asongtoruin/data_analysis/blob/master/bi%20history/uk_bi_population.py">Github</a></p>
-
 <p>To create the gif seen above, I used <a href="https://imagemagick.org">ImageMagick</a>
 and the following command prompt:</p>
-
-<pre><code class="language-shell">magick convert -delay 1x5 2020*.png -delay 400 &quot;20200701 221149.png&quot; output.gif
-</code></pre>
-
-<p>This sets the frequency to 5 frames per second and then adds a large delay for
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">magick convert -delay 1x5 2020*.png -delay <span style="color:#ae81ff">400</span> <span style="color:#e6db74">&#34;20200701 221149.png&#34;</span> output.gif
+</code></pre></div><p>This sets the frequency to 5 frames per second and then adds a large delay for
 showing the final image again.</p>
 
   </div>
@@ -283,7 +263,7 @@ showing the final image again.</p>
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ruszkow.ski</title>
@@ -6,10 +6,26 @@
     <description>Recent content on ruszkow.ski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Tue, 17 Nov 2020 21:50:05 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Jan 2021 22:06:55 +0000</lastBuildDate><atom:link href="https://ruszkow.ski/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitHub Actions on a Schedule</title>
+      <link>https://ruszkow.ski/posts/2021-01-21-github-actions-on-a-schedule/</link>
+      <pubDate>Thu, 21 Jan 2021 22:06:55 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/posts/2021-01-21-github-actions-on-a-schedule/</guid>
+      <description>Over the past year or so I&amp;rsquo;ve been using GitHub Actions on a few different projects for building documentation and executables. The direct integration into GitHub makes it a bit more convenient than Travis, and being able to use predefined Actions makes simple processes way easier to set up.
+However, one thing I hadn&amp;rsquo;t noticed until recently was that you can trigger workflows to run on a schedule. This is an extremely powerful feature that, to me, seems under-publicised.</description>
+    </item>
     
-	<atom:link href="https://ruszkow.ski/index.xml" rel="self" type="application/rss+xml" />
-    
+    <item>
+      <title>Covid-19 Vaccinations</title>
+      <link>https://ruszkow.ski/graphs/2021-01-21-covid-19-vaccinations/</link>
+      <pubDate>Thu, 21 Jan 2021 21:47:25 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2021-01-21-covid-19-vaccinations/</guid>
+      <description>What? The UK government has been offering up a lot of open data through its Coronavirus data portal, but much of it is intense and slightly stressful. One perhaps more positive piece of information it offers is the number of vaccinations that have been provided, for both the first and second stage. I decided that might be something a bit nicer to plot.
+How? So not only is the government offering up a lot of open data, they&amp;rsquo;ve also provided a Python module for easy access to the data, including directly to pandas dataframes.</description>
+    </item>
     
     <item>
       <title>Dance, Dancier, Danciest</title>
@@ -28,7 +44,7 @@ Jump forward 12 years to 2020, and I&amp;rsquo;ve been digging around a bit in t
       
       <guid>https://ruszkow.ski/graphs/2020-11-03-halloween-heartrate/</guid>
       <description>What? After watching the films I mentioned in my Halloween timetable graph, I realised that my watch would have been tracking my heart rate right the way through each film, and thought it might be fun to see if my heart rate had been particularly affected by any of the films.
-On looking at the data, nothing seemed particularly out of the ordinary - except one massive spike during Scream.</description>
+On looking at the data, nothing seemed particularly out of the ordinary - except one massive spike during Scream. Thinking about it, this also happened to correspond to a parcel arriving at the flat - so the buzzer going managed to scare me more than any film.</description>
     </item>
     
     <item>
@@ -160,7 +176,8 @@ The main issue with this was trying to use the flat version of the font for the 
       
       <guid>https://ruszkow.ski/graphs/2019-10-10-edinburgh-2017-temperatures/</guid>
       <description>What? A ridge plot (i.e. overlapping distributions) showing the average hourly temperatures at a particular location in Edinburgh in 2017, for the roughly daytime hours of 7am-7pm.
-How? This is based quite heavily on an example given as part of the seaborn documentation. The only real tweaks made to This are to use the average temperature to determine the hue rather than just the row and some neat labelling.</description>
+How? This is based quite heavily on an example given as part of the seaborn documentation. The only real tweaks made to This are to use the average temperature to determine the hue rather than just the row and some neat labelling.
+This site has long-term data available so ideally I&amp;rsquo;d like to create an animation showing the changes in temperature over time, though that seems like an optimistic goal at the moment!</description>
     </item>
     
     <item>
@@ -191,7 +208,7 @@ It was somewhat difficult to find precise details about this - hence the slightl
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://ruszkow.ski/posts/pihole-setup/</guid>
-      <description>PiHole Set-Up Equipment  Already had most of the things required, needed:  Micro-USB to Ethernet cable microSD card Short Ethernet cable   Setting up the Raspberry Pi  Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!</description>
+      <description>PiHole Set-Up Equipment  Already had most of the things required, needed:  Micro-USB to Ethernet cable microSD card Short Ethernet cable    Setting up the Raspberry Pi  Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!</description>
     </item>
     
     <item>

@@ -7,7 +7,7 @@
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="description" content="PiHole Set-Up Equipment  Already had most of the things required, needed:  Micro-USB to Ethernet cable microSD card Short Ethernet cable   Setting up the Raspberry Pi  Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!"/>
+<meta name="description" content="PiHole Set-Up Equipment  Already had most of the things required, needed:  Micro-USB to Ethernet cable microSD card Short Ethernet cable    Setting up the Raspberry Pi  Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!"/>
 <meta name="keywords" content=""/>
 <meta name="robots" content="noodp"/>
 <link rel="canonical" href="https://ruszkow.ski/posts/pihole-setup/" />
@@ -30,7 +30,7 @@
 
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="An Initial Set-Up of PiHole :: ruszkow.ski — data, graphs and other nonsense" />
-<meta name="twitter:description" content="PiHole Set-Up Equipment  Already had most of the things required, needed:  Micro-USB to Ethernet cable microSD card Short Ethernet cable   Setting up the Raspberry Pi  Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!" />
+<meta name="twitter:description" content="PiHole Set-Up Equipment  Already had most of the things required, needed:  Micro-USB to Ethernet cable microSD card Short Ethernet cable    Setting up the Raspberry Pi  Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!" />
 <meta name="twitter:site" content="https://ruszkow.ski" />
 <meta name="twitter:creator" content="Adam" />
 <meta name="twitter:image" content="https://ruszkow.ski/img/posts/pihole-setup/pihole-stats.png">
@@ -39,7 +39,7 @@
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="An Initial Set-Up of PiHole :: ruszkow.ski — data, graphs and other nonsense">
-<meta property="og:description" content="PiHole Set-Up Equipment  Already had most of the things required, needed:  Micro-USB to Ethernet cable microSD card Short Ethernet cable   Setting up the Raspberry Pi  Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!" />
+<meta property="og:description" content="PiHole Set-Up Equipment  Already had most of the things required, needed:  Micro-USB to Ethernet cable microSD card Short Ethernet cable    Setting up the Raspberry Pi  Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!" />
 <meta property="og:url" content="https://ruszkow.ski/posts/pihole-setup/" />
 <meta property="og:site_name" content="An Initial Set-Up of PiHole" />
 <meta property="og:image" content="https://ruszkow.ski/img/posts/pihole-setup/pihole-stats.png">
@@ -162,24 +162,18 @@
   </div>
   
   <div class="post-content">
-    
-
-<h1 id="pihole-set-up">PiHole Set-Up</h1>
-
+    <h1 id="pihole-set-up">PiHole Set-Up</h1>
 <h2 id="equipment">Equipment</h2>
-
 <ul>
 <li>Already had most of the things required, needed:
-
 <ul>
 <li>Micro-USB to Ethernet cable</li>
 <li>microSD card</li>
 <li>Short Ethernet cable</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="setting-up-the-raspberry-pi">Setting up the Raspberry Pi</h2>
-
 <ul>
 <li>Download Raspbian Lite image (for the time being, we only want to use
 this for PiHole)</li>
@@ -191,32 +185,25 @@ it&rsquo;s still good to get this done early)</li>
 <li>Shutdown, unplug screen etc, set up cables as actually desired and re-plug in</li>
 <li>SSH in!</li>
 <li>Run updates (<code>sudo apt-get update</code>, <code>sudo apt-get upgrade</code>), reboot</li>
-
-<li><p>Set up SSH</p>
-
-<pre><code class="language-bash">$ cd ~
+<li>Set up SSH</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd ~
 $ mkdir .ssh
 $ cd .ssh
 $ nano authorized_keys
-</code></pre></li>
-
-<li><p>Use PuTTYgen to generate keys</p></li>
-
-<li><p>Cock-up 2: PuTTYgen&rsquo;s default public key is in an incompatible format.</p>
-
+</code></pre></div><ul>
+<li>Use PuTTYgen to generate keys</li>
+<li>Cock-up 2: PuTTYgen&rsquo;s default public key is in an incompatible format.
 <ul>
 <li>Delete first two rows and last row</li>
-<li>Add <code>ssh-rsa</code> before the key</li>
+<li>Add <code>ssh-rsa </code> before the key</li>
 <li>Delete all carriage returns</li>
-</ul></li>
-
-<li><p>Reboot to check it works</p></li>
-
-<li><p>Remove password authentication</p></li>
 </ul>
-
+</li>
+<li>Reboot to check it works</li>
+<li>Remove password authentication</li>
+</ul>
 <h2 id="installing-pihole">Installing PiHole</h2>
-
 <ul>
 <li><code>curl -sSL https://install.pi-hole.net | bash</code></li>
 <li>Change from the default web admin password with <code>pihole -a -p</code></li>
@@ -256,7 +243,7 @@ $ nano authorized_keys
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>

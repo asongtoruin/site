@@ -162,42 +162,30 @@ How? The two steps needed to produce this are almost entirely separate:
   </div>
   
   <div class="post-content">
-    
-
-<h1 id="what">What?</h1>
-
+    <h1 id="what">What?</h1>
 <p>A calendar plot showing every gig I went to last year, including festivals.
 Every orange square represents a day where I saw live music, in effect.
 Mid-September to mid-December was a bit of a wild time.</p>
-
 <h1 id="how">How?</h1>
-
 <p>The two steps needed to produce this are almost entirely separate:</p>
-
 <ol>
 <li>Getting and processing the data</li>
 <li>Producing the graph</li>
 </ol>
-
 <h2 id="getting-the-data">Getting the data</h2>
-
 <p>Google allows you to download an ICS file of all of your calendar events via its
 <a href="https://calendar.google.com/calendar/r/settings/export">export</a> functionality.
 This, however, contains <em>all</em> events from your calendar, so it needs a bit of
 work. I wrote a short script to extract all of the 2019 events, and then
 manually deleted rows that didn&rsquo;t relate to gigs. Is it elegant? No, but the
 majority of events in my calendar are indeed gigs, so it wasn&rsquo;t too much effort.</p>
-
 <h2 id="producing-the-graph">Producing the graph</h2>
-
 <p><code>calmap</code> is one of my favourite libraries, but I rarely get to use it outside
 work so this was more or less an excuse for me to play with it a bit and make
 something that looks nice. A little rejigging was required to make sure that
 multi-day events (basically just the two festivals I attend every year)
 were properly represented, but otherwise this part was fairly straightforward.</p>
-
-<h1 id="libraries-resources">Libraries / Resources</h1>
-
+<h1 id="libraries--resources">Libraries / Resources</h1>
 <ul>
 <li><code>ics</code></li>
 <li><code>calmap</code>, specifically a <a href="https://github.com/AECOM-EDB-TP/calmap">fork</a> I
@@ -205,9 +193,7 @@ generated at work, with nice dividers between the months</li>
 <li><a href="https://www.fontspring.com/fonts/radomir-tinkov/gilroy">Gilroy</a>, a font
 available for free</li>
 </ul>
-
 <h1 id="data-sources">Data Sources</h1>
-
 <p>As previously mentioned, this relied on my Google calendar for the dates of
 individual gigs, though obviously I don&rsquo;t want to share that here. Instead,
 here&rsquo;s a playlist featuring one song that was played at each event, in order of
@@ -218,9 +204,7 @@ attendance.
   </div>
 
 </p>
-
 <h1 id="code">Code</h1>
-
 <p>Find it on <a href="https://github.com/asongtoruin/data_analysis/tree/master/gig%20calendar/2019">GitHub</a></p>
 
   </div>
@@ -264,7 +248,7 @@ attendance.
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>

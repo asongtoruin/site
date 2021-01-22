@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on ruszkow.ski</title>
@@ -6,10 +6,16 @@
     <description>Recent content in Posts on ruszkow.ski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Tue, 17 Nov 2020 21:50:05 +0000</lastBuildDate>
-    
-	<atom:link href="https://ruszkow.ski/posts/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 21 Jan 2021 22:06:55 +0000</lastBuildDate><atom:link href="https://ruszkow.ski/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitHub Actions on a Schedule</title>
+      <link>https://ruszkow.ski/posts/2021-01-21-github-actions-on-a-schedule/</link>
+      <pubDate>Thu, 21 Jan 2021 22:06:55 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/posts/2021-01-21-github-actions-on-a-schedule/</guid>
+      <description>Over the past year or so I&amp;rsquo;ve been using GitHub Actions on a few different projects for building documentation and executables. The direct integration into GitHub makes it a bit more convenient than Travis, and being able to use predefined Actions makes simple processes way easier to set up.
+However, one thing I hadn&amp;rsquo;t noticed until recently was that you can trigger workflows to run on a schedule. This is an extremely powerful feature that, to me, seems under-publicised.</description>
+    </item>
     
     <item>
       <title>Dance, Dancier, Danciest</title>
@@ -67,7 +73,7 @@ The idea, and an initial outline As you might have guessed from the post title, 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://ruszkow.ski/posts/pihole-setup/</guid>
-      <description>PiHole Set-Up Equipment  Already had most of the things required, needed:  Micro-USB to Ethernet cable microSD card Short Ethernet cable   Setting up the Raspberry Pi  Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!</description>
+      <description>PiHole Set-Up Equipment  Already had most of the things required, needed:  Micro-USB to Ethernet cable microSD card Short Ethernet cable    Setting up the Raspberry Pi  Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!</description>
     </item>
     
   </channel>

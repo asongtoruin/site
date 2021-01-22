@@ -159,46 +159,34 @@ I first came across the idea of a &amp;ldquo;lollipop&amp;rdquo; charts through 
   </div>
   
   <div class="post-content">
-    
-
-<h1 id="what">What?</h1>
-
+    <h1 id="what">What?</h1>
 <p>This graph shows the peak UK chart position reached by each release from
 Scotland&rsquo;s greatest band, Biffy Clyro, to have cracked the top 100. Each point
 is scaled in line with the number of weeks the release has spent in the top 100.</p>
-
 <p>I first came across the idea of a &ldquo;lollipop&rdquo; charts through Spotify&rsquo;s
 <a href="https://github.com/spotify/chartify"><code>chartify</code></a> library a while ago, and
 have been trying to think of something that would look good as one. Biffy&rsquo;s
 latest album, <em>A Celebration of Endings</em>, managed to reach number one in the
 album charts, and that got me thinking about how their previous releases had
 performed in the charts.</p>
-
 <h1 id="how">How?</h1>
-
 <p>Using <code>axvlines</code> and <code>scatter</code> in <code>matplotlib</code> makes drawing the lollipops easy,
 and obtaining the data was incredibly simple with <code>pandas.read_html</code>.</p>
-
-<h1 id="libraries-resources">Libraries / Resources</h1>
-
+<h1 id="libraries--resources">Libraries / Resources</h1>
 <ul>
 <li><code>matplotlib</code></li>
 <li><code>pandas</code>, with the additional dependency of <code>lxml</code> in order to use <code>read_html</code></li>
 <li><a href="https://www.atipofoundry.com/fonts/geomanist">Geomanist</a> for the font again</li>
 <li>The colour palette I&rsquo;ve used here is actually one extracted by my album art
-bot from their best album, Infinity Land
-<blockquote class="twitter-tweet" data-theme="dark" data-align="center"><p lang="fr" dir="ltr">Colour hex codes: <a href="https://twitter.com/hashtag/a3a137?src=hash&amp;ref_src=twsrc%5Etfw">#a3a137</a>, <a href="https://twitter.com/hashtag/d9e5c4?src=hash&amp;ref_src=twsrc%5Etfw">#d9e5c4</a>, <a href="https://twitter.com/hashtag/6c8a88?src=hash&amp;ref_src=twsrc%5Etfw">#6c8a88</a>, <a href="https://twitter.com/hashtag/262e2f?src=hash&amp;ref_src=twsrc%5Etfw">#262e2f</a> <a href="https://t.co/PFnx1EsB5i">pic.twitter.com/PFnx1EsB5i</a></p>&mdash; Albums to Ruin (@albumstoruin) <a href="https://twitter.com/albumstoruin/status/1272440577842388992?ref_src=twsrc%5Etfw">June 15, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+bot from their best album, Infinity Land</li>
 </ul>
-
+<!-- raw HTML omitted -->
 <h1 id="data-sources">Data Sources</h1>
-
 <ul>
 <li>Chart stats were sourced from the <a href="https://www.officialcharts.com/">Official Charts</a>
 site&rsquo;s <a href="https://www.officialcharts.com/artist/10292/biffy-clyro/">Biffy Clyro page</a></li>
 </ul>
-
 <h1 id="code">Code</h1>
-
 <p>Find it on <a href="https://github.com/asongtoruin/data_analysis/blob/master/music/charts/biffy_charts.py">Github</a></p>
 
   </div>
@@ -242,7 +230,7 @@ site&rsquo;s <a href="https://www.officialcharts.com/artist/10292/biffy-clyro/">
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>

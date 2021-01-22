@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>raspberry-pi on ruszkow.ski</title>
@@ -6,18 +6,14 @@
     <description>Recent content in raspberry-pi on ruszkow.ski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Mon, 09 Sep 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://ruszkow.ski/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 09 Sep 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ruszkow.ski/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>An Initial Set-Up of PiHole</title>
       <link>https://ruszkow.ski/posts/pihole-setup/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://ruszkow.ski/posts/pihole-setup/</guid>
-      <description>PiHole Set-Up Equipment  Already had most of the things required, needed:  Micro-USB to Ethernet cable microSD card Short Ethernet cable   Setting up the Raspberry Pi  Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!</description>
+      <description>PiHole Set-Up Equipment  Already had most of the things required, needed:  Micro-USB to Ethernet cable microSD card Short Ethernet cable    Setting up the Raspberry Pi  Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!</description>
     </item>
     
   </channel>

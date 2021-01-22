@@ -161,74 +161,57 @@ In this post, I&amp;rsquo;m going to cover the database operations required to p
 
   
   <div class="post-content">
-    
-
-<h2 id="introduction">Introduction</h2>
-
+    <h2 id="introduction">Introduction</h2>
 <p>This post is a continuation of the development of my <em>Albums to Ruin</em> Twitter
 bot. This is the first part of actual development of the bot - information
 on the concept and outline can be found in the
 <a href="/posts/2020-04-14-albums-to-ruin-initial-concept/">Initial Concept post</a>.</p>
-
 <p>In this post, I&rsquo;m going to cover the database operations required to power the
 Twitter bot and keep track of what has already been posted and the queue of
 albums to post. This carries on from some of the work done in
 <a href="/posts/2020-04-17-albums-to-ruin-working-with-the-spotify-api/">the previous post</a>.</p>
-
 <p>Also, a quick thanks to my eternal boy <a href="https://twitter.com/calrgn">@calrgn</a>
 for help with some of the database stuff in this post.</p>
-
 <h2 id="getting-started">Getting Started</h2>
-
 <p>For simplicity&rsquo;s sake, I&rsquo;m just going to use an SQLite database. It&rsquo;s included
 with Python and is uncomplicated and lightweight.</p>
-
 <p>My initial idea is that there will be two separate processes running - one to
 get the data from Spotify and another to process the artwork and post to
 Twitter. These will both need to interact with the same database, and the
 duration of the processes may overlap. As such, each album in the database will
 be either:</p>
-
 <ul>
 <li>In the queue of albums waiting to be processed;</li>
 <li>Currently being processed; or</li>
 <li>Already processed.</li>
 </ul>
-
 <p>If each album is represented by a single record in our database, this
 information can be added by having an extra column that keeps track of this.
 This lets us keep our albums in a single table, which can be accessed by both
 processes, which in turn makes our database structure much simpler.</p>
-
 <p>To make both of our processes fully functional, we&rsquo;ll need to consider the
 following actions:</p>
-
 <ul>
 <li><a href="#check-exists">Checking if an album already exists in the table</a>;</li>
 <li><a href="#add-album">Adding new album(s) to the table</a>;</li>
 <li><a href="#get-album">Getting album(s) from the table</a>; and</li>
 <li><a href="#update-album">Updating the status of an album in the table</a>.</li>
 </ul>
-
 <p>I&rsquo;d considered (and initially wrote some methods) using dictionaries to do some
 of these operations, but ultimately this is intended to be a specialised
 database and as such it makes sense to just directly use our <code>SpotifyAlbum</code>
 class in our methods. This will make the code we use to actually run each
 process simpler, though could make updating the processing under the hood a
 little harder.</p>
-
 <h2 id="creating-the-table">Creating the table</h2>
-
 <p>Before we can think about any of those actions, we need to start by setting up
 the table containing all of our albums. Again I&rsquo;m going to use a class to
 represent our database, so in initialising our class we need to:</p>
-
 <ul>
 <li>Connect to the database;</li>
 <li>Do any associated set-up we need; and</li>
 <li>Check that our table exists, creating it if it doesn&rsquo;t.</li>
 </ul>
-
 <p>Python&rsquo;s <code>sqlite3</code> module (from the standard library) helps to simplify this, as
 its standard method for connecting to a database will automatically create one
 if it doesn&rsquo;t already exist. SQLite also supports the <code>IF NOT EXISTS</code> option
@@ -236,78 +219,67 @@ when creating a table within a database. This allows us to effectively use the
 same code whether the table (and database) already exists or not, making this
 constructor fairly simple. Initialising our database object, then, looks like
 the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sqlite3
 
-<pre><code class="language-python">import sqlite3
-
-from .album import SpotifyAlbum
+<span style="color:#f92672">from</span> .album <span style="color:#f92672">import</span> SpotifyAlbum
 
 
-class AlbumDatabase:
-    def __init__(self, db_path='spotify albums.sqlite'):
-        self.conn = sqlite3.connect(db_path)
-        # Get responses as dictionary
-        self.conn.row_factory = sqlite3.Row
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, db_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spotify albums.sqlite&#39;</span>):
+        self<span style="color:#f92672">.</span>conn <span style="color:#f92672">=</span> sqlite3<span style="color:#f92672">.</span>connect(db_path)
+        <span style="color:#75715e"># Get responses as dictionary</span>
+        self<span style="color:#f92672">.</span>conn<span style="color:#f92672">.</span>row_factory <span style="color:#f92672">=</span> sqlite3<span style="color:#f92672">.</span>Row
 
-        self.cursor = self.conn.cursor()
+        self<span style="color:#f92672">.</span>cursor <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conn<span style="color:#f92672">.</span>cursor()
 
-        self.cursor.execute('''
-            CREATE TABLE IF NOT EXISTS albums (
-                name text NOT NULL,
-                artists text NOT NULL,
-                release_date text NOT NULL,
-                link text,
-                art_link text NOT NULL,
-                status text DEFAULT &quot;queued&quot;
-            )
-            '''
+        self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">            CREATE TABLE IF NOT EXISTS albums (
+</span><span style="color:#e6db74">                name text NOT NULL,
+</span><span style="color:#e6db74">                artists text NOT NULL,
+</span><span style="color:#e6db74">                release_date text NOT NULL,
+</span><span style="color:#e6db74">                link text,
+</span><span style="color:#e6db74">                art_link text NOT NULL,
+</span><span style="color:#e6db74">                status text DEFAULT &#34;queued&#34;
+</span><span style="color:#e6db74">            )
+</span><span style="color:#e6db74">            &#39;&#39;&#39;</span>
         )
 
-        self.conn.commit()
-</code></pre>
-
-<p>Here I&rsquo;ve named each column directly in line with the attributes we gave to the
+        self<span style="color:#f92672">.</span>conn<span style="color:#f92672">.</span>commit()
+</code></pre></div><p>Here I&rsquo;ve named each column directly in line with the attributes we gave to the
 <code>SpotifyAlbum</code> class in the previous post. This set-up will help us translate
 between database records and object instances later on.</p>
-
 <p>There&rsquo;s one additional part of this that I&rsquo;ve not detailed yet - as noted in the
 comment alongside it, setting <code>self.conn.row_factory = sqlite3.Row</code> allows us to
 get rows returned from the database as Python dictionaries. Again, this will
 make life easier later on.</p>
-
 <p>Now we can start to write methods for this object corresponding to each of our
 actions. Each of the following sections should be considered as adding onto the
 initial class outline above.</p>
-
 <h2 id="check-exists">Checking if an album already exists in the table</h2>
-
 <p>We don&rsquo;t want to have duplicate albums in the table, so the first step before
 adding any album in should be to check whether it&rsquo;s already present. This method
 could look something like the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, db_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spotify albums.sqlite&#39;</span>):
+        <span style="color:#75715e"># ...</span>
 
-<pre><code class="language-python">class AlbumDatabase:
-    def __init__(self, db_path='spotify albums.sqlite'):
-        # ...
-
-    def contains_album(self, album: SpotifyAlbum):
-        self.cursor.execute('''
-            SELECT * FROM albums 
-            WHERE
-                name = ?
-                AND artists = ?
-                AND release_date = ?
-            LIMIT 1
-            ''',
-            (album.name, album.artists, album.release_date)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">contains_album</span>(self, album: SpotifyAlbum):
+        self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">            SELECT * FROM albums 
+</span><span style="color:#e6db74">            WHERE
+</span><span style="color:#e6db74">                name = ?
+</span><span style="color:#e6db74">                AND artists = ?
+</span><span style="color:#e6db74">                AND release_date = ?
+</span><span style="color:#e6db74">            LIMIT 1
+</span><span style="color:#e6db74">            &#39;&#39;&#39;</span>,
+            (album<span style="color:#f92672">.</span>name, album<span style="color:#f92672">.</span>artists, album<span style="color:#f92672">.</span>release_date)
         )
 
-        resp = self.cursor.fetchone()
+        resp <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>fetchone()
 
-        return resp and len(resp) &gt; 0
-</code></pre>
-
-<p>You&rsquo;ll notice I haven&rsquo;t matched on all columns in the database when trying to
+        <span style="color:#66d9ef">return</span> resp <span style="color:#f92672">and</span> len(resp) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><p>You&rsquo;ll notice I haven&rsquo;t matched on all columns in the database when trying to
 find an album. I&rsquo;ve excluded them for the following reasons:</p>
-
 <ul>
 <li><code>link</code> <em>could</em> change but as long as the existing link in the database is
 valid, we don&rsquo;t mind it being different</li>
@@ -316,7 +288,6 @@ valid, we don&rsquo;t mind it being different</li>
 it&rsquo;s either been, being or waiting to be processed. We don&rsquo;t need to add it
 again</li>
 </ul>
-
 <p>This leaves us with <code>name</code>, <code>artists</code> and <code>release_date</code> to identify a unique
 album. In writing this down, I&rsquo;ve realised there might actually be edge cases
 where this isn&rsquo;t enough - for example, a single and an album with the same name
@@ -325,59 +296,50 @@ be updated if the information was originally input incorrectly. Spotify does
 provide a <a href="https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids">unique(?) ID</a>
 for different objects including albums which seems as though it would be less
 likely to change. We should be using this instead to identify our albums.</p>
-
 <p>To use this, we will need to go back and update our <code>SpotifyAlbum</code> object from
 the previous post. Fortunately, <code>id</code> is a key available directly from each
 <code>album</code> object in the response. So we can simply make the change by adding a
 single extra line when we create our album object:</p>
-
-<pre><code class="language-python">class SpotifyAlbum:
-    def __init__(self, resp_dict):
-        self.name = resp_dict.get('name', None)
-        self.release_date = resp_dict.get('release_date', 'Unknown')
-        self.id = resp_dict.get('id', None)
-</code></pre>
-
-<p>This means we will also need to change the creation of the <code>albums</code> table above,
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, resp_dict):
+        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, None)
+        self<span style="color:#f92672">.</span>release_date <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;release_date&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)
+        self<span style="color:#f92672">.</span>id <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;id&#39;</span>, None)
+</code></pre></div><p>This means we will also need to change the creation of the <code>albums</code> table above,
 but in turn this simplifies our <code>contains_album()</code> method:</p>
-
-<pre><code class="language-python">class AlbumDatabase:
-    def __init__(self, db_path='spotify albums.sqlite'):
-        # ...
-        self.cursor.execute('''
-            CREATE TABLE IF NOT EXISTS albums (
-                id text NOT NULL,
-                name text NOT NULL,
-                artists text NOT NULL,
-                release_date text NOT NULL,
-                link text,
-                art_link text NOT NULL,
-                status text DEFAULT &quot;queued&quot;
-            )
-            '''
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, db_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spotify albums.sqlite&#39;</span>):
+        <span style="color:#75715e"># ...</span>
+        self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">            CREATE TABLE IF NOT EXISTS albums (
+</span><span style="color:#e6db74">                id text NOT NULL,
+</span><span style="color:#e6db74">                name text NOT NULL,
+</span><span style="color:#e6db74">                artists text NOT NULL,
+</span><span style="color:#e6db74">                release_date text NOT NULL,
+</span><span style="color:#e6db74">                link text,
+</span><span style="color:#e6db74">                art_link text NOT NULL,
+</span><span style="color:#e6db74">                status text DEFAULT &#34;queued&#34;
+</span><span style="color:#e6db74">            )
+</span><span style="color:#e6db74">            &#39;&#39;&#39;</span>
         )
-        #...
+        <span style="color:#75715e">#...</span>
 
-    def contains_album(self, album: SpotifyAlbum):
-        self.cursor.execute('''
-            SELECT * FROM albums 
-            WHERE
-                id = ?
-            LIMIT 1
-            ''',
-            (album.id, )
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">contains_album</span>(self, album: SpotifyAlbum):
+        self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">            SELECT * FROM albums 
+</span><span style="color:#e6db74">            WHERE
+</span><span style="color:#e6db74">                id = ?
+</span><span style="color:#e6db74">            LIMIT 1
+</span><span style="color:#e6db74">            &#39;&#39;&#39;</span>,
+            (album<span style="color:#f92672">.</span>id, )
         )
 
-        resp = self.cursor.fetchone()
+        resp <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>fetchone()
 
-        return resp and len(resp) &gt; 0
-</code></pre>
-
-<p>This should give us something that mitigates for our edge case! It will return
+        <span style="color:#66d9ef">return</span> resp <span style="color:#f92672">and</span> len(resp) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><p>This should give us something that mitigates for our edge case! It will return
 <code>True</code> if the album is in our database, and <code>False</code> if it isn&rsquo;t.</p>
-
 <h2 id="add-album">Adding new album(s) to the table</h2>
-
 <p>When we add to our database, there are going to be situations where we need to
 add multiple albums to the database at once. With up to 50 tracks returned by
 the Spotify API this seems like it could be quite likely, particularly when the
@@ -385,54 +347,46 @@ bot first starts running and the database isn&rsquo;t highly populated. With tha
 mind, it makes sense to use a set-up that allows us to batch-insert records into
 the database to keep processes running quickly and smoothly. Again, <code>sqlite3</code>
 allows us to do this simply with the <code>executemany()</code> method.</p>
-
 <p>We will also want to use the method defined in the previous section to check the
 albums aren&rsquo;t already in the database before we add them in. This double-checks
 we&rsquo;re not accidentally bringing in duplicates.</p>
-
 <p>Combining these ideas gives us the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, db_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spotify albums.sqlite&#39;</span>):
+        <span style="color:#75715e"># ...</span>
 
-<pre><code class="language-python">class AlbumDatabase:
-    def __init__(self, db_path='spotify albums.sqlite'):
-        # ...
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">contains_album</span>(self, album: SpotifyAlbum):
+        <span style="color:#75715e"># ...</span>
 
-    def contains_album(self, album: SpotifyAlbum):
-        # ...
-
-    def add_albums(self, albums):
-        filter_new = [
-            album for album in albums if not self.contains_album(album)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_albums</span>(self, albums):
+        filter_new <span style="color:#f92672">=</span> [
+            album <span style="color:#66d9ef">for</span> album <span style="color:#f92672">in</span> albums <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> self<span style="color:#f92672">.</span>contains_album(album)
         ]
 
-        # Catch in case we have nothing new to add
-        if filter_new:
-            self.cursor.executemany('''
-                INSERT INTO albums (
-                    id, name, artists, release_date, link, art_link
-                )
-                VALUES (?, ?, ?, ?, ?, ?)
-                ''',
+        <span style="color:#75715e"># Catch in case we have nothing new to add</span>
+        <span style="color:#66d9ef">if</span> filter_new:
+            self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>executemany(<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">                INSERT INTO albums (
+</span><span style="color:#e6db74">                    id, name, artists, release_date, link, art_link
+</span><span style="color:#e6db74">                )
+</span><span style="color:#e6db74">                VALUES (?, ?, ?, ?, ?, ?)
+</span><span style="color:#e6db74">                &#39;&#39;&#39;</span>,
                 [
                     (
-                        album.id, album.name, album.artists, album.release_date,
-                        album.link, album.art_link
+                        album<span style="color:#f92672">.</span>id, album<span style="color:#f92672">.</span>name, album<span style="color:#f92672">.</span>artists, album<span style="color:#f92672">.</span>release_date,
+                        album<span style="color:#f92672">.</span>link, album<span style="color:#f92672">.</span>art_link
                     )
-                    for album in filter_new
+                    <span style="color:#66d9ef">for</span> album <span style="color:#f92672">in</span> filter_new
                 ]
             )
 
-            self.conn.commit()
-</code></pre>
-
-<p>We filter to only albums not already contained in the database, then add them in
+            self<span style="color:#f92672">.</span>conn<span style="color:#f92672">.</span>commit()
+</code></pre></div><p>We filter to only albums not already contained in the database, then add them in
 as one batch operation. If there are no new albums to add (i.e.
 <code>filter_new = []</code>) then the call is skipped. Nothing complicated, nice and easy.</p>
-
 <h2 id="get-album">Getting album(s) from the table</h2>
-
 <p>The previous two sections address the process that checks and updates our
 database, so now we can move onto the process that gets data from it.</p>
-
 <p>When we query the database, we want to pull out the next album that&rsquo;s queued up
 to be posted. Now ideally, this will already be a <code>SpotifyAlbum</code> object that we
 can apply any operations to and pull attributes from. This is one of the reasons
@@ -442,271 +396,248 @@ that dictionary is nested for various attributes while the dictionary we return
 from our database has all of the keys directly available. We could modify this
 dictionary, but it&rsquo;s easy to instead add a flag to our constructor that lets us
 use this kind of dictionary.</p>
-
 <p>So, our <code>SpotifyAlbum</code> constructor changes again to be as follows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, resp_dict, from_api<span style="color:#f92672">=</span>True):
+        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, None)
+        self<span style="color:#f92672">.</span>release_date <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;release_date&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)
+        self<span style="color:#f92672">.</span>id <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;id&#39;</span>, None)
 
-<pre><code class="language-python">class SpotifyAlbum:
-    def __init__(self, resp_dict, from_api=True):
-        self.name = resp_dict.get('name', None)
-        self.release_date = resp_dict.get('release_date', 'Unknown')
-        self.id = resp_dict.get('id', None)
-
-        if from_api:
-            # Handle possibility of many artists
-            artists = resp_dict['artists']
-            if len(artists) &gt; 5:
-                self.artists = 'Various'
-            else:
-                self.artists = ', '.join(
-                    art.get('name', 'Unknown') for art in artists
+        <span style="color:#66d9ef">if</span> from_api:
+            <span style="color:#75715e"># Handle possibility of many artists</span>
+            artists <span style="color:#f92672">=</span> resp_dict[<span style="color:#e6db74">&#39;artists&#39;</span>]
+            <span style="color:#66d9ef">if</span> len(artists) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>:
+                self<span style="color:#f92672">.</span>artists <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Various&#39;</span>
+            <span style="color:#66d9ef">else</span>:
+                self<span style="color:#f92672">.</span>artists <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;, &#39;</span><span style="color:#f92672">.</span>join(
+                    art<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>) <span style="color:#66d9ef">for</span> art <span style="color:#f92672">in</span> artists
                 )
             
-            urls = resp_dict.get('external_urls', {'spotify': None})
-            self.link = urls['spotify']
+            urls <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;external_urls&#39;</span>, {<span style="color:#e6db74">&#39;spotify&#39;</span>: None})
+            self<span style="color:#f92672">.</span>link <span style="color:#f92672">=</span> urls[<span style="color:#e6db74">&#39;spotify&#39;</span>]
             
-            # Get the largest version of the album artwork
-            images = resp_dict.get('images', [{'url': None, 'height': 0}])
-            images.sort(key=lambda x: x['height'], reverse=True)
-            self.art_link = images[0]['url']
-        else:
-            self.artists = resp_dict.get('artists', 'Unknown')
-            self.link = resp_dict.get('link', None)
-            self.art_link = resp_dict.get('art_link', None)
-</code></pre>
-
-<p>This flag lets us easily pull the values from our flat dictionary without
+            <span style="color:#75715e"># Get the largest version of the album artwork</span>
+            images <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;images&#39;</span>, [{<span style="color:#e6db74">&#39;url&#39;</span>: None, <span style="color:#e6db74">&#39;height&#39;</span>: <span style="color:#ae81ff">0</span>}])
+            images<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#e6db74">&#39;height&#39;</span>], reverse<span style="color:#f92672">=</span>True)
+            self<span style="color:#f92672">.</span>art_link <span style="color:#f92672">=</span> images[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;url&#39;</span>]
+        <span style="color:#66d9ef">else</span>:
+            self<span style="color:#f92672">.</span>artists <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;artists&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)
+            self<span style="color:#f92672">.</span>link <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;link&#39;</span>, None)
+            self<span style="color:#f92672">.</span>art_link <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;art_link&#39;</span>, None)
+</code></pre></div><p>This flag lets us easily pull the values from our flat dictionary without
 altering any of the functionality for processing responses from the API.</p>
-
 <p>Now we can get our next queued album from the database and return it as a
 <code>SpotifyAlbum</code> object ready for processing:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, db_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spotify albums.sqlite&#39;</span>):
+        <span style="color:#75715e"># ...</span>
 
-<pre><code class="language-python">class AlbumDatabase:
-    def __init__(self, db_path='spotify albums.sqlite'):
-        # ...
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">contains_album</span>(self, album: SpotifyAlbum):
+        <span style="color:#75715e"># ...</span>
 
-    def contains_album(self, album: SpotifyAlbum):
-        # ...
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_albums</span>(self, albums):
+        <span style="color:#75715e"># ...</span>
 
-    def add_albums(self, albums):
-        # ...
-
-    def get_from_queue(self):
-        self.cursor.execute('''
-            SELECT * FROM albums
-            WHERE
-                status=&quot;queued&quot;
-            LIMIT 1
-            '''
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_from_queue</span>(self):
+        self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">            SELECT * FROM albums
+</span><span style="color:#e6db74">            WHERE
+</span><span style="color:#e6db74">                status=&#34;queued&#34;
+</span><span style="color:#e6db74">            LIMIT 1
+</span><span style="color:#e6db74">            &#39;&#39;&#39;</span>
         )
 
-        resp = self.cursor.fetchone()
-        if resp is not None:
-            # convert from Row to dict
-            resp_dict = dict(resp)
+        resp <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>fetchone()
+        <span style="color:#66d9ef">if</span> resp <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+            <span style="color:#75715e"># convert from Row to dict</span>
+            resp_dict <span style="color:#f92672">=</span> dict(resp)
 
-            # return Album object
-            return SpotifyAlbum(resp_dict, from_api=False)
-        else:
-            return None
-</code></pre>
-
-<p>Note that we <code>LIMIT</code> our query to a single row to ensure we only get one album
+            <span style="color:#75715e"># return Album object</span>
+            <span style="color:#66d9ef">return</span> SpotifyAlbum(resp_dict, from_api<span style="color:#f92672">=</span>False)
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">return</span> None
+</code></pre></div><p>Note that we <code>LIMIT</code> our query to a single row to ensure we only get one album
 back and use the <code>fetchone()</code> method anyway, just to be super-sure we&rsquo;re only
 getting one album back. Combined these will hopefully keep our queries speedy!</p>
-
 <h2 id="update-album">Updating the status of an album in the table</h2>
-
 <p>Lastly, we need a method to let us update an album&rsquo;s status. As mentioned
 earlier, we have three main states - queued, being processed or completed. To
 mitigate for unforseen errors, we&rsquo;re going to allow a 4th status - one that
 simply lets us know that there has been some kind of error. Hopefully we won&rsquo;t
 get any, but if there is some issue with an album (e.g. the links changing) then
 we don&rsquo;t want it to go back into the queue. This leaves us with the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, db_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spotify albums.sqlite&#39;</span>):
+        <span style="color:#75715e"># ...</span>
 
-<pre><code class="language-python">class AlbumDatabase:
-    def __init__(self, db_path='spotify albums.sqlite'):
-        # ...
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">contains_album</span>(self, album: SpotifyAlbum):
+        <span style="color:#75715e"># ...</span>
 
-    def contains_album(self, album: SpotifyAlbum):
-        # ...
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_albums</span>(self, albums):
+        <span style="color:#75715e"># ...</span>
 
-    def add_albums(self, albums):
-        # ...
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_from_queue</span>(self):
+        <span style="color:#75715e"># ...</span>
 
-    def get_from_queue(self):
-        # ...
-
-    def update_album(self, album: SpotifyAlbum, status='processing'):
-        if not status in ('queued', 'processing', 'completed', 'error'):
-            raise ValueError(
-                'status should be one of &quot;queued&quot;, &quot;processing&quot;, &quot;completed&quot; '
-                f'or &quot;error&quot;, received {status}'
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_album</span>(self, album: SpotifyAlbum, status<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;processing&#39;</span>):
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> status <span style="color:#f92672">in</span> (<span style="color:#e6db74">&#39;queued&#39;</span>, <span style="color:#e6db74">&#39;processing&#39;</span>, <span style="color:#e6db74">&#39;completed&#39;</span>, <span style="color:#e6db74">&#39;error&#39;</span>):
+            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(
+                <span style="color:#e6db74">&#39;status should be one of &#34;queued&#34;, &#34;processing&#34;, &#34;completed&#34; &#39;</span>
+                f<span style="color:#e6db74">&#39;or &#34;error&#34;, received {status}&#39;</span>
             )
         
-        self.cursor.execute('''
-            UPDATE albums
-            SET status=?
-            WHERE
-                id = ?
-            ''',
-            (status, album.id)
+        self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">            UPDATE albums
+</span><span style="color:#e6db74">            SET status=?
+</span><span style="color:#e6db74">            WHERE
+</span><span style="color:#e6db74">                id = ?
+</span><span style="color:#e6db74">            &#39;&#39;&#39;</span>,
+            (status, album<span style="color:#f92672">.</span>id)
         )
 
-        self.conn.commit()
-</code></pre>
-
-<h2 id="final-script">Final script</h2>
-
+        self<span style="color:#f92672">.</span>conn<span style="color:#f92672">.</span>commit()
+</code></pre></div><h2 id="final-script">Final script</h2>
 <p>Combining all of this we get the following script:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sqlite3
 
-<pre><code class="language-python">import sqlite3
-
-from .album import SpotifyAlbum
+<span style="color:#f92672">from</span> .album <span style="color:#f92672">import</span> SpotifyAlbum
 
 
-class AlbumDatabase:
-    def __init__(self, db_path='spotify albums.sqlite'):
-        self.conn = sqlite3.connect(db_path)
-        # Get responses as dictionary
-        self.conn.row_factory = sqlite3.Row
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, db_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spotify albums.sqlite&#39;</span>):
+        self<span style="color:#f92672">.</span>conn <span style="color:#f92672">=</span> sqlite3<span style="color:#f92672">.</span>connect(db_path)
+        <span style="color:#75715e"># Get responses as dictionary</span>
+        self<span style="color:#f92672">.</span>conn<span style="color:#f92672">.</span>row_factory <span style="color:#f92672">=</span> sqlite3<span style="color:#f92672">.</span>Row
 
-        self.cursor = self.conn.cursor()
+        self<span style="color:#f92672">.</span>cursor <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conn<span style="color:#f92672">.</span>cursor()
 
-        self.cursor.execute('''
-            CREATE TABLE IF NOT EXISTS albums (
-                id text NOT NULL,
-                name text NOT NULL,
-                artists text NOT NULL,
-                release_date text NOT NULL,
-                link text,
-                art_link text NOT NULL,
-                status text DEFAULT &quot;queued&quot;
-            )
-            '''
+        self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">            CREATE TABLE IF NOT EXISTS albums (
+</span><span style="color:#e6db74">                id text NOT NULL,
+</span><span style="color:#e6db74">                name text NOT NULL,
+</span><span style="color:#e6db74">                artists text NOT NULL,
+</span><span style="color:#e6db74">                release_date text NOT NULL,
+</span><span style="color:#e6db74">                link text,
+</span><span style="color:#e6db74">                art_link text NOT NULL,
+</span><span style="color:#e6db74">                status text DEFAULT &#34;queued&#34;
+</span><span style="color:#e6db74">            )
+</span><span style="color:#e6db74">            &#39;&#39;&#39;</span>
         )
 
-        self.conn.commit()
+        self<span style="color:#f92672">.</span>conn<span style="color:#f92672">.</span>commit()
 
-    def contains_album(self, album: SpotifyAlbum):
-        self.cursor.execute('''
-            SELECT * FROM albums 
-            WHERE
-                id = ?
-            LIMIT 1
-            ''',
-            (album.id, )
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">contains_album</span>(self, album: SpotifyAlbum):
+        self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">            SELECT * FROM albums 
+</span><span style="color:#e6db74">            WHERE
+</span><span style="color:#e6db74">                id = ?
+</span><span style="color:#e6db74">            LIMIT 1
+</span><span style="color:#e6db74">            &#39;&#39;&#39;</span>,
+            (album<span style="color:#f92672">.</span>id, )
         )
 
-        resp = self.cursor.fetchone()
+        resp <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>fetchone()
 
-        return resp and len(resp) &gt; 0
+        <span style="color:#66d9ef">return</span> resp <span style="color:#f92672">and</span> len(resp) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
 
-    def add_albums(self, albums):
-        filter_new = [
-            album for album in albums if not self.contains_album(album)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_albums</span>(self, albums):
+        filter_new <span style="color:#f92672">=</span> [
+            album <span style="color:#66d9ef">for</span> album <span style="color:#f92672">in</span> albums <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> self<span style="color:#f92672">.</span>contains_album(album)
         ]
 
-        # Catch in case we have nothing new to add
-        if filter_new:
-            self.cursor.executemany('''
-                INSERT INTO albums (
-                    id, name, artists, release_date, link, art_link
-                )
-                VALUES (?, ?, ?, ?, ?, ?)
-                ''',
+        <span style="color:#75715e"># Catch in case we have nothing new to add</span>
+        <span style="color:#66d9ef">if</span> filter_new:
+            self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>executemany(<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">                INSERT INTO albums (
+</span><span style="color:#e6db74">                    id, name, artists, release_date, link, art_link
+</span><span style="color:#e6db74">                )
+</span><span style="color:#e6db74">                VALUES (?, ?, ?, ?, ?, ?)
+</span><span style="color:#e6db74">                &#39;&#39;&#39;</span>,
                 [
                     (
-                        album.id, album.name, album.artists, album.release_date,
-                        album.link, album.art_link
+                        album<span style="color:#f92672">.</span>id, album<span style="color:#f92672">.</span>name, album<span style="color:#f92672">.</span>artists, album<span style="color:#f92672">.</span>release_date,
+                        album<span style="color:#f92672">.</span>link, album<span style="color:#f92672">.</span>art_link
                     )
-                    for album in filter_new
+                    <span style="color:#66d9ef">for</span> album <span style="color:#f92672">in</span> filter_new
                 ]
             )
 
-            self.conn.commit()
+            self<span style="color:#f92672">.</span>conn<span style="color:#f92672">.</span>commit()
 
-    def update_album(self, album: SpotifyAlbum, status='processing'):
-        if not status in ('queued', 'processing', 'completed', 'error'):
-            raise ValueError(
-                'status should be one of &quot;queued&quot;, &quot;processing&quot;, &quot;completed&quot; '
-                f'or &quot;error&quot;, received {status}'
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_album</span>(self, album: SpotifyAlbum, status<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;processing&#39;</span>):
+        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> status <span style="color:#f92672">in</span> (<span style="color:#e6db74">&#39;queued&#39;</span>, <span style="color:#e6db74">&#39;processing&#39;</span>, <span style="color:#e6db74">&#39;completed&#39;</span>, <span style="color:#e6db74">&#39;error&#39;</span>):
+            <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(
+                <span style="color:#e6db74">&#39;status should be one of &#34;queued&#34;, &#34;processing&#34;, &#34;completed&#34; &#39;</span>
+                f<span style="color:#e6db74">&#39;or &#34;error&#34;, received {status}&#39;</span>
             )
         
-        self.cursor.execute('''
-            UPDATE albums
-            SET status=?
-            WHERE
-                id = ?
-            ''',
-            (status, album.id)
+        self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">            UPDATE albums
+</span><span style="color:#e6db74">            SET status=?
+</span><span style="color:#e6db74">            WHERE
+</span><span style="color:#e6db74">                id = ?
+</span><span style="color:#e6db74">            &#39;&#39;&#39;</span>,
+            (status, album<span style="color:#f92672">.</span>id)
         )
 
-        self.conn.commit()
+        self<span style="color:#f92672">.</span>conn<span style="color:#f92672">.</span>commit()
     
-    def get_from_queue(self):
-        self.cursor.execute('''
-            SELECT * FROM albums
-            WHERE
-                status=&quot;queued&quot;
-            LIMIT 1
-            '''
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_from_queue</span>(self):
+        self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">            SELECT * FROM albums
+</span><span style="color:#e6db74">            WHERE
+</span><span style="color:#e6db74">                status=&#34;queued&#34;
+</span><span style="color:#e6db74">            LIMIT 1
+</span><span style="color:#e6db74">            &#39;&#39;&#39;</span>
         )
 
-        resp = self.cursor.fetchone()
-        if resp is not None:
-            # convert from Row to dict
-            resp_dict = dict(resp)
+        resp <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>fetchone()
+        <span style="color:#66d9ef">if</span> resp <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+            <span style="color:#75715e"># convert from Row to dict</span>
+            resp_dict <span style="color:#f92672">=</span> dict(resp)
 
-            # return Album object
-            return SpotifyAlbum(resp_dict, from_api=False)
-        else:
-            return None
-</code></pre>
-
-<h2 id="putting-it-into-use">Putting it into use</h2>
-
+            <span style="color:#75715e"># return Album object</span>
+            <span style="color:#66d9ef">return</span> SpotifyAlbum(resp_dict, from_api<span style="color:#f92672">=</span>False)
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">return</span> None
+</code></pre></div><h2 id="putting-it-into-use">Putting it into use</h2>
 <p>Now that we&rsquo;re adding complexity into our processing, it makes sense to use
 Python&rsquo;s module structure to organise it. Seeing as the process is ultimately
 to pull colours from album artwork, I&rsquo;ve called the module <code>colour_puller</code>.
 At present, it contains three files:</p>
-
 <ul>
 <li>An empty <code>__init__.py</code>;</li>
 <li><code>album.py</code>, which contains our <code>SpotifyAlbum</code> class; and</li>
 <li><code>database.py</code>, which contains our <code>AlbumDatabase</code> class.</li>
 </ul>
-
 <p>With this structure in place, we can more-or-less finalise the process for
 adding new albums from the Spotify API:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> spotipy
+<span style="color:#f92672">from</span> spotipy.oauth2 <span style="color:#f92672">import</span> SpotifyClientCredentials
 
-<pre><code class="language-python">import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
-
-from colour_puller.album import SpotifyAlbum
-from colour_puller.database import AlbumDatabase
+<span style="color:#f92672">from</span> colour_puller.album <span style="color:#f92672">import</span> SpotifyAlbum
+<span style="color:#f92672">from</span> colour_puller.database <span style="color:#f92672">import</span> AlbumDatabase
 
 
-auth = spotipy.SpotifyOAuth(
-    redirect_uri='http://localhost:8888/callback', username='valeadam'
+auth <span style="color:#f92672">=</span> spotipy<span style="color:#f92672">.</span>SpotifyOAuth(
+    redirect_uri<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://localhost:8888/callback&#39;</span>, username<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;valeadam&#39;</span>
 )
 
-sp = spotipy.Spotify(auth_manager=auth)
+sp <span style="color:#f92672">=</span> spotipy<span style="color:#f92672">.</span>Spotify(auth_manager<span style="color:#f92672">=</span>auth)
 
-recently_played = sp.current_user_recently_played()
+recently_played <span style="color:#f92672">=</span> sp<span style="color:#f92672">.</span>current_user_recently_played()
 
-recent_albums = []
+recent_albums <span style="color:#f92672">=</span> []
 
-for item in recently_played['items'][::-1]:
-    album = SpotifyAlbum(item['track']['album'])
-    if album.art_link and not any(prev == album for prev in recent_albums):
-        recent_albums.append(album)
+<span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> recently_played[<span style="color:#e6db74">&#39;items&#39;</span>][::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+    album <span style="color:#f92672">=</span> SpotifyAlbum(item[<span style="color:#e6db74">&#39;track&#39;</span>][<span style="color:#e6db74">&#39;album&#39;</span>])
+    <span style="color:#66d9ef">if</span> album<span style="color:#f92672">.</span>art_link <span style="color:#f92672">and</span> <span style="color:#f92672">not</span> any(prev <span style="color:#f92672">==</span> album <span style="color:#66d9ef">for</span> prev <span style="color:#f92672">in</span> recent_albums):
+        recent_albums<span style="color:#f92672">.</span>append(album)
 
-ad = AlbumDatabase()
+ad <span style="color:#f92672">=</span> AlbumDatabase()
 
-ad.add_albums(recent_albums)
-</code></pre>
-
-<p>With this in place, we can move on to extracting the colour palette from the
+ad<span style="color:#f92672">.</span>add_albums(recent_albums)
+</code></pre></div><p>With this in place, we can move on to extracting the colour palette from the
 album artwork and posting it.</p>
 
   </div>
@@ -750,7 +681,7 @@ album artwork and posting it.</p>
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2020 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Graphs on ruszkow.ski</title>
@@ -6,10 +6,16 @@
     <description>Recent content in Graphs on ruszkow.ski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Tue, 03 Nov 2020 22:30:31 +0000</lastBuildDate>
-    
-	<atom:link href="https://ruszkow.ski/graphs/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 21 Jan 2021 21:47:25 +0000</lastBuildDate><atom:link href="https://ruszkow.ski/graphs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Covid-19 Vaccinations</title>
+      <link>https://ruszkow.ski/graphs/2021-01-21-covid-19-vaccinations/</link>
+      <pubDate>Thu, 21 Jan 2021 21:47:25 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2021-01-21-covid-19-vaccinations/</guid>
+      <description>What? The UK government has been offering up a lot of open data through its Coronavirus data portal, but much of it is intense and slightly stressful. One perhaps more positive piece of information it offers is the number of vaccinations that have been provided, for both the first and second stage. I decided that might be something a bit nicer to plot.
+How? So not only is the government offering up a lot of open data, they&amp;rsquo;ve also provided a Python module for easy access to the data, including directly to pandas dataframes.</description>
+    </item>
     
     <item>
       <title>Halloween Heartrate</title>
@@ -18,7 +24,7 @@
       
       <guid>https://ruszkow.ski/graphs/2020-11-03-halloween-heartrate/</guid>
       <description>What? After watching the films I mentioned in my Halloween timetable graph, I realised that my watch would have been tracking my heart rate right the way through each film, and thought it might be fun to see if my heart rate had been particularly affected by any of the films.
-On looking at the data, nothing seemed particularly out of the ordinary - except one massive spike during Scream.</description>
+On looking at the data, nothing seemed particularly out of the ordinary - except one massive spike during Scream. Thinking about it, this also happened to correspond to a parcel arriving at the flat - so the buzzer going managed to scare me more than any film.</description>
     </item>
     
     <item>
@@ -110,7 +116,8 @@ The main issue with this was trying to use the flat version of the font for the 
       
       <guid>https://ruszkow.ski/graphs/2019-10-10-edinburgh-2017-temperatures/</guid>
       <description>What? A ridge plot (i.e. overlapping distributions) showing the average hourly temperatures at a particular location in Edinburgh in 2017, for the roughly daytime hours of 7am-7pm.
-How? This is based quite heavily on an example given as part of the seaborn documentation. The only real tweaks made to This are to use the average temperature to determine the hue rather than just the row and some neat labelling.</description>
+How? This is based quite heavily on an example given as part of the seaborn documentation. The only real tweaks made to This are to use the average temperature to determine the hue rather than just the row and some neat labelling.
+This site has long-term data available so ideally I&amp;rsquo;d like to create an animation showing the changes in temperature over time, though that seems like an optimistic goal at the moment!</description>
     </item>
     
     <item>

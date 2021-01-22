@@ -1,6 +1,41 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://ruszkow.ski/tags/github/</loc>
+    <lastmod>2021-01-21T22:06:55+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ruszkow.ski/posts/2021-01-21-github-actions-on-a-schedule/</loc>
+    <lastmod>2021-01-21T22:06:55+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ruszkow.ski/posts/</loc>
+    <lastmod>2021-01-21T22:06:55+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ruszkow.ski/</loc>
+    <lastmod>2021-01-21T22:06:55+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ruszkow.ski/tags/</loc>
+    <lastmod>2021-01-21T22:06:55+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ruszkow.ski/graphs/2021-01-21-covid-19-vaccinations/</loc>
+    <lastmod>2021-01-21T21:47:25+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ruszkow.ski/graphs/</loc>
+    <lastmod>2021-01-21T21:47:25+00:00</lastmod>
+  </url>
   
   <url>
     <loc>https://ruszkow.ski/posts/2020-11-17-dance-dancier-danciest/</loc>
@@ -8,28 +43,8 @@
   </url>
   
   <url>
-    <loc>https://ruszkow.ski/posts/</loc>
-    <lastmod>2020-11-17T21:50:05+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://ruszkow.ski/tags/python/</loc>
     <lastmod>2020-11-17T21:50:05+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ruszkow.ski/</loc>
-    <lastmod>2020-11-17T21:50:05+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ruszkow.ski/tags/</loc>
-    <lastmod>2020-11-17T21:50:05+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ruszkow.ski/graphs/</loc>
-    <lastmod>2020-11-03T22:30:31+00:00</lastmod>
   </url>
   
   <url>
@@ -73,6 +88,11 @@
   </url>
   
   <url>
+    <loc>https://ruszkow.ski/slides/</loc>
+    <lastmod>2020-05-03T22:30:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ruszkow.ski/tags/albums-to-ruin/</loc>
     <lastmod>2020-04-20T10:30:00+01:00</lastmod>
   </url>
@@ -100,11 +120,6 @@
   <url>
     <loc>https://ruszkow.ski/graphs/2019-10-29-english-footballs-top-goalscorers/</loc>
     <lastmod>2019-10-28T23:13:40+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ruszkow.ski/tags/github/</loc>
-    <lastmod>2019-10-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -144,10 +159,6 @@
   
   <url>
     <loc>https://ruszkow.ski/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://ruszkow.ski/slides/</loc>
   </url>
   
 </urlset>
