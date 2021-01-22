@@ -4,7 +4,7 @@ date: 2020-09-26T16:43:18+01:00
 author: "Adam"
 image: "img/graphs/biffy-chart-positions.png"
 code: ""
-type: "Graphs"
+type: "graphs"
 ---
 
 # What?

@@ -4,7 +4,7 @@ date: 2020-07-07T19:07:59+01:00
 author: "Adam"
 image: "img/graphs/uk-bisexual-population/total population.png"
 code: ""
-type: "Graphs"
+type: "graphs"
 ---
 
 # What?

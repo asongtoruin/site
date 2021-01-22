@@ -4,7 +4,7 @@ date: 2019-10-28T23:13:40Z
 author: "Adam"
 image: "img/graphs/goalscorers/england-scorers.png"
 code: ""
-type: "Graphs"
+type: "graphs"
 ---
 
 # What?

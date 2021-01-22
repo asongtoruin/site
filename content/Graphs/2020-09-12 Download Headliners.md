@@ -4,7 +4,7 @@ date: 2020-09-12T17:24:49+01:00
 author: "Adam"
 image: "img/graphs/download-headliners/download-headliners.png"
 code: ""
-type: "Graphs"
+type: "graphs"
 ---
 
 # What?

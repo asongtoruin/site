@@ -4,7 +4,7 @@ date: 2021-01-21T21:47:25Z
 author: "Adam"
 image: "https://raw.githubusercontent.com/asongtoruin/covid-graphs/main/Graphs/Vaccine%20count.png"
 code: ""
-type: "Graphs"
+type: "graphs"
 ---
 
 # What?

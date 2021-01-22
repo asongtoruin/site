@@ -4,7 +4,7 @@ date: 2019-10-07T21:47:04+01:00
 author: "Adam"
 image: "img/graphs/nfl-injuries/concussions.png"
 code: ""
-type: "Graphs"
+type: "graphs"
 ---
 
 *Update 2020-02-16: Graphs updated with 2019 data*

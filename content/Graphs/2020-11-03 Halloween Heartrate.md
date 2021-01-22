@@ -4,7 +4,7 @@ date: 2020-11-03T22:30:31Z
 author: "Adam"
 image: "img/graphs/halloween/heartbeats.png"
 code: ""
-type: "Graphs"
+type: "graphs"
 ---
 
 # What?

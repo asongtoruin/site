@@ -4,7 +4,7 @@ date: 2020-07-30T18:36:00+01:00
 author: "Adam"
 image: "img/graphs/big-five-champions/champions.png"
 code: ""
-type: "Graphs"
+type: "graphs"
 ---
 
 # What?

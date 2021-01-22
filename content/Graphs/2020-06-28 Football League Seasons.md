@@ -4,7 +4,7 @@ date: 2020-06-28T18:35:59+01:00
 author: "Adam"
 image: "img/graphs/football-league-seasons/outsiders.png"
 code: ""
-type: "Graphs"
+type: "graphs"
 ---
 
 # What?

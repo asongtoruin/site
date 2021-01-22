@@ -4,7 +4,7 @@ date: {{ .Date }}
 author: "Adam"
 image: ""
 code: ""
-type: "Graphs"
+type: "graphs"
 ---
 
 # What?

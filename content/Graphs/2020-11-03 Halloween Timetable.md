@@ -4,7 +4,7 @@ date: 2020-11-03T21:39:52Z
 author: "Adam"
 image: "img/graphs/halloween/spooky-island-timetable.png"
 code: ""
-type: "Graphs"
+type: "graphs"
 ---
 
 # What?

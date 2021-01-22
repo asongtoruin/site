@@ -4,7 +4,7 @@ date: 2019-09-16T23:13:29+01:00
 author: "Adam"
 image: "img/graphs/astro.png"
 code: ""
-type: "Graphs"
+type: "graphs"
 ---
 
 *Update 2019-10-22: PyWaffle version updated to allow use of `vertical`*

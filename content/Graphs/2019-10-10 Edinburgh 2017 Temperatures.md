@@ -4,7 +4,7 @@ date: 2019-10-10T23:15:26+01:00
 author: "Adam"
 image: "img/graphs/edinburgh-temperatures/edinburgh-2017-temperatures.png"
 code: ""
-type: "Graphs"
+type: "graphs"
 ---
 
 # What?
