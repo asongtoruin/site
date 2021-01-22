@@ -18,7 +18,7 @@ workflows to run [on a schedule](<https://docs.github.com/en/actions/reference/e
 This is an extremely powerful feature that, to me, seems under-publicised. My 
 first idea was that gives us the option of setting up auto-updating graphs - so
 I decided to try that out with UK Covid-19 vaccination data. You can see the 
-results of this [here]({{<relref "Graphs\2021-01-21 Covid-19 Vaccinations.md">}}),
+results of this [here]({{<relref "Graphs/2021-01-21 Covid-19 Vaccinations.md">}}),
 but in this post I'm going to run through the (fairly straightforward) set-up I 
 used.
 
