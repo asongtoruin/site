@@ -132,6 +132,7 @@ a.read-more{
   height: 100%;
   vertical-align: middle;
   display: inline-flex;
+  flex-wrap: wrap;
 }
 
 .thumbnail img {
