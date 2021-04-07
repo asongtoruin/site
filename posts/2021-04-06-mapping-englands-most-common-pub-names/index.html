@@ -33,7 +33,7 @@
 <meta name="twitter:description" content="After making my graphs about the most common pub names in each country in Great Britain, one thing that really stood out was just how many pubs in England are called Red Lion. Being from the Midlands that made a lot of sense to me, but a few people who I showed it to seemed quite surprised. That got me thinking about what kind of regional variation there is in pub names." />
 <meta name="twitter:site" content="https://ruszkow.ski" />
 <meta name="twitter:creator" content="Adam" />
-<meta name="twitter:image" content="https://ruszkow.ski/img/graphs/pub-names/england-local-authorities.png">
+<meta name="twitter:image" content="https://ruszkow.ski/img/graphs/pub-names/england-counties.png">
 
 
 <meta property="og:locale" content="en" />
@@ -42,7 +42,7 @@
 <meta property="og:description" content="After making my graphs about the most common pub names in each country in Great Britain, one thing that really stood out was just how many pubs in England are called Red Lion. Being from the Midlands that made a lot of sense to me, but a few people who I showed it to seemed quite surprised. That got me thinking about what kind of regional variation there is in pub names." />
 <meta property="og:url" content="https://ruszkow.ski/posts/2021-04-06-mapping-englands-most-common-pub-names/" />
 <meta property="og:site_name" content="Mapping England&#39;s Most Common Pub Names" />
-<meta property="og:image" content="https://ruszkow.ski/img/graphs/pub-names/england-local-authorities.png">
+<meta property="og:image" content="https://ruszkow.ski/img/graphs/pub-names/england-counties.png">
 <meta property="og:image:width" content="2048">
 <meta property="og:image:height" content="1024">
 
@@ -158,22 +158,22 @@
 
   
   <div class="img-outer">
-    <a href="https://ruszkow.ski/img/graphs/pub-names/england-local-authorities.png" target="_blank">
-      <img class="scaled-img" src="https://ruszkow.ski/img/graphs/pub-names/england-local-authorities.png">
+    <a href="https://ruszkow.ski/img/graphs/pub-names/england-counties.png" target="_blank">
+      <img class="scaled-img" src="https://ruszkow.ski/img/graphs/pub-names/england-counties.png">
     </a>
   </div>
   
   <div class="post-content">
-    <p>After making my <a href="/graphs/2021-03-23-pub-names/">graphs</a> about the most common pub names in each country in Great Britain, one thing that really stood out was just how many pubs in England are called <em>Red Lion</em>. Being from the Midlands that made a lot of sense to me, but a few people who I showed it to seemed quite surprised. That got me thinking about what kind of regional variation there is in pub names. So, why not look at the most popular pub names by local authority? This gives us a chance to dig into QGIS a bit, which I tend to use a lot at work for producing maps but haven&rsquo;t talked about on here yet. Let&rsquo;s dive in.</p>
+    <p>After making my <a href="/graphs/2021-03-23-pub-names/">graphs</a> about the most common pub names in each country in Great Britain, one thing that really stood out was just how many pubs in England are called <em>Red Lion</em>. Being from the Midlands that made a lot of sense to me, but a few people who I showed it to seemed quite surprised. That got me thinking about what kind of regional variation there is in pub names. So, why not look at the most popular pub names by county? This gives us a chance to dig into QGIS a bit, which I tend to use a lot at work for producing maps but haven&rsquo;t talked about on here yet. Let&rsquo;s dive in.</p>
 <h2 id="data-sources">Data Sources</h2>
 <p>I started with the same OpenStreetMap data that I used in the graphs with the same cleaning applied for the names as it was all already geolocated, giving us a set of points representing each pub.</p>
-<p>Next up - getting the local authority boundaries. Generally, the best UK source for standard boundaries is Ordnance Survey. Its <a href="https://www.ordnancesurvey.co.uk/business-government/products/boundaryline">Boundary Line</a> product includes the local authority boundaries alongside multiple other regional definitions. One slight oddity in the local authority boundaries provided is that the City of London is provided separately to Greater London. For my purposes that&rsquo;s a bit too refined, so I merged the two into one region and extracted only the England local authorities.</p>
+<p>Next up - getting the county boundaries. Generally, the best UK source for standard boundaries is Ordnance Survey. Its <a href="https://www.ordnancesurvey.co.uk/business-government/products/boundaryline">Boundary Line</a> product includes the county boundaries alongside multiple other regional definitions. One slight oddity in the county boundaries provided is that the City of London is provided separately to Greater London. For my purposes that&rsquo;s a bit too refined, so I merged the two into one region and extracted only the England counties.</p>
 <h2 id="merging-the-shapefiles">Merging The Shapefiles</h2>
-<p>Combining spatial data involves doing a spatial join - joining the layers of data together according to their location in space. As we have a point layer for our pubs and polygons for our local authorities, it&rsquo;s a fairly straightforward join to apply.</p>
-<p>There are a few different ways you could go about this - QGIS itself can handle spatial joins, but as we want to get the most <em>popular</em> name within each local authority keeping it all in Python means <code>geopandas</code> can handle this at the same time. You can find the code <a href="https://github.com/asongtoruin/data_analysis/blob/master/pub%20names/local_authorities.py">here</a>.</p>
+<p>Combining spatial data involves doing a spatial join - joining the layers of data together according to their location in space. As we have a point layer for our pubs and polygons for our counties, it&rsquo;s a fairly straightforward join to apply.</p>
+<p>There are a few different ways you could go about this - QGIS itself can handle spatial joins, but as we want to get the most <em>popular</em> name within each county keeping it all in Python means <code>geopandas</code> can handle this at the same time. You can find the code <a href="https://github.com/asongtoruin/data_analysis/blob/master/pub%20names/local_authorities.py">here</a>.</p>
 <h2 id="displaying-the-results">Displaying The Results</h2>
 <p>Once we have the output from the above script, that can be dropped straight into QGIS.</p>
-<p>I was torn over how to display the summaries - at first I tried outlining each local authority and adding a label, but that resulted in an extremely messy map that was a bit overwhelming to read. Applying randomised colours to that made it a little easier to associate each label with its corresponding region, but then it became confusing that the colours didn&rsquo;t actually mean anything.</p>
+<p>I was torn over how to display the summaries - at first I tried outlining each county and adding a label, but that resulted in an extremely messy map that was a bit overwhelming to read. Applying randomised colours to that made it a little easier to associate each label with its corresponding region, but then it became confusing that the colours didn&rsquo;t actually mean anything.</p>
 <p>Instead, I noticed that a few names were appearing a lot of times and some others only once. Instead, I used QGIS' Categorised Symbology settings to assign a colour for every unique label, and started deleting the less-commonly occurring names so those regions would instead show up in the &ldquo;All others&rdquo; category. At this point I chose to merge together &ldquo;Bull&rdquo;, &ldquo;Bulls&rdquo; and &ldquo;Black Bull&rdquo; as they&rsquo;re all pretty similar names.</p>
 <p>A few regions had a tie for the most common name. Fortuitously for me, we didn&rsquo;t get any regions where we&rsquo;d need to use more than two colours, so I decided stripes would be an easy way to represent a tie. I had to manually go through and set up the styling for each of these ties within the category settings, which was a bit of a faff but thankfully didn&rsquo;t take too long.</p>
 <h2 id="making-the-colours-accessible">Making The Colours Accessible</h2>
