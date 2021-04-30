@@ -7,6 +7,7 @@ code: ""
 type: "graphs"
 ---
 
+*Update 2021-04-30: Graphs updated with 2020 data, and a nicer font (Bariol, from Atipo Foundry)*
 *Update 2020-02-16: Graphs updated with 2019 data*
 
 # What?
