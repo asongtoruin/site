@@ -7,6 +7,7 @@ code: ""
 type: "graphs"
 ---
 
+*Update 2021-06-01: updated to include 2020-2021 season, and some visual tweaks*
 # What?
 Yet another football graph, and yet another bar chart. This one needs to be 
 viewed in full-screen to get the full effect!
