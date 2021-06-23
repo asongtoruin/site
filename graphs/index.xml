@@ -6,7 +6,17 @@
     <description>Recent content in Graphs on ruszkow.ski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Tue, 23 Mar 2021 19:11:59 +0000</lastBuildDate><atom:link href="https://ruszkow.ski/graphs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Jun 2021 22:36:42 +0100</lastBuildDate><atom:link href="https://ruszkow.ski/graphs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IMDb&#39;s Highest Rated TV Series</title>
+      <link>https://ruszkow.ski/graphs/2021-06-23-imdbs-highest-rated-tv-series/</link>
+      <pubDate>Wed, 23 Jun 2021 22:36:42 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2021-06-23-imdbs-highest-rated-tv-series/</guid>
+      <description>Note: this graph works best if you load it in its own tab, zoom in and scroll around. Have fun!
+What? Sometimes I like to look through posts on r/dataisbeautiful for graph inspiration. There can definitely be a lot of noise, but it also has a lot good ideas for data sources and visualisations. I&amp;rsquo;m pretty sure it was on there that I first saw graphs showing IMDb ratings for different films and TV series, which in turn lead me (inevitably) to IMDbPY.</description>
+    </item>
+    
     <item>
       <title>Pub Names</title>
       <link>https://ruszkow.ski/graphs/2021-03-23-pub-names/</link>

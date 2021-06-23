@@ -302,9 +302,9 @@ the previous post. Fortunately, <code>id</code> is a key available directly from
 single extra line when we create our album object:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
     <span style="color:#66d9ef">def</span> __init__(self, resp_dict):
-        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, None)
+        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#66d9ef">None</span>)
         self<span style="color:#f92672">.</span>release_date <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;release_date&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)
-        self<span style="color:#f92672">.</span>id <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;id&#39;</span>, None)
+        self<span style="color:#f92672">.</span>id <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;id&#39;</span>, <span style="color:#66d9ef">None</span>)
 </code></pre></div><p>This means we will also need to change the creation of the <code>albums</code> table above,
 but in turn this simplifies our <code>contains_album()</code> method:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
@@ -398,10 +398,10 @@ dictionary, but it&rsquo;s easy to instead add a flag to our constructor that le
 use this kind of dictionary.</p>
 <p>So, our <code>SpotifyAlbum</code> constructor changes again to be as follows:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
-    <span style="color:#66d9ef">def</span> __init__(self, resp_dict, from_api<span style="color:#f92672">=</span>True):
-        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, None)
+    <span style="color:#66d9ef">def</span> __init__(self, resp_dict, from_api<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
+        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#66d9ef">None</span>)
         self<span style="color:#f92672">.</span>release_date <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;release_date&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)
-        self<span style="color:#f92672">.</span>id <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;id&#39;</span>, None)
+        self<span style="color:#f92672">.</span>id <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;id&#39;</span>, <span style="color:#66d9ef">None</span>)
 
         <span style="color:#66d9ef">if</span> from_api:
             <span style="color:#75715e"># Handle possibility of many artists</span>
@@ -413,17 +413,17 @@ use this kind of dictionary.</p>
                     art<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>) <span style="color:#66d9ef">for</span> art <span style="color:#f92672">in</span> artists
                 )
             
-            urls <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;external_urls&#39;</span>, {<span style="color:#e6db74">&#39;spotify&#39;</span>: None})
+            urls <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;external_urls&#39;</span>, {<span style="color:#e6db74">&#39;spotify&#39;</span>: <span style="color:#66d9ef">None</span>})
             self<span style="color:#f92672">.</span>link <span style="color:#f92672">=</span> urls[<span style="color:#e6db74">&#39;spotify&#39;</span>]
             
             <span style="color:#75715e"># Get the largest version of the album artwork</span>
-            images <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;images&#39;</span>, [{<span style="color:#e6db74">&#39;url&#39;</span>: None, <span style="color:#e6db74">&#39;height&#39;</span>: <span style="color:#ae81ff">0</span>}])
-            images<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#e6db74">&#39;height&#39;</span>], reverse<span style="color:#f92672">=</span>True)
+            images <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;images&#39;</span>, [{<span style="color:#e6db74">&#39;url&#39;</span>: <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#39;height&#39;</span>: <span style="color:#ae81ff">0</span>}])
+            images<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#e6db74">&#39;height&#39;</span>], reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
             self<span style="color:#f92672">.</span>art_link <span style="color:#f92672">=</span> images[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;url&#39;</span>]
         <span style="color:#66d9ef">else</span>:
             self<span style="color:#f92672">.</span>artists <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;artists&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)
-            self<span style="color:#f92672">.</span>link <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;link&#39;</span>, None)
-            self<span style="color:#f92672">.</span>art_link <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;art_link&#39;</span>, None)
+            self<span style="color:#f92672">.</span>link <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;link&#39;</span>, <span style="color:#66d9ef">None</span>)
+            self<span style="color:#f92672">.</span>art_link <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;art_link&#39;</span>, <span style="color:#66d9ef">None</span>)
 </code></pre></div><p>This flag lets us easily pull the values from our flat dictionary without
 altering any of the functionality for processing responses from the API.</p>
 <p>Now we can get our next queued album from the database and return it as a
@@ -448,14 +448,14 @@ altering any of the functionality for processing responses from the API.</p>
         )
 
         resp <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>fetchone()
-        <span style="color:#66d9ef">if</span> resp <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+        <span style="color:#66d9ef">if</span> resp <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
             <span style="color:#75715e"># convert from Row to dict</span>
             resp_dict <span style="color:#f92672">=</span> dict(resp)
 
             <span style="color:#75715e"># return Album object</span>
-            <span style="color:#66d9ef">return</span> SpotifyAlbum(resp_dict, from_api<span style="color:#f92672">=</span>False)
+            <span style="color:#66d9ef">return</span> SpotifyAlbum(resp_dict, from_api<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
         <span style="color:#66d9ef">else</span>:
-            <span style="color:#66d9ef">return</span> None
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
 </code></pre></div><p>Note that we <code>LIMIT</code> our query to a single row to ensure we only get one album
 back and use the <code>fetchone()</code> method anyway, just to be super-sure we&rsquo;re only
 getting one album back. Combined these will hopefully keep our queries speedy!</p>
@@ -483,7 +483,7 @@ we don&rsquo;t want it to go back into the queue. This leaves us with the follow
         <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> status <span style="color:#f92672">in</span> (<span style="color:#e6db74">&#39;queued&#39;</span>, <span style="color:#e6db74">&#39;processing&#39;</span>, <span style="color:#e6db74">&#39;completed&#39;</span>, <span style="color:#e6db74">&#39;error&#39;</span>):
             <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(
                 <span style="color:#e6db74">&#39;status should be one of &#34;queued&#34;, &#34;processing&#34;, &#34;completed&#34; &#39;</span>
-                f<span style="color:#e6db74">&#39;or &#34;error&#34;, received {status}&#39;</span>
+                <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;or &#34;error&#34;, received </span><span style="color:#e6db74">{</span>status<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>
             )
         
         self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#39;&#39;&#39;
@@ -568,7 +568,7 @@ we don&rsquo;t want it to go back into the queue. This leaves us with the follow
         <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> status <span style="color:#f92672">in</span> (<span style="color:#e6db74">&#39;queued&#39;</span>, <span style="color:#e6db74">&#39;processing&#39;</span>, <span style="color:#e6db74">&#39;completed&#39;</span>, <span style="color:#e6db74">&#39;error&#39;</span>):
             <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(
                 <span style="color:#e6db74">&#39;status should be one of &#34;queued&#34;, &#34;processing&#34;, &#34;completed&#34; &#39;</span>
-                f<span style="color:#e6db74">&#39;or &#34;error&#34;, received {status}&#39;</span>
+                <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;or &#34;error&#34;, received </span><span style="color:#e6db74">{</span>status<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>
             )
         
         self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#39;&#39;&#39;
@@ -592,14 +592,14 @@ we don&rsquo;t want it to go back into the queue. This leaves us with the follow
         )
 
         resp <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>fetchone()
-        <span style="color:#66d9ef">if</span> resp <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+        <span style="color:#66d9ef">if</span> resp <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
             <span style="color:#75715e"># convert from Row to dict</span>
             resp_dict <span style="color:#f92672">=</span> dict(resp)
 
             <span style="color:#75715e"># return Album object</span>
-            <span style="color:#66d9ef">return</span> SpotifyAlbum(resp_dict, from_api<span style="color:#f92672">=</span>False)
+            <span style="color:#66d9ef">return</span> SpotifyAlbum(resp_dict, from_api<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
         <span style="color:#66d9ef">else</span>:
-            <span style="color:#66d9ef">return</span> None
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
 </code></pre></div><h2 id="putting-it-into-use">Putting it into use</h2>
 <p>Now that we&rsquo;re adding complexity into our processing, it makes sense to use
 Python&rsquo;s module structure to organise it. Seeing as the process is ultimately

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://kit.fontawesome.com/5063c00b10.js"></script>
+  
+    <title>IMDb&#39;s Highest Rated TV Series :: ruszkow.ski — data, graphs and other nonsense</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Note: this graph works best if you load it in its own tab, zoom in and scroll around. Have fun!
+What? Sometimes I like to look through posts on r/dataisbeautiful for graph inspiration. There can definitely be a lot of noise, but it also has a lot good ideas for data sources and visualisations. I&amp;rsquo;m pretty sure it was on there that I first saw graphs showing IMDb ratings for different films and TV series, which in turn lead me (inevitably) to IMDbPY."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://ruszkow.ski/graphs/2021-06-23-imdbs-highest-rated-tv-series/" />
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/assets/style.css">
+
+  <link rel="stylesheet" href="https://ruszkow.ski/assets/green.css">
+
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ruszkow.ski/img/apple-touch-icon-144-precomposed.png">
+
+<link rel="shortcut icon" href="https://ruszkow.ski/img/favicon/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="IMDb&#39;s Highest Rated TV Series :: ruszkow.ski — data, graphs and other nonsense" />
+<meta name="twitter:description" content="Note: this graph works best if you load it in its own tab, zoom in and scroll around. Have fun!
+What? Sometimes I like to look through posts on r/dataisbeautiful for graph inspiration. There can definitely be a lot of noise, but it also has a lot good ideas for data sources and visualisations. I&amp;rsquo;m pretty sure it was on there that I first saw graphs showing IMDb ratings for different films and TV series, which in turn lead me (inevitably) to IMDbPY." />
+<meta name="twitter:site" content="https://ruszkow.ski" />
+<meta name="twitter:creator" content="Adam" />
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="IMDb&#39;s Highest Rated TV Series :: ruszkow.ski — data, graphs and other nonsense">
+<meta property="og:description" content="Note: this graph works best if you load it in its own tab, zoom in and scroll around. Have fun!
+What? Sometimes I like to look through posts on r/dataisbeautiful for graph inspiration. There can definitely be a lot of noise, but it also has a lot good ideas for data sources and visualisations. I&amp;rsquo;m pretty sure it was on there that I first saw graphs showing IMDb ratings for different films and TV series, which in turn lead me (inevitably) to IMDbPY." />
+<meta property="og:url" content="https://ruszkow.ski/graphs/2021-06-23-imdbs-highest-rated-tv-series/" />
+<meta property="og:site_name" content="IMDb&#39;s Highest Rated TV Series" />
+<meta property="og:image" content="">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2021-06-23 22:36:42 &#43;0100 &#43;0100" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+
+<div class="container center">
+
+
+  
+    <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    ruszkow.ski
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/graphs">Graphs</a></li>
+        
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts">Posts</a></li>
+      
+    
+      
+        <li><a href="/graphs">Graphs</a></li>
+      
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+  
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+  <a href="https://ruszkow.ski/graphs/2021-06-23-imdbs-highest-rated-tv-series/">IMDb&rsquo;s Highest Rated TV Series</a></h1>
+<div class="post-meta">
+    
+    <span class="post-date">
+      <i class="fas fa-calendar-day"></i> 2021-06-23
+    </span>
+    
+    
+    <span class="post-author">::
+      <i class="fas fa-user"></i> Adam
+    </span>
+    
+    <span class='post-reading-time'>::
+     <i class="fas fa-clock"></i> 3 minutes
+    </span>
+</div>
+
+
+
+  
+  <div class="img-outer">
+    <a href="https://raw.githubusercontent.com/asongtoruin/imdb-ratings/main/Graphs/Highest%20Rated.png" target="_blank">
+      <img class="scaled-img" src="https://raw.githubusercontent.com/asongtoruin/imdb-ratings/main/Graphs/Highest%20Rated.png">
+    </a>
+  </div>
+  
+  <div class="post-content">
+    <p><em>Note: this graph works best if you load it in its own tab, zoom in and scroll around. Have fun!</em></p>
+<h1 id="what">What?</h1>
+<p>Sometimes I like to look through posts on <a href="https://reddit.com/r/dataisbeautiful">r/dataisbeautiful</a> for graph inspiration. There can definitely be a lot of noise, but it also has a lot good ideas for data sources and visualisations. I&rsquo;m pretty sure it was on there that I first saw graphs showing IMDb ratings for different films and TV series, which in turn lead me (inevitably) to <a href="https://imdbpy.github.io/"><code>IMDbPY</code></a>. Whenever I&rsquo;m thinking of checking out a different API, there&rsquo;s probably already a Python module for that.</p>
+<p>While tinkering around with some ideas about visualising individual TV series (more on that soon), I noticed that the main entry point for the module has a <code>get_top250_tv</code> method for finding the 250 highest-rated TV shows. I started playing around with that a bit, and this is wshere we ended up (albeit with only the top 100 shows in the chart).</p>
+<h1 id="how">How?</h1>
+<p>At first, I thought about trying to use a <code>swarmplot</code> from <code>seaborn</code> to visualise the different user ratings of different series, but it (and the similar <code>stripplot</code>) can get congested quite fast when displaying a large number of categories. Instead I took a step back to something a bit more basic, but that I&rsquo;d never really used before. Most of my scatter plots in <code>matplotlib</code> tend to use either the <code>.</code> or <code>o</code> markers (or maybe an <code>x</code> if I&rsquo;m feeling exotic) - these are the kinds of markers we expect from a traditional scatter plot. Another of the <a href="https://matplotlib.org/stable/api/markers_api.html">built-in marker styles</a> though is simply a vertical line - noted with a <code>|</code>. By using this marker frequently with the same y-value and varying colours, we end up with these lovely &ldquo;carpets&rdquo; of data.</p>
+<p>Having the data sorted from highest to lowest rated was interesting, but made it a little confusing to read, as your eyes would need to jump from left to right between older and newer shows. By sorting according to the show&rsquo;s first episode date instead, we get a lovely curve that the eye can follow more smoothly. I also moved the labels from their traditional position on the y-axis to instead be slightly offset from the first episode - with the regular placement, it got quite difficult to be sure which series you were looking at when it came to the more modern shows. One slightly unexpected aspect of this - I had to force the graph to draw, with <code>fig.canvas.draw()</code>, in order to actually get the correct text from the y-axis labels to then <code>annotate</code> them back onto the chart.</p>
+<p>One last thing here - as the top rated shows on IMDb will probably change over time, I tweaked the GitHub Action I&rsquo;d set up for the <a href="/graphs/2021-01-21-covid-19-vaccinations/">Covid vaccine graphs</a> so this graph will update at midnight on the first of each month <em>or</em> whenever I change the Python script. GitHub Actions truly are magic.</p>
+<h1 id="libraries--resources">Libraries / Resources</h1>
+<ul>
+<li><code>IMDbPY</code> for getting the data and <code>pandas</code> for working with it nicely</li>
+<li><code>matplotlib</code> and <code>seaborn</code> for plotting</li>
+<li>My own <a href="https://github.com/asongtoruin/plot_styles"><code>plot_styles</code></a> module for getting some of the basics of the plot looking nice quickly</li>
+<li>As with the Covid vaccine graphs, I used <a href="https://fonts.google.com/specimen/Lato">Lato</a>for the font as it comes bundled in GitHub&rsquo;s Ubuntu environments</li>
+</ul>
+<h1 id="data-sources">Data Sources</h1>
+<ul>
+<li>Unsurprisingly, the data is all from IMDb</li>
+</ul>
+<h1 id="code">Code</h1>
+<p>Find it on <a href="https://github.com/asongtoruin/imdb-ratings/blob/main/top_tv.py">Github</a></p>
+
+  </div>
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span
+        class="pagination__title-h">Read other posts</span>
+      <hr />
+    </div>
+    <div class="pagination__buttons">
+      
+      
+      <span class="button next">
+        <a href="https://ruszkow.ski/graphs/2021-03-23-pub-names/">
+          <span class="button__text">Pub Names</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+      
+    </div>
+  </div>
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    
+      <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://ruszkow.ski/assets/main.js"></script>
+<script src="https://ruszkow.ski/assets/prism.js"></script>
+
+
+
+
+
+    
+  
+</div>
+
+</body>
+</html>

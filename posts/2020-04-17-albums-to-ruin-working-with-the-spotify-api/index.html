@@ -210,7 +210,7 @@ cache this token and refresh it when needed, so you should only need to call
 this section of the code once ever. This is the first time we need our Redirect
 URI, and if you want to run this code yourself you&rsquo;ll need to replace my
 username with your own.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> spotipy.util <span style="color:#f92672">as</span> util
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> spotipy.util <span style="color:#66d9ef">as</span> util
 
 token <span style="color:#f92672">=</span> util<span style="color:#f92672">.</span>prompt_for_user_token(
     <span style="color:#e6db74">&#39;valeadam&#39;</span>, scope<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;user-read-recently-played&#39;</span>, 
@@ -231,12 +231,12 @@ auth <span style="color:#f92672">=</span> spotipy<span style="color:#f92672">.</
 )
 
 sp <span style="color:#f92672">=</span> spotipy<span style="color:#f92672">.</span>Spotify(auth_manager<span style="color:#f92672">=</span>auth)
-<span style="color:#66d9ef">print</span>(sp<span style="color:#f92672">.</span>me())
+print(sp<span style="color:#f92672">.</span>me())
 </code></pre></div><p>This prints out some information about the connected user:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">{
     <span style="color:#e6db74">&#39;display_name&#39;</span>: <span style="color:#e6db74">&#39;valeadam&#39;</span>,
     <span style="color:#e6db74">&#39;external_urls&#39;</span>: {<span style="color:#e6db74">&#39;spotify&#39;</span>: <span style="color:#e6db74">&#39;https://open.spotify.com/user/valeadam&#39;</span>},
-    <span style="color:#e6db74">&#39;followers&#39;</span>: {<span style="color:#e6db74">&#39;href&#39;</span>: None, <span style="color:#e6db74">&#39;total&#39;</span>: <span style="color:#ae81ff">39</span>},
+    <span style="color:#e6db74">&#39;followers&#39;</span>: {<span style="color:#e6db74">&#39;href&#39;</span>: <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#39;total&#39;</span>: <span style="color:#ae81ff">39</span>},
     <span style="color:#e6db74">&#39;href&#39;</span>: <span style="color:#e6db74">&#39;https://api.spotify.com/v1/users/valeadam&#39;</span>,
     <span style="color:#e6db74">&#39;id&#39;</span>: <span style="color:#e6db74">&#39;valeadam&#39;</span>,
     <span style="color:#e6db74">&#39;images&#39;</span>: [],
@@ -336,7 +336,7 @@ returned dictionary. Adding another method gives us this flexibilty.</p>
 <p>Putting these things together gets us the following class:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
     <span style="color:#66d9ef">def</span> __init__(self, resp_dict):
-        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, None)
+        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#66d9ef">None</span>)
         self<span style="color:#f92672">.</span>release_date <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;release_date&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)
 
         <span style="color:#75715e"># Handle possibility of many artists</span>
@@ -348,20 +348,20 @@ returned dictionary. Adding another method gives us this flexibilty.</p>
                 art<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>) <span style="color:#66d9ef">for</span> art <span style="color:#f92672">in</span> artists
             )
         
-        urls <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;external_urls&#39;</span>, {<span style="color:#e6db74">&#39;spotify&#39;</span>: None})
+        urls <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;external_urls&#39;</span>, {<span style="color:#e6db74">&#39;spotify&#39;</span>: <span style="color:#66d9ef">None</span>})
         self<span style="color:#f92672">.</span>link <span style="color:#f92672">=</span> urls[<span style="color:#e6db74">&#39;spotify&#39;</span>]
         
         <span style="color:#75715e"># Get the largest version of the album artwork</span>
-        images <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;images&#39;</span>, [{<span style="color:#e6db74">&#39;url&#39;</span>: None, <span style="color:#e6db74">&#39;height&#39;</span>: <span style="color:#ae81ff">0</span>}])
-        images<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#e6db74">&#39;height&#39;</span>], reverse<span style="color:#f92672">=</span>True)
+        images <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;images&#39;</span>, [{<span style="color:#e6db74">&#39;url&#39;</span>: <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#39;height&#39;</span>: <span style="color:#ae81ff">0</span>}])
+        images<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#e6db74">&#39;height&#39;</span>], reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
         self<span style="color:#f92672">.</span>art_link <span style="color:#f92672">=</span> images[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;url&#39;</span>]
     
     <span style="color:#66d9ef">def</span> __str__(self):
         <span style="color:#66d9ef">return</span> (
-            f<span style="color:#e6db74">&#39;Album Name: {self.name}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
-            f<span style="color:#e6db74">&#39;Artist(s): {self.artists}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
-            f<span style="color:#e6db74">&#39;Released: {self.release_date}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
-            f<span style="color:#e6db74">&#39;Link: {self.link}&#39;</span>
+            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Album Name: </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Artist(s): </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>artists<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Released: </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>release_date<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Link: </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>link<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>
         )
     
     <span style="color:#66d9ef">def</span> __eq__(self, other):
@@ -395,25 +395,25 @@ rest of the project. Putting all the code together, we get the following:</p>
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
     <span style="color:#66d9ef">def</span> __init__(self, resp_dict):
-        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, None)
+        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#66d9ef">None</span>)
         self<span style="color:#f92672">.</span>release_date <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;release_date&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)
         self<span style="color:#f92672">.</span>artists <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;, &#39;</span><span style="color:#f92672">.</span>join(
             a<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>) <span style="color:#66d9ef">for</span> a <span style="color:#f92672">in</span> resp_dict[<span style="color:#e6db74">&#39;artists&#39;</span>]
         )
         
-        urls <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;external_urls&#39;</span>, {<span style="color:#e6db74">&#39;spotify&#39;</span>: None})
+        urls <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;external_urls&#39;</span>, {<span style="color:#e6db74">&#39;spotify&#39;</span>: <span style="color:#66d9ef">None</span>})
         self<span style="color:#f92672">.</span>link <span style="color:#f92672">=</span> urls[<span style="color:#e6db74">&#39;spotify&#39;</span>]
         
-        images <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;images&#39;</span>, [{<span style="color:#e6db74">&#39;url&#39;</span>: None, <span style="color:#e6db74">&#39;height&#39;</span>: <span style="color:#ae81ff">0</span>}])
-        images<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#e6db74">&#39;height&#39;</span>], reverse<span style="color:#f92672">=</span>True)
+        images <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;images&#39;</span>, [{<span style="color:#e6db74">&#39;url&#39;</span>: <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#39;height&#39;</span>: <span style="color:#ae81ff">0</span>}])
+        images<span style="color:#f92672">.</span>sort(key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#e6db74">&#39;height&#39;</span>], reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
         self<span style="color:#f92672">.</span>art_link <span style="color:#f92672">=</span> images[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;url&#39;</span>]
     
     <span style="color:#66d9ef">def</span> __str__(self):
         <span style="color:#66d9ef">return</span> (
-            f<span style="color:#e6db74">&#39;Album: {self.name}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
-            f<span style="color:#e6db74">&#39;Artist(s): {self.artists}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
-            f<span style="color:#e6db74">&#39;Released: {self.release_date}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
-            f<span style="color:#e6db74">&#39;Link: {self.link}&#39;</span>
+            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Album: </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Artist(s): </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>artists<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Released: </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>release_date<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Link: </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>link<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>
         )
     
     <span style="color:#66d9ef">def</span> __eq__(self, other):
