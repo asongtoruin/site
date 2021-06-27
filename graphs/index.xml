@@ -6,7 +6,16 @@
     <description>Recent content in Graphs on ruszkow.ski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Wed, 23 Jun 2021 22:36:42 +0100</lastBuildDate><atom:link href="https://ruszkow.ski/graphs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Jun 2021 19:23:25 +0100</lastBuildDate><atom:link href="https://ruszkow.ski/graphs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IMDb Series Rating Summaries</title>
+      <link>https://ruszkow.ski/graphs/2021-06-27-imdb-series-rating-summaries/</link>
+      <pubDate>Sun, 27 Jun 2021 19:23:25 +0100</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2021-06-27-imdb-series-rating-summaries/</guid>
+      <description>What? As I mentioned in the summary of my highest rated TV shows on IMDb graph, I originally started trying to summarise user ratings for every episode of an individual series. It took a bit more work, but I think I&amp;rsquo;ve got something reasonable now. The layout I decided on ultimately was a scatter plot showing the season averages above a heatmap showing the rating for every episode, highlighting the overall highest and lowest rated episodes too.</description>
+    </item>
+    
     <item>
       <title>IMDb&#39;s Highest Rated TV Series</title>
       <link>https://ruszkow.ski/graphs/2021-06-23-imdbs-highest-rated-tv-series/</link>
