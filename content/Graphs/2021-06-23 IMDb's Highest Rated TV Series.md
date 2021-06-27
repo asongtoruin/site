@@ -25,7 +25,7 @@ One last thing here - as the top rated shows on IMDb will probably change over t
 - `IMDbPY` for getting the data and `pandas` for working with it nicely
 - `matplotlib` and `seaborn` for plotting
 - My own [`plot_styles`](<https://github.com/asongtoruin/plot_styles>) module for getting some of the basics of the plot looking nice quickly
-- As with the Covid vaccine graphs, I used [Lato](<https://fonts.google.com/specimen/Lato>)for the font as it comes bundled in GitHub's Ubuntu environments
+- As with the Covid vaccine graphs, I used [Lato](<https://fonts.google.com/specimen/Lato>) for the font as it comes bundled in GitHub's Ubuntu environments
 
 # Data Sources
 - Unsurprisingly, the data is all from IMDb
