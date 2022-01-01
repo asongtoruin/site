@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://kit.fontawesome.com/5063c00b10.js"></script>
+  
+    <title>Album of the Year 2021 :: ruszkow.ski — data, graphs and other nonsense</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Every year, top champ Pip runs a Facebook group to work out the Album Of The Year within an extended friendship group. For the past few years I&amp;rsquo;ve been making graphs to summarise the results, using some slightly clunky Jupyter notebooks. At first this just analysed the albums chosen by the group, and then last year (after I did my TTNG analysis) I expanded it to include some Spotify data too."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://ruszkow.ski/posts/2022-01-01-album-of-the-year-2021/" />
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/assets/style.css">
+
+  <link rel="stylesheet" href="https://ruszkow.ski/assets/green.css">
+
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ruszkow.ski/img/apple-touch-icon-144-precomposed.png">
+
+<link rel="shortcut icon" href="https://ruszkow.ski/img/favicon/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Album of the Year 2021 :: ruszkow.ski — data, graphs and other nonsense" />
+<meta name="twitter:description" content="Every year, top champ Pip runs a Facebook group to work out the Album Of The Year within an extended friendship group. For the past few years I&amp;rsquo;ve been making graphs to summarise the results, using some slightly clunky Jupyter notebooks. At first this just analysed the albums chosen by the group, and then last year (after I did my TTNG analysis) I expanded it to include some Spotify data too." />
+<meta name="twitter:site" content="https://ruszkow.ski" />
+<meta name="twitter:creator" content="Adam" />
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Album of the Year 2021 :: ruszkow.ski — data, graphs and other nonsense">
+<meta property="og:description" content="Every year, top champ Pip runs a Facebook group to work out the Album Of The Year within an extended friendship group. For the past few years I&amp;rsquo;ve been making graphs to summarise the results, using some slightly clunky Jupyter notebooks. At first this just analysed the albums chosen by the group, and then last year (after I did my TTNG analysis) I expanded it to include some Spotify data too." />
+<meta property="og:url" content="https://ruszkow.ski/posts/2022-01-01-album-of-the-year-2021/" />
+<meta property="og:site_name" content="Album of the Year 2021" />
+<meta property="og:image" content="">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2022-01-01 15:23:11 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+
+<div class="container center">
+
+
+  
+    <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    ruszkow.ski
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/graphs">Graphs</a></li>
+        
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts">Posts</a></li>
+      
+    
+      
+        <li><a href="/graphs">Graphs</a></li>
+      
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+  
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+  <a href="https://ruszkow.ski/posts/2022-01-01-album-of-the-year-2021/">Album of the Year 2021</a></h1>
+<div class="post-meta">
+    
+    <span class="post-date">
+      <i class="fas fa-calendar-day"></i> 2022-01-01
+    </span>
+    
+    
+    <span class="post-author">::
+      <i class="fas fa-user"></i> Adam
+    </span>
+    
+    <span class='post-reading-time'>::
+     <i class="fas fa-clock"></i> 2 minutes
+    </span>
+</div>
+
+
+<span class="post-tags">
+  
+  #<a href="https://ruszkow.ski/tags/python/">Python</a>&nbsp;
+  
+  #<a href="https://ruszkow.ski/tags/aoty/">AOTY</a>&nbsp;
+  
+</span>
+
+
+  
+  <div class="post-content">
+    <p>Every year, top champ <a href="https://twitter.com/philipcopley">Pip</a> runs a Facebook group to work out the Album Of The Year within an extended friendship group. For the past few years I&rsquo;ve been making graphs to summarise the results, using some slightly clunky Jupyter notebooks. At first this just analysed the albums chosen by the group, and then last year (after I did my <a href="/posts/2020-11-17-dance-dancier-danciest/">TTNG analysis</a>) I expanded it to include some Spotify data too.</p>
+<p>All of the charts for each year can be found on Github <a href="https://github.com/asongtoruin/AOTY">here</a>. I find myself gradually tweaking (and hopefully improving!) the code each year, but it&rsquo;s definitely a bit bolted together so I won&rsquo;t bother going into too much detail about it here. There are two graphs I wanted to talk about a bit more, which is why this post exists! I strongly recommend loading each in a new tab and zooming in to have a closer look.</p>
+<h2 id="album-radar-plots">Album Radar Plots</h2>
+
+  <div class="img-outer">
+    <a href="https://ruszkow.ski/img/posts/aoty/2021/album-radars.png" target="_blank">
+      <img class="scaled-img" src="https://ruszkow.ski/img/posts/aoty/2021/album-radars.png">
+    </a>
+  </div>
+
+
+<p>Inspired by the classic Pro Evolution Soccer radar charts of player stats, this chart shows various attributes of each song on each of the top 20 albums from the group. The values are taken directly from Spotify - &ldquo;valence&rdquo; is a bit of a weird one, as this is meant to indicate some kind of &ldquo;musical positiveness&rdquo;. These charts don&rsquo;t really tell you anything interesting about the individual songs on each album, but do give you a decent sense of the overall feel.</p>
+<h1 id="my-favourite-albums-of-2021">My favourite albums of 2021</h1>
+
+  <div class="img-outer">
+    <a href="https://ruszkow.ski/img/posts/aoty/2021/Adam%20AOTY%20Ranking.png" target="_blank">
+      <img class="scaled-img" src="https://ruszkow.ski/img/posts/aoty/2021/Adam%20AOTY%20Ranking.png">
+    </a>
+  </div>
+
+
+<p>This rather long image shows my personal top 10 albums of 2021 (really, open it in a new tab and zoom in). It&rsquo;s&hellip; not wholly surprising that I liked a lot of high-energy albums, as I tend to listen to a lot of music while working and sometimes motivational stuff can help.</p>
+<p>One neat thing I learned from making this chart (which I then used in the radar plot) is that by stacking the path effects for text in <code>matplotlib</code> to be:</p>
+<ol>
+<li>Shadow</li>
+<li>Stroke <em>matching the background colour of the image</em></li>
+<li>The text itself</li>
+</ol>
+<p>It makes the text stand out quite nicely. Using the background colour for the stroke makes it that little bit more prominent while also allowing us to switch between styles easily without having to pick a new colour.</p>
+
+  </div>
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span
+        class="pagination__title-h">Read other posts</span>
+      <hr />
+    </div>
+    <div class="pagination__buttons">
+      
+      
+      <span class="button next">
+        <a href="https://ruszkow.ski/posts/2021-04-06-mapping-englands-most-common-pub-names/">
+          <span class="button__text">Mapping England&#39;s Most Common Pub Names</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+      
+    </div>
+  </div>
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    
+      <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2022 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://ruszkow.ski/assets/main.js"></script>
+<script src="https://ruszkow.ski/assets/prism.js"></script>
+
+
+
+
+
+    
+  
+</div>
+
+</body>
+</html>

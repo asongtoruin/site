@@ -181,7 +181,7 @@
 <h2 id="fine-tuning">Fine-Tuning</h2>
 <p>At this point the map was pretty much done, but there were a few final tweaks to do. Adding a drop-shadow to the whole layer to gives the map a bit more of a presence on the page, and makes it look a bit neater. QGIS also has a lovely &ldquo;Print Layout&rdquo; feature which lets you combine a map with various other decorations like legends and labels to create something ready for print, which let me add in the extra features you see.</p>
 <p>The other big change I chose to make was to add labels for any use of the &ldquo;All others&rdquo; colouration. Ths ensures that as much data was available to the viewer as possible while not being too overwhelming. It was, however, probably the most fiddly part of the whole setup as labelling the striped sections required a very specific labelling rule:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CASE</span> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CASE</span> 
 <span style="color:#66d9ef">WHEN</span> strpos(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Red Lion&#39;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">THEN</span> 
 	<span style="color:#66d9ef">if</span>(
 	  <span style="color:#e6db74">&#34;name_short&#34;</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;Red Lion&#39;</span>, 
@@ -223,6 +223,13 @@
     </div>
     <div class="pagination__buttons">
       
+      <span class="button previous">
+        <a href="https://ruszkow.ski/posts/2022-01-01-album-of-the-year-2021/">
+          <span class="button__icon">←</span>
+          <span class="button__text">Album of the Year 2021</span>
+        </a>
+      </span>
+      
       
       <span class="button next">
         <a href="https://ruszkow.ski/posts/2021-01-21-github-actions-on-a-schedule/">
@@ -247,7 +254,7 @@
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2022 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>

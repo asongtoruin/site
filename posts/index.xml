@@ -6,7 +6,16 @@
     <description>Recent content in Posts on ruszkow.ski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Tue, 06 Apr 2021 22:10:11 +0100</lastBuildDate><atom:link href="https://ruszkow.ski/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Jan 2022 15:23:11 +0000</lastBuildDate><atom:link href="https://ruszkow.ski/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Album of the Year 2021</title>
+      <link>https://ruszkow.ski/posts/2022-01-01-album-of-the-year-2021/</link>
+      <pubDate>Sat, 01 Jan 2022 15:23:11 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/posts/2022-01-01-album-of-the-year-2021/</guid>
+      <description>Every year, top champ Pip runs a Facebook group to work out the Album Of The Year within an extended friendship group. For the past few years I&amp;rsquo;ve been making graphs to summarise the results, using some slightly clunky Jupyter notebooks. At first this just analysed the albums chosen by the group, and then last year (after I did my TTNG analysis) I expanded it to include some Spotify data too.</description>
+    </item>
+    
     <item>
       <title>Mapping England&#39;s Most Common Pub Names</title>
       <link>https://ruszkow.ski/posts/2021-04-06-mapping-englands-most-common-pub-names/</link>

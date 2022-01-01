@@ -219,7 +219,7 @@ when creating a table within a database. This allows us to effectively use the
 same code whether the table (and database) already exists or not, making this
 constructor fairly simple. Initialising our database object, then, looks like
 the following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sqlite3
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sqlite3
 
 <span style="color:#f92672">from</span> .album <span style="color:#f92672">import</span> SpotifyAlbum
 
@@ -259,7 +259,7 @@ initial class outline above.</p>
 <p>We don&rsquo;t want to have duplicate albums in the table, so the first step before
 adding any album in should be to check whether it&rsquo;s already present. This method
 could look something like the following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
     <span style="color:#66d9ef">def</span> __init__(self, db_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spotify albums.sqlite&#39;</span>):
         <span style="color:#75715e"># ...</span>
 
@@ -300,14 +300,14 @@ likely to change. We should be using this instead to identify our albums.</p>
 the previous post. Fortunately, <code>id</code> is a key available directly from each
 <code>album</code> object in the response. So we can simply make the change by adding a
 single extra line when we create our album object:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
     <span style="color:#66d9ef">def</span> __init__(self, resp_dict):
         self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#66d9ef">None</span>)
         self<span style="color:#f92672">.</span>release_date <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;release_date&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)
         self<span style="color:#f92672">.</span>id <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;id&#39;</span>, <span style="color:#66d9ef">None</span>)
 </code></pre></div><p>This means we will also need to change the creation of the <code>albums</code> table above,
 but in turn this simplifies our <code>contains_album()</code> method:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
     <span style="color:#66d9ef">def</span> __init__(self, db_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spotify albums.sqlite&#39;</span>):
         <span style="color:#75715e"># ...</span>
         self<span style="color:#f92672">.</span>cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#39;&#39;&#39;
@@ -351,7 +351,7 @@ allows us to do this simply with the <code>executemany()</code> method.</p>
 albums aren&rsquo;t already in the database before we add them in. This double-checks
 we&rsquo;re not accidentally bringing in duplicates.</p>
 <p>Combining these ideas gives us the following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
     <span style="color:#66d9ef">def</span> __init__(self, db_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spotify albums.sqlite&#39;</span>):
         <span style="color:#75715e"># ...</span>
 
@@ -397,7 +397,7 @@ from our database has all of the keys directly available. We could modify this
 dictionary, but it&rsquo;s easy to instead add a flag to our constructor that lets us
 use this kind of dictionary.</p>
 <p>So, our <code>SpotifyAlbum</code> constructor changes again to be as follows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
     <span style="color:#66d9ef">def</span> __init__(self, resp_dict, from_api<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
         self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#66d9ef">None</span>)
         self<span style="color:#f92672">.</span>release_date <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;release_date&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)
@@ -428,7 +428,7 @@ use this kind of dictionary.</p>
 altering any of the functionality for processing responses from the API.</p>
 <p>Now we can get our next queued album from the database and return it as a
 <code>SpotifyAlbum</code> object ready for processing:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
     <span style="color:#66d9ef">def</span> __init__(self, db_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spotify albums.sqlite&#39;</span>):
         <span style="color:#75715e"># ...</span>
 
@@ -466,7 +466,7 @@ mitigate for unforseen errors, we&rsquo;re going to allow a 4th status - one tha
 simply lets us know that there has been some kind of error. Hopefully we won&rsquo;t
 get any, but if there is some issue with an album (e.g. the links changing) then
 we don&rsquo;t want it to go back into the queue. This leaves us with the following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlbumDatabase</span>:
     <span style="color:#66d9ef">def</span> __init__(self, db_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;spotify albums.sqlite&#39;</span>):
         <span style="color:#75715e"># ...</span>
 
@@ -498,7 +498,7 @@ we don&rsquo;t want it to go back into the queue. This leaves us with the follow
         self<span style="color:#f92672">.</span>conn<span style="color:#f92672">.</span>commit()
 </code></pre></div><h2 id="final-script">Final script</h2>
 <p>Combining all of this we get the following script:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sqlite3
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sqlite3
 
 <span style="color:#f92672">from</span> .album <span style="color:#f92672">import</span> SpotifyAlbum
 
@@ -612,7 +612,7 @@ At present, it contains three files:</p>
 </ul>
 <p>With this structure in place, we can more-or-less finalise the process for
 adding new albums from the Spotify API:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> spotipy
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> spotipy
 <span style="color:#f92672">from</span> spotipy.oauth2 <span style="color:#f92672">import</span> SpotifyClientCredentials
 
 <span style="color:#f92672">from</span> colour_puller.album <span style="color:#f92672">import</span> SpotifyAlbum
@@ -681,7 +681,7 @@ album artwork and posting it.</p>
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2021 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2022 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>
