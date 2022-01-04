@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://kit.fontawesome.com/5063c00b10.js"></script>
+  
+    <title>Sunshine on Leith :: ruszkow.ski — data, graphs and other nonsense</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="What? I recently saw a very nice tweet about sunrise and sunset times in London. It looked a lot like a matplotlib graph, so I decided to look into how it could have been made. A bit of googling took me to an excellent blog post about undertaking very similar tasks, from which I learned about different kinds of twilight. I then realised switching the focus to Edinburgh gave an opportunity for a terrible pun and decided to make my own, so here we are."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://ruszkow.ski/graphs/2022-01-04-sunshine-on-leith/" />
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/assets/style.css">
+
+  <link rel="stylesheet" href="https://ruszkow.ski/assets/green.css">
+
+
+
+<link rel="stylesheet" href="https://ruszkow.ski/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ruszkow.ski/img/apple-touch-icon-144-precomposed.png">
+
+<link rel="shortcut icon" href="https://ruszkow.ski/img/favicon/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Sunshine on Leith :: ruszkow.ski — data, graphs and other nonsense" />
+<meta name="twitter:description" content="What? I recently saw a very nice tweet about sunrise and sunset times in London. It looked a lot like a matplotlib graph, so I decided to look into how it could have been made. A bit of googling took me to an excellent blog post about undertaking very similar tasks, from which I learned about different kinds of twilight. I then realised switching the focus to Edinburgh gave an opportunity for a terrible pun and decided to make my own, so here we are." />
+<meta name="twitter:site" content="https://ruszkow.ski" />
+<meta name="twitter:creator" content="Adam" />
+<meta name="twitter:image" content="">
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Sunshine on Leith :: ruszkow.ski — data, graphs and other nonsense">
+<meta property="og:description" content="What? I recently saw a very nice tweet about sunrise and sunset times in London. It looked a lot like a matplotlib graph, so I decided to look into how it could have been made. A bit of googling took me to an excellent blog post about undertaking very similar tasks, from which I learned about different kinds of twilight. I then realised switching the focus to Edinburgh gave an opportunity for a terrible pun and decided to make my own, so here we are." />
+<meta property="og:url" content="https://ruszkow.ski/graphs/2022-01-04-sunshine-on-leith/" />
+<meta property="og:site_name" content="Sunshine on Leith" />
+<meta property="og:image" content="">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2022-01-04 21:44:40 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+
+<div class="container center">
+
+
+  
+    <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    ruszkow.ski
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts">Posts</a></li>
+        
+      
+        
+          <li><a href="/graphs">Graphs</a></li>
+        
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts">Posts</a></li>
+      
+    
+      
+        <li><a href="/graphs">Graphs</a></li>
+      
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+  
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+  <a href="https://ruszkow.ski/graphs/2022-01-04-sunshine-on-leith/">Sunshine on Leith</a></h1>
+<div class="post-meta">
+    
+    <span class="post-date">
+      <i class="fas fa-calendar-day"></i> 2022-01-04
+    </span>
+    
+    
+    <span class="post-author">::
+      <i class="fas fa-user"></i> Adam
+    </span>
+    
+    <span class='post-reading-time'>::
+     <i class="fas fa-clock"></i> 2 minutes
+    </span>
+</div>
+
+
+
+  
+  <div class="img-outer">
+    <a href="https://ruszkow.ski/img/graphs/sunshine-on-leith.png" target="_blank">
+      <img class="scaled-img" src="https://ruszkow.ski/img/graphs/sunshine-on-leith.png">
+    </a>
+  </div>
+  
+  <div class="post-content">
+    <h1 id="what">What?</h1>
+<p>I recently saw a <a href="https://twitter.com/setalyas/status/1476864080371720197">very nice tweet</a> about sunrise and sunset times in London. It looked a lot like a <code>matplotlib</code> graph, so I decided to look into how it could have been made. A bit of googling took me to an <a href="https://chrisramsay.co.uk/posts/2017/03/fun-with-the-sun-and-pyephem/">excellent blog post</a> about undertaking very similar tasks, from which I learned about <em>different kinds of twilight</em>. I then realised switching the focus to Edinburgh gave an opportunity for a terrible pun and decided to make my own, so here we are.</p>
+<h1 id="how">How?</h1>
+<p>Though the above blog post references <code>PyEphem</code>, <a href="https://rhodesmill.org/skyfield/"><code>skyfield</code></a> seems to be a more modern approach to the same kinds of calculations, so I worked with it instead. Its documentation gives perfect examples on <a href="https://rhodesmill.org/skyfield/examples.html#when-will-it-get-dark-tonight">finding the various twilight times</a>, alongside <a href="https://rhodesmill.org/skyfield/almanac.html#the-seasons">identifying equinoxies and solstices</a>. Coupling these with a bit of <code>pandas</code> gave me something I could pass to <code>axpcolormesh</code>, from which point it was just a case of playing about with <code>matplotlib</code> until I thought it looked nice.</p>
+<p>As this is an area of study I am completely and utterly unfamiliar with it&rsquo;s entirely possible that there are some errors here, but the profile looked similar enough to those given <a href="https://www.timeanddate.com/sun/uk/edinburgh">by other sources</a> that I don&rsquo;t think it&rsquo;s too far off.</p>
+<h1 id="libraries--resources">Libraries / Resources</h1>
+<ul>
+<li><code>skyfield</code> for the calculations</li>
+<li><code>pandas</code> / <code>numpy</code> for data wrangling</li>
+<li><code>matplotlib</code> for plotting</li>
+<li><a href="https://www.atipofoundry.com/fonts/noway">Noway</a> for the font</li>
+</ul>
+<h1 id="data-sources">Data Sources</h1>
+<p>No external sources - the calculations are all done within <code>skyfield</code> itself.</p>
+<h1 id="code">Code</h1>
+<p>Find it on <a href="https://github.com/asongtoruin/sun-plots">Github</a></p>
+
+  </div>
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span
+        class="pagination__title-h">Read other posts</span>
+      <hr />
+    </div>
+    <div class="pagination__buttons">
+      
+      
+      <span class="button next">
+        <a href="https://ruszkow.ski/graphs/2021-06-27-imdb-series-rating-summaries/">
+          <span class="button__text">IMDb Series Rating Summaries</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+      
+    </div>
+  </div>
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    
+      <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2022 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://ruszkow.ski/assets/main.js"></script>
+<script src="https://ruszkow.ski/assets/prism.js"></script>
+
+
+
+
+
+    
+  
+</div>
+
+</body>
+</html>

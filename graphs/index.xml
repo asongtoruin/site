@@ -6,7 +6,16 @@
     <description>Recent content in Graphs on ruszkow.ski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sun, 27 Jun 2021 19:23:25 +0100</lastBuildDate><atom:link href="https://ruszkow.ski/graphs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Jan 2022 21:44:40 +0000</lastBuildDate><atom:link href="https://ruszkow.ski/graphs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sunshine on Leith</title>
+      <link>https://ruszkow.ski/graphs/2022-01-04-sunshine-on-leith/</link>
+      <pubDate>Tue, 04 Jan 2022 21:44:40 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2022-01-04-sunshine-on-leith/</guid>
+      <description>What? I recently saw a very nice tweet about sunrise and sunset times in London. It looked a lot like a matplotlib graph, so I decided to look into how it could have been made. A bit of googling took me to an excellent blog post about undertaking very similar tasks, from which I learned about different kinds of twilight. I then realised switching the focus to Edinburgh gave an opportunity for a terrible pun and decided to make my own, so here we are.</description>
+    </item>
+    
     <item>
       <title>IMDb Series Rating Summaries</title>
       <link>https://ruszkow.ski/graphs/2021-06-27-imdb-series-rating-summaries/</link>
