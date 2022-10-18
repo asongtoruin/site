@@ -174,44 +174,44 @@
 <h2 id="displaying-the-results">Displaying The Results</h2>
 <p>Once we have the output from the above script, that can be dropped straight into QGIS.</p>
 <p>I was torn over how to display the summaries - at first I tried outlining each county and adding a label, but that resulted in an extremely messy map that was a bit overwhelming to read. Applying randomised colours to that made it a little easier to associate each label with its corresponding region, but then it became confusing that the colours didn&rsquo;t actually mean anything.</p>
-<p>Instead, I noticed that a few names were appearing a lot of times and some others only once. Instead, I used QGIS' Categorised Symbology settings to assign a colour for every unique label, and started deleting the less-commonly occurring names so those regions would instead show up in the &ldquo;All others&rdquo; category. At this point I chose to merge together &ldquo;Bull&rdquo;, &ldquo;Bulls&rdquo; and &ldquo;Black Bull&rdquo; as they&rsquo;re all pretty similar names.</p>
+<p>Instead, I noticed that a few names were appearing a lot of times and some others only once. Instead, I used QGIS&rsquo; Categorised Symbology settings to assign a colour for every unique label, and started deleting the less-commonly occurring names so those regions would instead show up in the &ldquo;All others&rdquo; category. At this point I chose to merge together &ldquo;Bull&rdquo;, &ldquo;Bulls&rdquo; and &ldquo;Black Bull&rdquo; as they&rsquo;re all pretty similar names.</p>
 <p>A few regions had a tie for the most common name. Fortuitously for me, we didn&rsquo;t get any regions where we&rsquo;d need to use more than two colours, so I decided stripes would be an easy way to represent a tie. I had to manually go through and set up the styling for each of these ties within the category settings, which was a bit of a faff but thankfully didn&rsquo;t take too long.</p>
 <h2 id="making-the-colours-accessible">Making The Colours Accessible</h2>
 <p>With my first attempt at this, the colours QGIS applied by default were pretty garish and wouldn&rsquo;t have been very useful to any colourblind observers. In searching for a colourblind-friendly palette, I found <a href="https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40">this</a> excellent write-up from David Nichols which in turn directed me to Paul Tol&rsquo;s beautiful <a href="https://personal.sron.nl/~pault/">colourblind-friendly palette</a>. Once again, I got pretty lucky in that my map didn&rsquo;t need more colours than the palette provides.</p>
 <h2 id="fine-tuning">Fine-Tuning</h2>
 <p>At this point the map was pretty much done, but there were a few final tweaks to do. Adding a drop-shadow to the whole layer to gives the map a bit more of a presence on the page, and makes it look a bit neater. QGIS also has a lovely &ldquo;Print Layout&rdquo; feature which lets you combine a map with various other decorations like legends and labels to create something ready for print, which let me add in the extra features you see.</p>
 <p>The other big change I chose to make was to add labels for any use of the &ldquo;All others&rdquo; colouration. Ths ensures that as much data was available to the viewer as possible while not being too overwhelming. It was, however, probably the most fiddly part of the whole setup as labelling the striped sections required a very specific labelling rule:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">CASE</span> 
-<span style="color:#66d9ef">WHEN</span> strpos(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Red Lion&#39;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">THEN</span> 
-	<span style="color:#66d9ef">if</span>(
-	  <span style="color:#e6db74">&#34;name_short&#34;</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;Red Lion&#39;</span>, 
-	  <span style="color:#66d9ef">replace</span>(<span style="color:#66d9ef">replace</span>(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Red Lion, or &#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), <span style="color:#e6db74">&#39;, or Red Lion&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), 
-	  <span style="color:#e6db74">&#39;&#39;</span>
-	)
-<span style="color:#66d9ef">WHEN</span> strpos(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Kings&#39;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">THEN</span> 
-	<span style="color:#66d9ef">if</span>(
-	  <span style="color:#e6db74">&#34;name_short&#34;</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;Kings&#39;</span>, 
-	  <span style="color:#66d9ef">replace</span>(<span style="color:#66d9ef">replace</span>(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Kings, or &#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), <span style="color:#e6db74">&#39;, or Kings&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), 
-	  <span style="color:#e6db74">&#39;&#39;</span>
-	)
-<span style="color:#66d9ef">WHEN</span> strpos(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Crown&#39;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">THEN</span> 
-	<span style="color:#66d9ef">if</span>(
-	  <span style="color:#e6db74">&#34;name_short&#34;</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;Crown&#39;</span>, 
-	  <span style="color:#66d9ef">replace</span>(<span style="color:#66d9ef">replace</span>(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Crown, or &#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), <span style="color:#e6db74">&#39;, or Crown&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), 
-	  <span style="color:#e6db74">&#39;&#39;</span>
-	)
-<span style="color:#66d9ef">WHEN</span> strpos(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Wheatsheaf&#39;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">THEN</span> 
-	<span style="color:#66d9ef">if</span>(
-	  <span style="color:#e6db74">&#34;name_short&#34;</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;Wheatsheaf&#39;</span>, 
-	  <span style="color:#66d9ef">replace</span>(<span style="color:#66d9ef">replace</span>(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Wheatsheaf, or &#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), <span style="color:#e6db74">&#39;, or Wheatsheaf&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), 
-	  <span style="color:#e6db74">&#39;&#39;</span>
-	)
-<span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#34;name_short&#34;</span> <span style="color:#66d9ef">in</span> (<span style="color:#e6db74">&#39;Black Bull&#39;</span>, <span style="color:#e6db74">&#39;Bull&#39;</span>, <span style="color:#e6db74">&#39;Bulls&#39;</span>, <span style="color:#e6db74">&#39;Railway&#39;</span>, <span style="color:#e6db74">&#39;White Horse&#39;</span>) <span style="color:#66d9ef">THEN</span> 
-    <span style="color:#e6db74">&#39;&#39;</span>
-<span style="color:#66d9ef">ELSE</span>
-    <span style="color:#e6db74">&#34;name_short&#34;</span>
-<span style="color:#66d9ef">END</span>
-</code></pre></div><p>This&hellip; works, but is rather inelegant and extremely fragile. As this is a one-off map, I&rsquo;m not too worried about this, but for any kind of ongoing analysis, I wouldn&rsquo;t recommend using something quite so hard-coded.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CASE</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHEN</span> strpos(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Red Lion&#39;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">THEN</span> 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(
+</span></span><span style="display:flex;"><span>	  <span style="color:#e6db74">&#34;name_short&#34;</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;Red Lion&#39;</span>, 
+</span></span><span style="display:flex;"><span>	  <span style="color:#66d9ef">replace</span>(<span style="color:#66d9ef">replace</span>(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Red Lion, or &#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), <span style="color:#e6db74">&#39;, or Red Lion&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), 
+</span></span><span style="display:flex;"><span>	  <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>	)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHEN</span> strpos(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Kings&#39;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">THEN</span> 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(
+</span></span><span style="display:flex;"><span>	  <span style="color:#e6db74">&#34;name_short&#34;</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;Kings&#39;</span>, 
+</span></span><span style="display:flex;"><span>	  <span style="color:#66d9ef">replace</span>(<span style="color:#66d9ef">replace</span>(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Kings, or &#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), <span style="color:#e6db74">&#39;, or Kings&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), 
+</span></span><span style="display:flex;"><span>	  <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>	)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHEN</span> strpos(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Crown&#39;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">THEN</span> 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(
+</span></span><span style="display:flex;"><span>	  <span style="color:#e6db74">&#34;name_short&#34;</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;Crown&#39;</span>, 
+</span></span><span style="display:flex;"><span>	  <span style="color:#66d9ef">replace</span>(<span style="color:#66d9ef">replace</span>(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Crown, or &#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), <span style="color:#e6db74">&#39;, or Crown&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), 
+</span></span><span style="display:flex;"><span>	  <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>	)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHEN</span> strpos(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Wheatsheaf&#39;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">THEN</span> 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span>(
+</span></span><span style="display:flex;"><span>	  <span style="color:#e6db74">&#34;name_short&#34;</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;Wheatsheaf&#39;</span>, 
+</span></span><span style="display:flex;"><span>	  <span style="color:#66d9ef">replace</span>(<span style="color:#66d9ef">replace</span>(<span style="color:#e6db74">&#34;name_short&#34;</span>, <span style="color:#e6db74">&#39;Wheatsheaf, or &#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), <span style="color:#e6db74">&#39;, or Wheatsheaf&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>), 
+</span></span><span style="display:flex;"><span>	  <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>	)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#34;name_short&#34;</span> <span style="color:#66d9ef">in</span> (<span style="color:#e6db74">&#39;Black Bull&#39;</span>, <span style="color:#e6db74">&#39;Bull&#39;</span>, <span style="color:#e6db74">&#39;Bulls&#39;</span>, <span style="color:#e6db74">&#39;Railway&#39;</span>, <span style="color:#e6db74">&#39;White Horse&#39;</span>) <span style="color:#66d9ef">THEN</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ELSE</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;name_short&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>
+</span></span></code></pre></div><p>This&hellip; works, but is rather inelegant and extremely fragile. As this is a one-off map, I&rsquo;m not too worried about this, but for any kind of ongoing analysis, I wouldn&rsquo;t recommend using something quite so hard-coded.</p>
 
   </div>
   

@@ -205,30 +205,30 @@ repository to detail the required modules. We also have a PyInstaller spec file,
 in this example called <code>hello.spec</code>, generated the first time PyInstaller is
 run (and modified if needs be). Assuming we want to build our executable with
 Python 3.7, our <code>.travis.yml</code> file looks as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">os</span>: <span style="color:#ae81ff">windows</span>
-<span style="color:#f92672">language</span>: <span style="color:#ae81ff">shell</span>
-<span style="color:#f92672">before_install</span>:
-  - <span style="color:#ae81ff">choco install python --version=3.7</span>
-  - <span style="color:#ae81ff">python -m pip install --upgrade pip</span>
-<span style="color:#f92672">env</span>: <span style="color:#ae81ff">PATH=/c/Python37:/c/Python37/Scripts:$PATH</span>
-<span style="color:#f92672">install</span>:
-  - <span style="color:#ae81ff">pip install -r requirements.txt</span>
-<span style="color:#f92672">script</span>:
-  - <span style="color:#ae81ff">bash -c echo &#34;Tests would go here&#34;</span>
-<span style="color:#f92672">before_deploy</span>:
-  - <span style="color:#ae81ff">pyinstaller &#34;hello.spec&#34;</span>
-<span style="color:#f92672">deploy</span>:
-  <span style="color:#f92672">provider</span>: <span style="color:#ae81ff">releases</span>
-  <span style="color:#f92672">api_key</span>: <span style="color:#ae81ff">$RELEASE_TOKEN</span>
-  <span style="color:#f92672">file_glob</span>: <span style="color:#66d9ef">true</span>
-  <span style="color:#f92672">file</span>: <span style="color:#ae81ff">dist/*.exe</span>
-  <span style="color:#f92672">skip_cleanup</span>: <span style="color:#66d9ef">true</span>
-  <span style="color:#f92672">draft</span>: <span style="color:#66d9ef">true</span>
-  <span style="color:#f92672">on</span>:
-    <span style="color:#f92672">tags</span>: <span style="color:#66d9ef">true</span>
-</code></pre></div><p>This is a fairly typical Travis file, but with a couple of  unusual parts to
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">os</span>: <span style="color:#ae81ff">windows</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">language</span>: <span style="color:#ae81ff">shell</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">before_install</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">choco install python --version=3.7</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">python -m pip install --upgrade pip</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>: <span style="color:#ae81ff">PATH=/c/Python37:/c/Python37/Scripts:$PATH</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">install</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">pip install -r requirements.txt</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">bash -c echo &#34;Tests would go here&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">before_deploy</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">pyinstaller &#34;hello.spec&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">provider</span>: <span style="color:#ae81ff">releases</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">api_key</span>: <span style="color:#ae81ff">$RELEASE_TOKEN</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">file_glob</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">file</span>: <span style="color:#ae81ff">dist/*.exe</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">skip_cleanup</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">draft</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">tags</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><p>This is a fairly typical Travis file, but with a couple of  unusual parts to
 it. First, you&rsquo;ll notice our language is listed as <code>shell</code> rather than <code>python</code>.
-This is because, unlike the OSX and Linx builds, Travis' Windows build doesn&rsquo;t
+This is because, unlike the OSX and Linx builds, Travis&rsquo; Windows build doesn&rsquo;t
 include a version of Python by default. However, it does include
 <a href="https://chocolatey.org/">chocolatey</a> which allows us to install Python fairly
 easily. If you have a more complicated Python set-up, chocolatey also has
@@ -291,18 +291,18 @@ executable added, like so:</p>
 <a href="https://docs.travis-ci.com/user/environment-variables/#default-environment-variables">default environment variables</a>
 is <code>TRAVIS_TAG</code>, which contains the Git Tag of a build if connected to one. This
 is perfect in our case, as we can add an extra line to our <code>.travis.yml</code> file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># ...</span>
-<span style="color:#f92672">deploy</span>:
-  <span style="color:#f92672">provider</span>: <span style="color:#ae81ff">releases</span>
-  <span style="color:#f92672">api_key</span>: <span style="color:#ae81ff">$RELEASE_TOKEN</span>
-  <span style="color:#f92672">file_glob</span>: <span style="color:#66d9ef">true</span>
-  <span style="color:#f92672">file</span>: <span style="color:#ae81ff">dist/*.exe</span>
-  <span style="color:#f92672">skip_cleanup</span>: <span style="color:#66d9ef">true</span>
-  <span style="color:#f92672">draft</span>: <span style="color:#66d9ef">true</span>
-  <span style="color:#f92672">on</span>:
-    <span style="color:#f92672">tags</span>: <span style="color:#66d9ef">true</span>
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">$TRAVIS_TAG (DRAFT)</span>
-</code></pre></div><p>With this, our draft Release will contain the name of the Git Tag used to create
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># ...</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">provider</span>: <span style="color:#ae81ff">releases</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">api_key</span>: <span style="color:#ae81ff">$RELEASE_TOKEN</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">file_glob</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">file</span>: <span style="color:#ae81ff">dist/*.exe</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">skip_cleanup</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">draft</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">tags</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">$TRAVIS_TAG (DRAFT)</span>
+</span></span></code></pre></div><p>With this, our draft Release will contain the name of the Git Tag used to create
 it, like so:</p>
 
   <div class="img-outer">
