@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ruszkow.ski/graphs/2022-11-01-basic-matplotlib-bar-plot-styling/</loc>
-    <lastmod>2022-11-01T20:16:30+00:00</lastmod>
+    <loc>https://ruszkow.ski/graphs/2022-12-31-2022-running-totals/</loc>
+    <lastmod>2022-12-31T16:30:06+00:00</lastmod>
   </url><url>
     <loc>https://ruszkow.ski/graphs/</loc>
-    <lastmod>2022-11-01T20:16:30+00:00</lastmod>
+    <lastmod>2022-12-31T16:30:06+00:00</lastmod>
   </url><url>
     <loc>https://ruszkow.ski/</loc>
+    <lastmod>2022-12-31T16:30:06+00:00</lastmod>
+  </url><url>
+    <loc>https://ruszkow.ski/graphs/2022-11-01-basic-matplotlib-bar-plot-styling/</loc>
     <lastmod>2022-11-01T20:16:30+00:00</lastmod>
   </url><url>
     <loc>https://ruszkow.ski/posts/2022-10-18-movie-game_an-introduction/</loc>

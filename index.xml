@@ -6,7 +6,17 @@
     <description>Recent content on ruszkow.ski</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Tue, 01 Nov 2022 20:16:30 +0000</lastBuildDate><atom:link href="https://ruszkow.ski/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Dec 2022 16:30:06 +0000</lastBuildDate><atom:link href="https://ruszkow.ski/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2022 Running Totals</title>
+      <link>https://ruszkow.ski/graphs/2022-12-31-2022-running-totals/</link>
+      <pubDate>Sat, 31 Dec 2022 16:30:06 +0000</pubDate>
+      
+      <guid>https://ruszkow.ski/graphs/2022-12-31-2022-running-totals/</guid>
+      <description>What? This year, as in the previous two, I&amp;rsquo;ve been running fairly regularly. I thought it might be interesting to plot my runs across the year. In particular, I had two targets that I&amp;rsquo;d set out at the start of the year:
+To run over 100km every month To run a half-marathon every month I managed to hit the first (despite two bouts of COVID!) but unfortunately missed the second by a single month - I&amp;rsquo;d left my half for June until the last weekend in the month and woke up on the Sunday morning feeling rotten, so only managed a shorter run.</description>
+    </item>
+    
     <item>
       <title>Basic matplotlib Bar Plot Styling</title>
       <link>https://ruszkow.ski/graphs/2022-11-01-basic-matplotlib-bar-plot-styling/</link>
