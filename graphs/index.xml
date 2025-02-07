@@ -4,201 +4,142 @@
     <title>Graphs on ruszkow.ski</title>
     <link>https://ruszkow.ski/graphs/</link>
     <description>Recent content in Graphs on ruszkow.ski</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-uk</language>
-    <lastBuildDate>Sat, 31 Dec 2022 16:30:06 +0000</lastBuildDate><atom:link href="https://ruszkow.ski/graphs/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 31 Dec 2022 16:30:06 +0000</lastBuildDate>
+    <atom:link href="https://ruszkow.ski/graphs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2022 Running Totals</title>
       <link>https://ruszkow.ski/graphs/2022-12-31-2022-running-totals/</link>
       <pubDate>Sat, 31 Dec 2022 16:30:06 +0000</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2022-12-31-2022-running-totals/</guid>
-      <description>What? This year, as in the previous two, I&amp;rsquo;ve been running fairly regularly. I thought it might be interesting to plot my runs across the year. In particular, I had two targets that I&amp;rsquo;d set out at the start of the year:
-To run over 100km every month To run a half-marathon every month I managed to hit the first (despite two bouts of COVID!) but unfortunately missed the second by a single month - I&amp;rsquo;d left my half for June until the last weekend in the month and woke up on the Sunday morning feeling rotten, so only managed a shorter run.</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;This year, as in the previous two, I&amp;rsquo;ve been running fairly regularly. I thought it might be interesting to plot my runs across the year. In particular, I had two targets that I&amp;rsquo;d set out at the start of the year:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;To run over 100km every month&lt;/li&gt;&#xA;&lt;li&gt;To run a half-marathon every month&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;I managed to hit the first (despite two bouts of COVID!) but unfortunately missed the second by a single month - I&amp;rsquo;d left my half for June until the last weekend in the month and woke up on the Sunday morning feeling rotten, so only managed a shorter run. 11/12 isn&amp;rsquo;t too bad though!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Basic matplotlib Bar Plot Styling</title>
       <link>https://ruszkow.ski/graphs/2022-11-01-basic-matplotlib-bar-plot-styling/</link>
       <pubDate>Tue, 01 Nov 2022 20:16:30 +0000</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2022-11-01-basic-matplotlib-bar-plot-styling/</guid>
-      <description>What? Last week, my friend&amp;rsquo;s partner was telling me he was starting to look at plotting in Python. Between this and various people at work getting started with matplotlib, I thought it might be helpful to do some step-by-step cheatsheets to show how to interact with different chart elements in matplotlib. Bar plots are one of the most basic (and useful!) plots, so I thought I&amp;rsquo;d start there.
-In total there are nine different elements covered here, from top-left to bottom right:</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;Last week, my friend&amp;rsquo;s partner was telling me he was starting to look at plotting in Python. Between this and various people at work  getting started with &lt;code&gt;matplotlib&lt;/code&gt;, I thought it might be helpful to do some step-by-step cheatsheets to show how to interact with different chart elements in &lt;code&gt;matplotlib&lt;/code&gt;. Bar plots are one of the most basic (and useful!) plots, so I thought I&amp;rsquo;d start there.&lt;/p&gt;&#xA;&lt;p&gt;In total there are nine different elements covered here, from top-left to bottom right:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Sunshine on Leith</title>
       <link>https://ruszkow.ski/graphs/2022-01-04-sunshine-on-leith/</link>
       <pubDate>Tue, 04 Jan 2022 21:44:40 +0000</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2022-01-04-sunshine-on-leith/</guid>
-      <description>What? I recently saw a very nice tweet about sunrise and sunset times in London. It looked a lot like a matplotlib graph, so I decided to look into how it could have been made. A bit of googling took me to an excellent blog post about undertaking very similar tasks, from which I learned about different kinds of twilight. I then realised switching the focus to Edinburgh gave an opportunity for a terrible pun and decided to make my own, so here we are.</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;I recently saw a &lt;a href=&#34;https://twitter.com/setalyas/status/1476864080371720197&#34;&gt;very nice tweet&lt;/a&gt; about sunrise and sunset times in London. It looked a lot like a &lt;code&gt;matplotlib&lt;/code&gt; graph, so I decided to look into how it could have been made. A bit of googling took me to an &lt;a href=&#34;https://chrisramsay.co.uk/posts/2017/03/fun-with-the-sun-and-pyephem/&#34;&gt;excellent blog post&lt;/a&gt; about undertaking very similar tasks, from which I learned about &lt;em&gt;different kinds of twilight&lt;/em&gt;. I then realised switching the focus to Edinburgh gave an opportunity for a terrible pun and decided to make my own, so here we are.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>IMDb Series Rating Summaries</title>
       <link>https://ruszkow.ski/graphs/2021-06-27-imdb-series-rating-summaries/</link>
       <pubDate>Sun, 27 Jun 2021 19:23:25 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2021-06-27-imdb-series-rating-summaries/</guid>
-      <description>What? As I mentioned in the summary of my highest rated TV shows on IMDb graph, I originally started trying to summarise user ratings for every episode of an individual series. It took a bit more work, but I think I&amp;rsquo;ve got something reasonable now. The layout I decided on ultimately was a scatter plot showing the season averages above a heatmap showing the rating for every episode, highlighting the overall highest and lowest rated episodes too.</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;As I mentioned in the summary of my &lt;a href=&#34;https://ruszkow.ski/graphs/2021-06-23-imdbs-highest-rated-tv-series/&#34;&gt;highest rated TV shows on IMDb&lt;/a&gt; graph, I originally started trying to summarise user ratings for every episode of an individual series. It took a bit more work, but I think I&amp;rsquo;ve got something reasonable now. The layout I decided on ultimately was a scatter plot showing the season averages above a heatmap showing the rating for every episode, highlighting the overall highest and lowest rated episodes too.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>IMDb&#39;s Highest Rated TV Series</title>
       <link>https://ruszkow.ski/graphs/2021-06-23-imdbs-highest-rated-tv-series/</link>
       <pubDate>Wed, 23 Jun 2021 22:36:42 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2021-06-23-imdbs-highest-rated-tv-series/</guid>
-      <description>Note: this graph works best if you load it in its own tab, zoom in and scroll around. Have fun!
-What? Sometimes I like to look through posts on r/dataisbeautiful for graph inspiration. There can definitely be a lot of noise, but it also has a lot good ideas for data sources and visualisations. I&amp;rsquo;m pretty sure it was on there that I first saw graphs showing IMDb ratings for different films and TV series, which in turn lead me (inevitably) to IMDbPY.</description>
+      <description>&lt;p&gt;&lt;em&gt;Note: this graph works best if you load it in its own tab, zoom in and scroll around. Have fun!&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;Sometimes I like to look through posts on &lt;a href=&#34;https://reddit.com/r/dataisbeautiful&#34;&gt;r/dataisbeautiful&lt;/a&gt; for graph inspiration. There can definitely be a lot of noise, but it also has a lot good ideas for data sources and visualisations. I&amp;rsquo;m pretty sure it was on there that I first saw graphs showing IMDb ratings for different films and TV series, which in turn lead me (inevitably) to &lt;a href=&#34;https://imdbpy.github.io/&#34;&gt;&lt;code&gt;IMDbPY&lt;/code&gt;&lt;/a&gt;. Whenever I&amp;rsquo;m thinking of checking out a different API, there&amp;rsquo;s probably already a Python module for that.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Pub Names</title>
       <link>https://ruszkow.ski/graphs/2021-03-23-pub-names/</link>
       <pubDate>Tue, 23 Mar 2021 19:11:59 +0000</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2021-03-23-pub-names/</guid>
-      <description>What? A year into lockdown, one of the things I miss the most is going to the pub. Being at home hasn&amp;rsquo;t stopped me from drinking beers and talking nonsense at my friends, but it&amp;rsquo;s not quite the same through a screen is it? So, what&amp;rsquo;s my best alternative? Making graphs about pub names. That&amp;rsquo;s definitely it.
-I&amp;rsquo;ve separated this out by each country in Great Britain, so here are the graphs for England and Wales, as well as the Scotland one up there in the header.</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;A year into lockdown, one of the things I miss the most is going to the pub. Being at home hasn&amp;rsquo;t &lt;em&gt;stopped&lt;/em&gt; me from drinking beers and talking nonsense at my friends, but it&amp;rsquo;s not quite the same through a screen is it? So, what&amp;rsquo;s my best alternative? Making graphs about pub names. That&amp;rsquo;s definitely it.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve separated this out by each country in Great Britain, so here are the graphs for England and Wales, as well as the Scotland one up there in the header.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Covid-19 Vaccinations</title>
       <link>https://ruszkow.ski/graphs/2021-01-21-covid-19-vaccinations/</link>
       <pubDate>Thu, 21 Jan 2021 21:47:25 +0000</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2021-01-21-covid-19-vaccinations/</guid>
-      <description>What? The UK government has been offering up a lot of open data through its Coronavirus data portal, but much of it is intense and slightly stressful. One perhaps more positive piece of information it offers is the number of vaccinations that have been provided, for both the first and second stage. I decided that might be something a bit nicer to plot.
-How? So not only is the government offering up a lot of open data, they&amp;rsquo;ve also provided a Python module for easy access to the data, including directly to pandas dataframes.</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;The UK government has been offering up a lot of open data through its&#xA;&lt;a href=&#34;https://coronavirus.data.gov.uk/&#34;&gt;Coronavirus data portal&lt;/a&gt;, but much of it is&#xA;intense and slightly stressful. One perhaps more positive piece of information&#xA;it offers is the number of vaccinations that have been provided, for both the&#xA;first and second stage. I decided that might be something a bit nicer to plot.&lt;/p&gt;&#xA;&lt;h1 id=&#34;how&#34;&gt;How?&lt;/h1&gt;&#xA;&lt;p&gt;So not only is the government offering up a lot of open data, they&amp;rsquo;ve also&#xA;provided a&#xA;&lt;a href=&#34;https://github.com/publichealthengland/coronavirus-dashboard-api-python-sdk&#34;&gt;Python module&lt;/a&gt;&#xA;for easy access to the data, including directly to &lt;code&gt;pandas&lt;/code&gt; dataframes. From&#xA;there it was extremely easy to pull together the data, and there&amp;rsquo;s nothing&#xA;particularly fancy about the graph itself.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Halloween Heartrate</title>
       <link>https://ruszkow.ski/graphs/2020-11-03-halloween-heartrate/</link>
       <pubDate>Tue, 03 Nov 2020 22:30:31 +0000</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2020-11-03-halloween-heartrate/</guid>
-      <description>What? After watching the films I mentioned in my Halloween timetable graph, I realised that my watch would have been tracking my heart rate right the way through each film, and thought it might be fun to see if my heart rate had been particularly affected by any of the films.
-On looking at the data, nothing seemed particularly out of the ordinary - except one massive spike during Scream. Thinking about it, this also happened to correspond to a parcel arriving at the flat - so the buzzer going managed to scare me more than any film.</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;After watching the films I mentioned in my&#xA;&lt;a href=&#34;https://ruszkow.ski/graphs/2020-11-03-halloween-timetable/&#34;&gt;Halloween timetable&lt;/a&gt; graph,&#xA;I realised that my watch would have been tracking my heart rate right the way&#xA;through each film, and thought it might be fun to see if my heart rate had been&#xA;particularly affected by any of the films.&lt;/p&gt;&#xA;&lt;p&gt;On looking at the data, nothing seemed particularly out of the ordinary - except&#xA;one massive spike during Scream. Thinking about it, this also happened to&#xA;correspond to a parcel arriving at the flat - so the buzzer going managed to&#xA;scare me more than any film. Sounds about right.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Halloween Timetable</title>
       <link>https://ruszkow.ski/graphs/2020-11-03-halloween-timetable/</link>
       <pubDate>Tue, 03 Nov 2020 21:39:52 +0000</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2020-11-03-halloween-timetable/</guid>
-      <description>What? Generally, I&amp;rsquo;m not very into horror films - I&amp;rsquo;m just not that into getting scared, and I tend to scare quite easily. Spooky season is spooky season though, and when my pal Mike decided to run a vote to pick films for a Halloween movie marathon on our Discord server (thanks Mike!), I couldn&amp;rsquo;t help but make a timetable for it.
-How? Hello there matplotlib, my old friend. As if it would be anything else.</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;Generally, I&amp;rsquo;m not very into horror films - I&amp;rsquo;m just not that into getting&#xA;scared, and I tend to scare quite easily. Spooky season &lt;strong&gt;is&lt;/strong&gt; spooky season&#xA;though, and when my pal &lt;a href=&#34;https://twitter.com/BeardedBakery&#34;&gt;Mike&lt;/a&gt; decided to run&#xA;a vote to pick films for a Halloween movie marathon on our Discord server&#xA;(thanks Mike!), I couldn&amp;rsquo;t help but make a timetable for it.&lt;/p&gt;&#xA;&lt;h1 id=&#34;how&#34;&gt;How?&lt;/h1&gt;&#xA;&lt;p&gt;Hello there &lt;code&gt;matplotlib&lt;/code&gt;, my old friend. As if it would be anything else.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Biffy Clyro Chart Positions</title>
       <link>https://ruszkow.ski/graphs/2020-09-26-biffy-clyro-chart-positions/</link>
       <pubDate>Sat, 26 Sep 2020 16:43:18 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2020-09-26-biffy-clyro-chart-positions/</guid>
-      <description>What? This graph shows the peak UK chart position reached by each release from Scotland&amp;rsquo;s greatest band, Biffy Clyro, to have cracked the top 100. Each point is scaled in line with the number of weeks the release has spent in the top 100.
-I first came across the idea of a &amp;ldquo;lollipop&amp;rdquo; charts through Spotify&amp;rsquo;s chartify library a while ago, and have been trying to think of something that would look good as one.</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;This graph shows the peak UK chart position reached by each release from&#xA;Scotland&amp;rsquo;s greatest band, Biffy Clyro, to have cracked the top 100. Each point&#xA;is scaled in line with the number of weeks the release has spent in the top 100.&lt;/p&gt;&#xA;&lt;p&gt;I first came across the idea of a &amp;ldquo;lollipop&amp;rdquo; charts through Spotify&amp;rsquo;s&#xA;&lt;a href=&#34;https://github.com/spotify/chartify&#34;&gt;&lt;code&gt;chartify&lt;/code&gt;&lt;/a&gt; library a while ago, and&#xA;have been trying to think of something that would look good as one. Biffy&amp;rsquo;s&#xA;latest album, &lt;em&gt;A Celebration of Endings&lt;/em&gt;, managed to reach number one in the&#xA;album charts, and that got me thinking about how their previous releases had&#xA;performed in the charts.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Download Headliners</title>
       <link>https://ruszkow.ski/graphs/2020-09-12-download-headliners/</link>
       <pubDate>Sat, 12 Sep 2020 17:24:49 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2020-09-12-download-headliners/</guid>
-      <description>What? The first festival I ever went to was Download at Donington Park, in 2005. My dad and I returned in 2006 and 2007 - he&amp;rsquo;s been back a few more times since, I&amp;rsquo;ve not but it still holds a special place in my heart.
-One criticism that gets levelled at the festival is that its headliners tend to be taken from a small pool of bands, so I decided to actually graph it.</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;The first festival I ever went to was Download at Donington Park, in 2005. My&#xA;dad and I returned in 2006 and 2007 - he&amp;rsquo;s been back a few more times since,&#xA;I&amp;rsquo;ve not but it still holds a special place in my heart.&lt;/p&gt;&#xA;&lt;p&gt;One criticism that gets levelled at the festival is that its headliners tend to&#xA;be taken from a small pool of bands, so I decided to actually graph it. What we&#xA;see is that from around 2011 onwards new main stage headliners become decidedly&#xA;less frequent, with one new headliner &lt;em&gt;at most&lt;/em&gt; appearing in a given year.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Big Five Champions</title>
       <link>https://ruszkow.ski/graphs/2020-07-30-big-five-champions/</link>
       <pubDate>Thu, 30 Jul 2020 18:36:00 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2020-07-30-big-five-champions/</guid>
-      <description>Update 2021-06-01: updated to include 2020-2021 season, and some visual tweaks
-What? Yet another football graph, and yet another bar chart. This one needs to be viewed in full-screen to get the full effect!
-As the (Coronavirus-prolonged) 2019-2020 football season finally draws to a close across Europe the traditional &amp;ldquo;big five&amp;rdquo; leagues (England, France, Germany, Italy and Spain) seemed to be won by the expected teams, with Liverpool&amp;rsquo;s first English title for 30 years proving somewhat of an outlier.</description>
+      <description>&lt;p&gt;&lt;em&gt;Update 2021-06-01: updated to include 2020-2021 season, and some visual tweaks&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;Yet another football graph, and yet another bar chart. This one needs to be&#xA;viewed in full-screen to get the full effect!&lt;/p&gt;&#xA;&lt;p&gt;As the (Coronavirus-prolonged) 2019-2020 football season finally draws to a&#xA;close across Europe the traditional &amp;ldquo;big five&amp;rdquo; leagues (England, France,&#xA;Germany, Italy and Spain) seemed to be won by the expected teams, with&#xA;Liverpool&amp;rsquo;s first English title for 30 years proving somewhat of an outlier.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>UK Bisexual Population</title>
       <link>https://ruszkow.ski/graphs/2020-07-07-uk-bisexual-population/</link>
       <pubDate>Tue, 07 Jul 2020 19:07:59 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2020-07-07-uk-bisexual-population/</guid>
-      <description>What? Some friends of mine run the excellent Bi History Instagram account that provides useful information and resources about bisexuality. I&amp;rsquo;ve been trying to think of a way I could produce some nice graphs for them, but sadly there seems to be a dearth of good, reliable data sources on this topic. There is, however, an ONS survey on &amp;ldquo;Sexual Orientation&amp;rdquo; that provides estimates of the UK&amp;rsquo;s LGB population across various classifications.</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;Some friends of mine run the excellent &lt;a href=&#34;https://www.instagram.com/bihistory/&#34;&gt;Bi History&lt;/a&gt;&#xA;Instagram account that provides useful information and resources about&#xA;bisexuality. I&amp;rsquo;ve been trying to think of a way I could produce some nice graphs&#xA;for them, but sadly there seems to be a dearth of good, reliable data sources on&#xA;this topic. There is, however, an ONS survey on &amp;ldquo;Sexual Orientation&amp;rdquo; that&#xA;provides estimates of the UK&amp;rsquo;s LGB population across various classifications.&#xA;The sections offering the most interesting and &amp;ldquo;reliable&amp;rdquo; (ONS&amp;rsquo; definition, not&#xA;mine) populations for bisexuality were the total UK population by year, and the&#xA;population by age group for the latest available year of 2018.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Football League Seasons</title>
       <link>https://ruszkow.ski/graphs/2020-06-28-football-league-seasons/</link>
       <pubDate>Sun, 28 Jun 2020 18:35:59 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2020-06-28-football-league-seasons/</guid>
-      <description>What? Generally, I like to complain about my football club. Being a Port Vale fan is exhilirating at the best of times but heartbreaking at the worst. There is, at time of writing, a slightly hidden presentation on this very site that talks a bit about that. See if you can find it (or, ask me and I&amp;rsquo;ll probably just send you the link).
-A good while ago, I heard the stat that Vale were the team who had spent the most seasons in the Football League (as in, the top four tiers of professional football in England) without ever playing in the top flight.</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;Generally, I like to complain about my football club. Being a Port Vale fan is&#xA;exhilirating at the best of times but heartbreaking at the worst. There is, at&#xA;time of writing, a slightly hidden presentation on this very site that talks a&#xA;bit about that. See if you can find it (or, ask me and I&amp;rsquo;ll probably just send&#xA;you the link).&lt;/p&gt;&#xA;&lt;p&gt;A good while ago, I heard the stat that Vale were the team who had spent the&#xA;most seasons in the Football League (as in, the top four tiers of professional&#xA;football in England) without ever playing in the top flight. This was believable&#xA;enough that I&amp;rsquo;ve quoted it a fair few times, but never actually bothered&#xA;checking the data. I realised I should probably actually confirm this, and it&#xA;turns out it was accurate - though it is a title we share with Lincoln City.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>2019 Gigs</title>
       <link>https://ruszkow.ski/graphs/2020-01-28-2019-gigs/</link>
       <pubDate>Tue, 28 Jan 2020 22:24:30 +0000</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2020-01-28-2019-gigs/</guid>
-      <description>What? A calendar plot showing every gig I went to last year, including festivals. Every orange square represents a day where I saw live music, in effect. Mid-September to mid-December was a bit of a wild time.
-How? The two steps needed to produce this are almost entirely separate:
-Getting and processing the data Producing the graph Getting the data Google allows you to download an ICS file of all of your calendar events via its export functionality.</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;A calendar plot showing every gig I went to last year, including festivals.&#xA;Every orange square represents a day where I saw live music, in effect.&#xA;Mid-September to mid-December was a bit of a wild time.&lt;/p&gt;&#xA;&lt;h1 id=&#34;how&#34;&gt;How?&lt;/h1&gt;&#xA;&lt;p&gt;The two steps needed to produce this are almost entirely separate:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Getting and processing the data&lt;/li&gt;&#xA;&lt;li&gt;Producing the graph&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;getting-the-data&#34;&gt;Getting the data&lt;/h2&gt;&#xA;&lt;p&gt;Google allows you to download an ICS file of all of your calendar events via its&#xA;&lt;a href=&#34;https://calendar.google.com/calendar/r/settings/export&#34;&gt;export&lt;/a&gt; functionality.&#xA;This, however, contains &lt;em&gt;all&lt;/em&gt; events from your calendar, so it needs a bit of&#xA;work. I wrote a short script to extract all of the 2019 events, and then&#xA;manually deleted rows that didn&amp;rsquo;t relate to gigs. Is it elegant? No, but the&#xA;majority of events in my calendar are indeed gigs, so it wasn&amp;rsquo;t too much effort.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>English Football&#39;s Top Goalscorers</title>
       <link>https://ruszkow.ski/graphs/2019-10-29-english-footballs-top-goalscorers/</link>
       <pubDate>Mon, 28 Oct 2019 23:13:40 +0000</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2019-10-29-english-footballs-top-goalscorers/</guid>
-      <description>What? The top 8 all-time goalscorers in English football. Why 8? Well, I wanted to do the top 10 but couldn&amp;rsquo;t get PyWaffle to play well with subplots and 10 or more figures. Plus, nobody wants to see 9 figures, so 8 it is.
-How? The &amp;ldquo;What&amp;rdquo; section kind of gave this away, but it comes through using subplots in PyWaffle, as suggested by the docs.
-The main issue with this was trying to use the flat version of the font for the individual waffle titles and the 3D font for the main header.</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;The top 8 all-time goalscorers in English football. Why 8? Well, I wanted to do&#xA;the top 10 but couldn&amp;rsquo;t get &lt;code&gt;PyWaffle&lt;/code&gt; to play well with &lt;code&gt;subplots&lt;/code&gt; and 10 or&#xA;more figures. Plus, nobody wants to see 9 figures, so 8 it is.&lt;/p&gt;&#xA;&lt;h1 id=&#34;how&#34;&gt;How?&lt;/h1&gt;&#xA;&lt;p&gt;The &amp;ldquo;What&amp;rdquo; section kind of gave this away, but it comes through using &lt;code&gt;subplots&lt;/code&gt;&#xA;in &lt;code&gt;PyWaffle&lt;/code&gt;, as suggested by the docs.&lt;/p&gt;&#xA;&lt;p&gt;The main issue with this was trying to use the flat version of the font for the&#xA;individual waffle titles and the 3D font for the main header. The issue is that&#xA;when installed, the font shows as two separate &amp;ldquo;faces&amp;rdquo; in Windows. I couldn&amp;rsquo;t&#xA;work out how to get &lt;code&gt;matplotlib&lt;/code&gt; to distinguish between the two, so as a&#xA;workaround I just linked directly to the fonts.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Edinburgh 2017 Temperatures</title>
       <link>https://ruszkow.ski/graphs/2019-10-10-edinburgh-2017-temperatures/</link>
       <pubDate>Thu, 10 Oct 2019 23:15:26 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2019-10-10-edinburgh-2017-temperatures/</guid>
-      <description>What? A ridge plot (i.e. overlapping distributions) showing the average hourly temperatures at a particular location in Edinburgh in 2017, for the roughly daytime hours of 7am-7pm.
-How? This is based quite heavily on an example given as part of the seaborn documentation. The only real tweaks made to This are to use the average temperature to determine the hue rather than just the row and some neat labelling.
-This site has long-term data available so ideally I&amp;rsquo;d like to create an animation showing the changes in temperature over time, though that seems like an optimistic goal at the moment!</description>
+      <description>&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;A ridge plot (i.e. overlapping distributions) showing the average hourly&#xA;temperatures at a particular location in Edinburgh in 2017, for the roughly&#xA;daytime hours of 7am-7pm.&lt;/p&gt;&#xA;&lt;h1 id=&#34;how&#34;&gt;How?&lt;/h1&gt;&#xA;&lt;p&gt;This is based quite heavily on&#xA;&lt;a href=&#34;https://seaborn.pydata.org/examples/kde_ridgeplot.html&#34;&gt;an example&lt;/a&gt;&#xA;given as part of the &lt;code&gt;seaborn&lt;/code&gt; documentation. The only real tweaks made to This&#xA;are to use the average temperature to determine the hue rather than just the row&#xA;and some neat labelling.&lt;/p&gt;&#xA;&lt;p&gt;This site has long-term data available so ideally I&amp;rsquo;d like to create an&#xA;animation showing the changes in temperature over time, though that seems like&#xA;an optimistic goal at the moment!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>NFL Injury Data</title>
       <link>https://ruszkow.ski/graphs/2019-10-07-nfl-injury-data/</link>
       <pubDate>Mon, 07 Oct 2019 21:47:04 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2019-10-07-nfl-injury-data/</guid>
-      <description>Update 2021-04-30: Graphs updated with 2020 data, and a nicer font (Bariol, from Atipo Foundry) Update 2020-02-16: Graphs updated with 2019 data
-What? The NFL puts out injury data each year, covering three areas. The cover image for this post provides the headline stat of concussions, but information is also provided for ACL Tears: and MCL Tears: How? A stacked bar chart in matplotlib, with a bit of post-processing to make the graphs look nice.</description>
+      <description>&lt;p&gt;&lt;em&gt;Update 2021-04-30: Graphs updated with 2020 data, and a nicer font (Bariol, from Atipo Foundry)&lt;/em&gt;&#xA;&lt;em&gt;Update 2020-02-16: Graphs updated with 2019 data&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;The NFL puts out injury data each year, covering three areas. The cover image&#xA;for this post provides the headline stat of concussions, but information is also&#xA;provided for ACL Tears:&#xA;&#xA;  &lt;div class=&#34;img-outer&#34;&gt;&#xA;    &lt;a href=&#34;https://ruszkow.ski/img/graphs/nfl-injuries/acl-tears.png&#34; target=&#34;_blank&#34;&gt;&#xA;      &lt;img class=&#34;scaled-img&#34; src=&#34;https://ruszkow.ski/img/graphs/nfl-injuries/acl-tears.png&#34;&gt;&#xA;    &lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;and MCL Tears:&#xA;&#xA;  &lt;div class=&#34;img-outer&#34;&gt;&#xA;    &lt;a href=&#34;https://ruszkow.ski/img/graphs/nfl-injuries/mcl-tears.png&#34; target=&#34;_blank&#34;&gt;&#xA;      &lt;img class=&#34;scaled-img&#34; src=&#34;https://ruszkow.ski/img/graphs/nfl-injuries/mcl-tears.png&#34;&gt;&#xA;    &lt;/a&gt;&#xA;  &lt;/div&gt;&#xA;&#xA;&lt;/p&gt;&#xA;&lt;h1 id=&#34;how&#34;&gt;How?&lt;/h1&gt;&#xA;&lt;p&gt;A stacked bar chart in &lt;code&gt;matplotlib&lt;/code&gt;, with a bit of post-processing to make the&#xA;graphs look nice. Honestly, the biggest hassle involved in making these graphs&#xA;was getting the data itself, as the NFL inexplicably only seems to embed the&#xA;values as images.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Astronauts</title>
       <link>https://ruszkow.ski/graphs/2019-09-16-astronauts/</link>
       <pubDate>Mon, 16 Sep 2019 23:13:29 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/graphs/2019-09-16-astronauts/</guid>
-      <description>Update 2019-10-22: PyWaffle version updated to allow use of vertical
-What? A waffle chart showing the number of astronauts to have achieved distance milestones in space.
-Space is cool, humans travelling in space is extra cool and this gives an interesting way to see that a perhaps surprisingly large number of humans have travelled to space, though very few have actually set foot on the moon.
-It was somewhat difficult to find precise details about this - hence the slightly old date associated with the values.</description>
+      <description>&lt;p&gt;&lt;em&gt;Update 2019-10-22: PyWaffle version updated to allow use of &lt;code&gt;vertical&lt;/code&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;what&#34;&gt;What?&lt;/h1&gt;&#xA;&lt;p&gt;A waffle chart showing the number of astronauts to have achieved distance&#xA;milestones in space.&lt;/p&gt;&#xA;&lt;p&gt;Space is cool, humans travelling in space is extra cool and this gives an&#xA;interesting way to see that a perhaps surprisingly large number of humans have&#xA;travelled to space, though very few have actually set foot on the moon.&lt;/p&gt;&#xA;&lt;p&gt;It was somewhat difficult to find precise details about this - hence the&#xA;slightly old date associated with the values. This is my best interpretation of&#xA;what&amp;rsquo;s on Wikipedia.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

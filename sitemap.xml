@@ -2,13 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ruszkow.ski/posts/2025-02-01-culture-corner_january-2025/</loc>
+    <lastmod>2025-02-01T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruszkow.ski/tags/nonsense/</loc>
+    <lastmod>2025-02-01T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruszkow.ski/posts/</loc>
+    <lastmod>2025-02-01T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruszkow.ski/</loc>
+    <lastmod>2025-02-01T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ruszkow.ski/tags/</loc>
+    <lastmod>2025-02-01T12:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://ruszkow.ski/graphs/2022-12-31-2022-running-totals/</loc>
     <lastmod>2022-12-31T16:30:06+00:00</lastmod>
   </url><url>
     <loc>https://ruszkow.ski/graphs/</loc>
-    <lastmod>2022-12-31T16:30:06+00:00</lastmod>
-  </url><url>
-    <loc>https://ruszkow.ski/</loc>
     <lastmod>2022-12-31T16:30:06+00:00</lastmod>
   </url><url>
     <loc>https://ruszkow.ski/graphs/2022-11-01-basic-matplotlib-bar-plot-styling/</loc>
@@ -17,13 +29,7 @@
     <loc>https://ruszkow.ski/posts/2022-10-18-movie-game_an-introduction/</loc>
     <lastmod>2022-10-18T20:20:10+01:00</lastmod>
   </url><url>
-    <loc>https://ruszkow.ski/posts/</loc>
-    <lastmod>2022-10-18T20:20:10+01:00</lastmod>
-  </url><url>
     <loc>https://ruszkow.ski/tags/python/</loc>
-    <lastmod>2022-10-18T20:20:10+01:00</lastmod>
-  </url><url>
-    <loc>https://ruszkow.ski/tags/</loc>
     <lastmod>2022-10-18T20:20:10+01:00</lastmod>
   </url><url>
     <loc>https://ruszkow.ski/graphs/2022-01-04-sunshine-on-leith/</loc>

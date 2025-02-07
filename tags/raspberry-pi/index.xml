@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>raspberry-pi on ruszkow.ski</title>
+    <title>Raspberry-Pi on ruszkow.ski</title>
     <link>https://ruszkow.ski/tags/raspberry-pi/</link>
-    <description>Recent content in raspberry-pi on ruszkow.ski</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-uk</language>
-    <lastBuildDate>Mon, 09 Sep 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ruszkow.ski/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Raspberry-Pi on ruszkow.ski</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 09 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ruszkow.ski/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>An Initial Set-Up of PiHole</title>
       <link>https://ruszkow.ski/posts/pihole-setup/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://ruszkow.ski/posts/pihole-setup/</guid>
-      <description>PiHole Set-Up Equipment Already had most of the things required, needed: Micro-USB to Ethernet cable microSD card Short Ethernet cable Setting up the Raspberry Pi Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!</description>
+      <description>&lt;h1 id=&#34;pihole-set-up&#34;&gt;PiHole Set-Up&lt;/h1&gt;&#xA;&lt;h2 id=&#34;equipment&#34;&gt;Equipment&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Already had most of the things required, needed:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Micro-USB to Ethernet cable&lt;/li&gt;&#xA;&lt;li&gt;microSD card&lt;/li&gt;&#xA;&lt;li&gt;Short Ethernet cable&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;setting-up-the-raspberry-pi&#34;&gt;Setting up the Raspberry Pi&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Download Raspbian Lite image (for the time being, we only want to use&#xA;this for PiHole)&lt;/li&gt;&#xA;&lt;li&gt;Flash onto microSD with Etcher&lt;/li&gt;&#xA;&lt;li&gt;Plug everything in&lt;/li&gt;&#xA;&lt;li&gt;Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen&lt;/li&gt;&#xA;&lt;li&gt;Change the default password on activating SSH (we&amp;rsquo;ll fix this later but&#xA;it&amp;rsquo;s still good to get this done early)&lt;/li&gt;&#xA;&lt;li&gt;Shutdown, unplug screen etc, set up cables as actually desired and re-plug in&lt;/li&gt;&#xA;&lt;li&gt;SSH in!&lt;/li&gt;&#xA;&lt;li&gt;Run updates (&lt;code&gt;sudo apt-get update&lt;/code&gt;, &lt;code&gt;sudo apt-get upgrade&lt;/code&gt;), reboot&lt;/li&gt;&#xA;&lt;li&gt;Set up SSH&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ cd ~&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ mkdir .ssh&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ cd .ssh&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ nano authorized_keys&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;&#xA;&lt;li&gt;Use PuTTYgen to generate keys&lt;/li&gt;&#xA;&lt;li&gt;Cock-up 2: PuTTYgen&amp;rsquo;s default public key is in an incompatible format.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Delete first two rows and last row&lt;/li&gt;&#xA;&lt;li&gt;Add &lt;code&gt;ssh-rsa &lt;/code&gt; before the key&lt;/li&gt;&#xA;&lt;li&gt;Delete all carriage returns&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Reboot to check it works&lt;/li&gt;&#xA;&lt;li&gt;Remove password authentication&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;installing-pihole&#34;&gt;Installing PiHole&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;curl -sSL https://install.pi-hole.net | bash&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Change from the default web admin password with &lt;code&gt;pihole -a -p&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
-    
   </channel>
 </rss>

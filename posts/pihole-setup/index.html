@@ -3,11 +3,11 @@
 <head>
   <script src="https://kit.fontawesome.com/5063c00b10.js"></script>
   
-    <title>An Initial Set-Up of PiHole :: ruszkow.ski — data, graphs and other nonsense</title>
+    <title>An Initial Set-Up of PiHole :: ruszkow.ski</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="description" content="PiHole Set-Up Equipment Already had most of the things required, needed: Micro-USB to Ethernet cable microSD card Short Ethernet cable Setting up the Raspberry Pi Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!"/>
+<meta name="description" content="PiHole Set-Up Equipment Already had most of the things required, needed: Micro-USB to Ethernet cable microSD card Short Ethernet cable Setting up the Raspberry Pi Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&rsquo;ll fix this later but it&rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in! Run updates (sudo apt-get update, sudo apt-get upgrade), reboot Set up SSH $ cd ~ $ mkdir .ssh $ cd .ssh $ nano authorized_keys Use PuTTYgen to generate keys Cock-up 2: PuTTYgen&rsquo;s default public key is in an incompatible format. Delete first two rows and last row Add ssh-rsa before the key Delete all carriage returns Reboot to check it works Remove password authentication Installing PiHole curl -sSL https://install.pi-hole.net | bash Change from the default web admin password with pihole -a -p "/>
 <meta name="keywords" content=""/>
 <meta name="robots" content="noodp"/>
 <link rel="canonical" href="https://ruszkow.ski/posts/pihole-setup/" />
@@ -29,17 +29,17 @@
 
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="An Initial Set-Up of PiHole :: ruszkow.ski — data, graphs and other nonsense" />
-<meta name="twitter:description" content="PiHole Set-Up Equipment Already had most of the things required, needed: Micro-USB to Ethernet cable microSD card Short Ethernet cable Setting up the Raspberry Pi Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!" />
-<meta name="twitter:site" content="https://ruszkow.ski" />
+<meta name="twitter:title" content="An Initial Set-Up of PiHole :: ruszkow.ski — " />
+<meta name="twitter:description" content="PiHole Set-Up Equipment Already had most of the things required, needed: Micro-USB to Ethernet cable microSD card Short Ethernet cable Setting up the Raspberry Pi Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&rsquo;ll fix this later but it&rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in! Run updates (sudo apt-get update, sudo apt-get upgrade), reboot Set up SSH $ cd ~ $ mkdir .ssh $ cd .ssh $ nano authorized_keys Use PuTTYgen to generate keys Cock-up 2: PuTTYgen&rsquo;s default public key is in an incompatible format. Delete first two rows and last row Add ssh-rsa before the key Delete all carriage returns Reboot to check it works Remove password authentication Installing PiHole curl -sSL https://install.pi-hole.net | bash Change from the default web admin password with pihole -a -p " />
+<meta name="twitter:site" content="https://ruszkow.ski/" />
 <meta name="twitter:creator" content="Adam" />
 <meta name="twitter:image" content="https://ruszkow.ski/img/posts/pihole-setup/pihole-stats.png">
 
 
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="An Initial Set-Up of PiHole :: ruszkow.ski — data, graphs and other nonsense">
-<meta property="og:description" content="PiHole Set-Up Equipment Already had most of the things required, needed: Micro-USB to Ethernet cable microSD card Short Ethernet cable Setting up the Raspberry Pi Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&amp;rsquo;ll fix this later but it&amp;rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in!" />
+<meta property="og:title" content="An Initial Set-Up of PiHole :: ruszkow.ski — ">
+<meta property="og:description" content="PiHole Set-Up Equipment Already had most of the things required, needed: Micro-USB to Ethernet cable microSD card Short Ethernet cable Setting up the Raspberry Pi Download Raspbian Lite image (for the time being, we only want to use this for PiHole) Flash onto microSD with Etcher Plug everything in Cock-up 1: Raspbian now disables SSH by default. Need to plug in a screen Change the default password on activating SSH (we&rsquo;ll fix this later but it&rsquo;s still good to get this done early) Shutdown, unplug screen etc, set up cables as actually desired and re-plug in SSH in! Run updates (sudo apt-get update, sudo apt-get upgrade), reboot Set up SSH $ cd ~ $ mkdir .ssh $ cd .ssh $ nano authorized_keys Use PuTTYgen to generate keys Cock-up 2: PuTTYgen&rsquo;s default public key is in an incompatible format. Delete first two rows and last row Add ssh-rsa before the key Delete all carriage returns Reboot to check it works Remove password authentication Installing PiHole curl -sSL https://install.pi-hole.net | bash Change from the default web admin password with pihole -a -p " />
 <meta property="og:url" content="https://ruszkow.ski/posts/pihole-setup/" />
 <meta property="og:site_name" content="An Initial Set-Up of PiHole" />
 <meta property="og:image" content="https://ruszkow.ski/img/posts/pihole-setup/pihole-stats.png">
@@ -214,7 +214,7 @@ it&rsquo;s still good to get this done early)</li>
   <div class="pagination">
     <div class="pagination__title">
       <span
-        class="pagination__title-h">Read other posts</span>
+        class="pagination__title-h"></span>
       <hr />
     </div>
     <div class="pagination__buttons">
@@ -243,7 +243,7 @@ it&rsquo;s still good to get this done early)</li>
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2022 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2025 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>

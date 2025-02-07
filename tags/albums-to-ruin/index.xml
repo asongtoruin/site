@@ -4,39 +4,30 @@
     <title>Albums to Ruin on ruszkow.ski</title>
     <link>https://ruszkow.ski/tags/albums-to-ruin/</link>
     <description>Recent content in Albums to Ruin on ruszkow.ski</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-uk</language>
-    <lastBuildDate>Mon, 20 Apr 2020 10:30:00 +0100</lastBuildDate><atom:link href="https://ruszkow.ski/tags/albums-to-ruin/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 20 Apr 2020 10:30:00 +0100</lastBuildDate>
+    <atom:link href="https://ruszkow.ski/tags/albums-to-ruin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Albums to Ruin: database operations</title>
       <link>https://ruszkow.ski/posts/2020-04-20-albums-to-ruin-database-operations/</link>
       <pubDate>Mon, 20 Apr 2020 10:30:00 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/posts/2020-04-20-albums-to-ruin-database-operations/</guid>
-      <description>Introduction This post is a continuation of the development of my Albums to Ruin Twitter bot. This is the first part of actual development of the bot - information on the concept and outline can be found in the Initial Concept post.
-In this post, I&amp;rsquo;m going to cover the database operations required to power the Twitter bot and keep track of what has already been posted and the queue of albums to post.</description>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This post is a continuation of the development of my &lt;em&gt;Albums to Ruin&lt;/em&gt; Twitter&#xA;bot. This is the first part of actual development of the bot - information&#xA;on the concept and outline can be found in the&#xA;&lt;a href=&#34;https://ruszkow.ski/posts/2020-04-14-albums-to-ruin-initial-concept/&#34;&gt;Initial Concept post&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;In this post, I&amp;rsquo;m going to cover the database operations required to power the&#xA;Twitter bot and keep track of what has already been posted and the queue of&#xA;albums to post. This carries on from some of the work done in&#xA;&lt;a href=&#34;https://ruszkow.ski/posts/2020-04-17-albums-to-ruin-working-with-the-spotify-api/&#34;&gt;the previous post&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Albums to Ruin: working with the Spotify API</title>
       <link>https://ruszkow.ski/posts/2020-04-17-albums-to-ruin-working-with-the-spotify-api/</link>
       <pubDate>Fri, 17 Apr 2020 11:30:00 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/posts/2020-04-17-albums-to-ruin-working-with-the-spotify-api/</guid>
-      <description>Introduction This post is a continuation of the development of my Albums to Ruin Twitter bot. This is the first part of actual development of the bot - information on the concept and outline can be found in the Initial Concept post.
-In this post, I&amp;rsquo;m going to cover the process required for getting the recently played tracks from Spotify and the URL for the album art.
-Getting Started First of all, we need to register an application with Spotify.</description>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This post is a continuation of the development of my &lt;em&gt;Albums to Ruin&lt;/em&gt; Twitter&#xA;bot. This is the first part of actual development of the bot - information&#xA;on the concept and outline can be found in the&#xA;&lt;a href=&#34;https://ruszkow.ski/posts/2020-04-14-albums-to-ruin-initial-concept/&#34;&gt;Initial Concept post&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;In this post, I&amp;rsquo;m going to cover the process required for getting the recently&#xA;played tracks from Spotify and the URL for the album art.&lt;/p&gt;&#xA;&lt;h2 id=&#34;getting-started&#34;&gt;Getting Started&lt;/h2&gt;&#xA;&lt;p&gt;First of all, we need to register an application with Spotify. This is done via&#xA;the &lt;a href=&#34;https://developer.spotify.com/dashboard/applications&#34;&gt;Developer Dashboard&lt;/a&gt;&#xA;and is relatively straightforward. This provides us with the &lt;code&gt;Client ID&lt;/code&gt; and&#xA;&lt;code&gt;Client Secret&lt;/code&gt; keys that let us access the APIs.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Albums to Ruin: Initial Concept</title>
       <link>https://ruszkow.ski/posts/2020-04-14-albums-to-ruin-initial-concept/</link>
       <pubDate>Tue, 14 Apr 2020 11:00:00 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/posts/2020-04-14-albums-to-ruin-initial-concept/</guid>
-      <description>Inspiration Recently, I&amp;rsquo;ve seen a few posts shared around from the Instagram account colorpalette.cinema. I&amp;rsquo;m a big fan of a nice colour palette (indeed, a few years ago I had a Twitter bot running that did something similar with Marvel comics covers) and it got me thinking about whether I could do something similar of my own.
-The idea, and an initial outline As you might have guessed from the post title, my plan is to make something similar for album covers.</description>
+      <description>&lt;h2 id=&#34;inspiration&#34;&gt;Inspiration&lt;/h2&gt;&#xA;&lt;p&gt;Recently, I&amp;rsquo;ve seen a few posts shared around from the Instagram account&#xA;&lt;a href=&#34;https://www.instagram.com/colorpalette.cinema/&#34;&gt;colorpalette.cinema&lt;/a&gt;.&#xA;I&amp;rsquo;m a big fan of a nice colour palette (indeed, a few years ago I had a&#xA;Twitter bot running that did something similar with&#xA;&lt;a href=&#34;https://www.twitter.com/marvelcovers&#34;&gt;Marvel comics covers&lt;/a&gt;) and it got me&#xA;thinking about whether I could do something similar of my own.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-idea-and-an-initial-outline&#34;&gt;The idea, and an initial outline&lt;/h2&gt;&#xA;&lt;p&gt;As you might have guessed from the post title, my plan is to make something&#xA;similar for album covers. I&amp;rsquo;m a big music dork and pleasing covers are part of&#xA;the reason why I still buy records, so this is a natural fit for me.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

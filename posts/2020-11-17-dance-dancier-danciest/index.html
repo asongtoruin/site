@@ -3,12 +3,13 @@
 <head>
   <script src="https://kit.fontawesome.com/5063c00b10.js"></script>
   
-    <title>Dance, Dancier, Danciest :: ruszkow.ski — data, graphs and other nonsense</title>
+    <title>Dance, Dancier, Danciest :: ruszkow.ski</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="description" content="Back in the heady days of 2008, Oxford&amp;rsquo;s finest math-rock band TTNG (back then still known as This Town Needs Guns) opened their self-titled release with a (fantastic) song providing a rather curious declaration - 26 Is Dancier Than 4.
-Jump forward 12 years to 2020, and I&amp;rsquo;ve been digging around a bit in the Spotify API to better understand what data it provides and try to find some fun things to plot."/>
+<meta name="description" content="Back in the heady days of 2008, Oxford&rsquo;s finest math-rock band TTNG (back then still known as This Town Needs Guns) opened their self-titled release with a (fantastic) song providing a rather curious declaration - 26 Is Dancier Than 4.
+Jump forward 12 years to 2020, and I&rsquo;ve been digging around a bit in the Spotify API to better understand what data it provides and try to find some fun things to plot. In doing so, I spotted (geddit?) that within the object model, every track has a series of attributes, one of which is called danceability.
+"/>
 <meta name="keywords" content=""/>
 <meta name="robots" content="noodp"/>
 <link rel="canonical" href="https://ruszkow.ski/posts/2020-11-17-dance-dancier-danciest/" />
@@ -30,19 +31,21 @@ Jump forward 12 years to 2020, and I&amp;rsquo;ve been digging around a bit in t
 
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Dance, Dancier, Danciest :: ruszkow.ski — data, graphs and other nonsense" />
-<meta name="twitter:description" content="Back in the heady days of 2008, Oxford&amp;rsquo;s finest math-rock band TTNG (back then still known as This Town Needs Guns) opened their self-titled release with a (fantastic) song providing a rather curious declaration - 26 Is Dancier Than 4.
-Jump forward 12 years to 2020, and I&amp;rsquo;ve been digging around a bit in the Spotify API to better understand what data it provides and try to find some fun things to plot." />
-<meta name="twitter:site" content="https://ruszkow.ski" />
+<meta name="twitter:title" content="Dance, Dancier, Danciest :: ruszkow.ski — " />
+<meta name="twitter:description" content="Back in the heady days of 2008, Oxford&rsquo;s finest math-rock band TTNG (back then still known as This Town Needs Guns) opened their self-titled release with a (fantastic) song providing a rather curious declaration - 26 Is Dancier Than 4.
+Jump forward 12 years to 2020, and I&rsquo;ve been digging around a bit in the Spotify API to better understand what data it provides and try to find some fun things to plot. In doing so, I spotted (geddit?) that within the object model, every track has a series of attributes, one of which is called danceability.
+" />
+<meta name="twitter:site" content="https://ruszkow.ski/" />
 <meta name="twitter:creator" content="Adam" />
 <meta name="twitter:image" content="">
 
 
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Dance, Dancier, Danciest :: ruszkow.ski — data, graphs and other nonsense">
-<meta property="og:description" content="Back in the heady days of 2008, Oxford&amp;rsquo;s finest math-rock band TTNG (back then still known as This Town Needs Guns) opened their self-titled release with a (fantastic) song providing a rather curious declaration - 26 Is Dancier Than 4.
-Jump forward 12 years to 2020, and I&amp;rsquo;ve been digging around a bit in the Spotify API to better understand what data it provides and try to find some fun things to plot." />
+<meta property="og:title" content="Dance, Dancier, Danciest :: ruszkow.ski — ">
+<meta property="og:description" content="Back in the heady days of 2008, Oxford&rsquo;s finest math-rock band TTNG (back then still known as This Town Needs Guns) opened their self-titled release with a (fantastic) song providing a rather curious declaration - 26 Is Dancier Than 4.
+Jump forward 12 years to 2020, and I&rsquo;ve been digging around a bit in the Spotify API to better understand what data it provides and try to find some fun things to plot. In doing so, I spotted (geddit?) that within the object model, every track has a series of attributes, one of which is called danceability.
+" />
 <meta property="og:url" content="https://ruszkow.ski/posts/2020-11-17-dance-dancier-danciest/" />
 <meta property="og:site_name" content="Dance, Dancier, Danciest" />
 <meta property="og:image" content="">
@@ -173,13 +176,11 @@ a single number between 0 and 1. If you&rsquo;re anything like me, this concept
 immediately brought up the idea that we&rsquo;d use this to verify the statement
 provided by TTNG, namely:</p>
 <blockquote>
-<p>Is 26 dancier than 4?</p>
-</blockquote>
+<p>Is 26 dancier than 4?</p></blockquote>
 <p>But, alas, Spotify doesn&rsquo;t provide the <em>danceability</em> analysis for numbers
 alone, only songs. So instead, we can ask a slightly different question:</p>
 <blockquote>
-<p>How danceable is <em>26 Is Dancier Than 4</em>?</p>
-</blockquote>
+<p>How danceable is <em>26 Is Dancier Than 4</em>?</p></blockquote>
 <p>Is this a strangely convoluted excuse to make some graphs? Sure. Just go with me
 on this one.</p>
 <h2 id="but-what-does-the-number-_mean_">But what does the number <em>mean</em>?</h2>
@@ -187,8 +188,7 @@ on this one.</p>
 <em>danceability</em> value is calculated. Fortunately, Spotify provides one in its
 <a href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">documentation</a>:</p>
 <blockquote>
-<p>Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.</p>
-</blockquote>
+<p>Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.</p></blockquote>
 <p>This differs somewhat from my own stance on what makes a song danceable (stable
 rhythms are for cowards) but this is what we have to work with.</p>
 <p>First, let&rsquo;s look at how <em>26 Is Dancier Than 4</em> compares to other tracks on
@@ -208,8 +208,7 @@ I don&rsquo;t think Spotify&rsquo;s rating of <em>danceability</em> quite works 
 we should look at another attribute Spotify assigns to each track - <em>energy</em>.
 This is defined by Spotify as follows:</p>
 <blockquote>
-<p>Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</p>
-</blockquote>
+<p>Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</p></blockquote>
 <p>That feels a bit more like it. High energy would make me want to dance. Let&rsquo;s
 instead plot the <em>danceability</em> and <em>energy</em> of every TTNG song. I&rsquo;ve added
 labels to the tracks with the highest and lowest rating for each measure.</p>
@@ -229,22 +228,20 @@ and that TTNG&rsquo;s songs are generally high-energy (that definitely checks ou
 <p>What conclusions can we draw from this though? I&rsquo;ll give you two. Firstly, if we
 just use our most extreme values then we can safely declare that:</p>
 <blockquote>
-<p>Zebra Is Dancier Than Quetzal</p>
-</blockquote>
+<p>Zebra Is Dancier Than Quetzal</p></blockquote>
 <p>Which, I&rsquo;ll be honest, has a fairly nice ring to it. One other thing that we
 can read off this graph that also fits my desire for high <em>energy</em> to dance
 gives us something much more fun to use though. May I instead provide my own
 curious declaration:</p>
 <blockquote>
-<p>Panda Is Dancier Than 26 Is Dancier Than 4</p>
-</blockquote>
+<p>Panda Is Dancier Than 26 Is Dancier Than 4</p></blockquote>
 
   </div>
   
   <div class="pagination">
     <div class="pagination__title">
       <span
-        class="pagination__title-h">Read other posts</span>
+        class="pagination__title-h"></span>
       <hr />
     </div>
     <div class="pagination__buttons">
@@ -280,7 +277,7 @@ curious declaration:</p>
   <div class="footer__inner">
     
       <div class="copyright">
-        <span>© 2022 Powered by <a href="http://gohugo.io">Hugo</a></span>
+        <span>© 2025 Powered by <a href="http://gohugo.io">Hugo</a></span>
     
         <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
       </div>

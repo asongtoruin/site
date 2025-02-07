@@ -4,17 +4,16 @@
     <title>QGIS on ruszkow.ski</title>
     <link>https://ruszkow.ski/tags/qgis/</link>
     <description>Recent content in QGIS on ruszkow.ski</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-uk</language>
-    <lastBuildDate>Tue, 06 Apr 2021 22:10:11 +0100</lastBuildDate><atom:link href="https://ruszkow.ski/tags/qgis/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 06 Apr 2021 22:10:11 +0100</lastBuildDate>
+    <atom:link href="https://ruszkow.ski/tags/qgis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mapping England&#39;s Most Common Pub Names</title>
       <link>https://ruszkow.ski/posts/2021-04-06-mapping-englands-most-common-pub-names/</link>
       <pubDate>Tue, 06 Apr 2021 22:10:11 +0100</pubDate>
-      
       <guid>https://ruszkow.ski/posts/2021-04-06-mapping-englands-most-common-pub-names/</guid>
-      <description>After making my graphs about the most common pub names in each country in Great Britain, one thing that really stood out was just how many pubs in England are called Red Lion. Being from the Midlands that made a lot of sense to me, but a few people who I showed it to seemed quite surprised. That got me thinking about what kind of regional variation there is in pub names.</description>
+      <description>&lt;p&gt;After making my &lt;a href=&#34;https://ruszkow.ski/graphs/2021-03-23-pub-names/&#34;&gt;graphs&lt;/a&gt; about the most common pub names in each country in Great Britain, one thing that really stood out was just how many pubs in England are called &lt;em&gt;Red Lion&lt;/em&gt;. Being from the Midlands that made a lot of sense to me, but a few people who I showed it to seemed quite surprised. That got me thinking about what kind of regional variation there is in pub names. So, why not look at the most popular pub names by county? This gives us a chance to dig into QGIS a bit, which I tend to use a lot at work for producing maps but haven&amp;rsquo;t talked about on here yet. Let&amp;rsquo;s dive in.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

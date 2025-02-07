@@ -4,17 +4,16 @@
     <title>AOTY on ruszkow.ski</title>
     <link>https://ruszkow.ski/tags/aoty/</link>
     <description>Recent content in AOTY on ruszkow.ski</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-uk</language>
-    <lastBuildDate>Sat, 01 Jan 2022 15:23:11 +0000</lastBuildDate><atom:link href="https://ruszkow.ski/tags/aoty/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 01 Jan 2022 15:23:11 +0000</lastBuildDate>
+    <atom:link href="https://ruszkow.ski/tags/aoty/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Album of the Year 2021</title>
       <link>https://ruszkow.ski/posts/2022-01-01-album-of-the-year-2021/</link>
       <pubDate>Sat, 01 Jan 2022 15:23:11 +0000</pubDate>
-      
       <guid>https://ruszkow.ski/posts/2022-01-01-album-of-the-year-2021/</guid>
-      <description>Every year, top champ Pip runs a Facebook group to work out the Album Of The Year within an extended friendship group. For the past few years I&amp;rsquo;ve been making graphs to summarise the results, using some slightly clunky Jupyter notebooks. At first this just analysed the albums chosen by the group, and then last year (after I did my TTNG analysis) I expanded it to include some Spotify data too.</description>
+      <description>&lt;p&gt;Every year, top champ &lt;a href=&#34;https://twitter.com/philipcopley&#34;&gt;Pip&lt;/a&gt; runs a Facebook group to work out the Album Of The Year within an extended friendship group. For the past few years I&amp;rsquo;ve been making graphs to summarise the results, using some slightly clunky Jupyter notebooks. At first this just analysed the albums chosen by the group, and then last year (after I did my &lt;a href=&#34;https://ruszkow.ski/posts/2020-11-17-dance-dancier-danciest/&#34;&gt;TTNG analysis&lt;/a&gt;) I expanded it to include some Spotify data too.&lt;/p&gt;&#xA;&lt;p&gt;All of the charts for each year can be found on Github &lt;a href=&#34;https://github.com/asongtoruin/AOTY&#34;&gt;here&lt;/a&gt;. I find myself gradually tweaking (and hopefully improving!) the code each year, but it&amp;rsquo;s definitely a bit bolted together so I won&amp;rsquo;t bother going into too much detail about it here. There are two graphs I wanted to talk about a bit more, which is why this post exists! I strongly recommend loading each in a new tab and zooming in to have a closer look.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
