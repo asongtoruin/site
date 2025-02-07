@@ -22,3 +22,14 @@ The slow death of Twitter dot com has left me with a relative lack of places to 
 **The Traitors**: "event TV" might have largely been killed off by streaming, but there's something enjoyably nostalgic about turning up to a social event and having the "have you seen the latest episode" chat. Shout-out to the group chat(s) for arguably being more entertaining than the show.
 
 **Agatha All Along**: if you're going to make a song the central motif of your show, it does not help if I find the song deeply annoying. An average show that I'm glad we have finished watching.
+
+## MUSIC
+**I Feel Fine**: _The Cold In Every Shelter_ was one of my albums of the year in 2021 but eventually shuffled out of circulation. This month though, it's been rattling around my head and reminding me that it's an absolute joy.
+
+**Origami Angel**: will I finally see a gami gang headline set that isn't _acoustic_ let's find out soon.
+
+## BOOKS
+**Tokens by Rachel O'Dwyer**: I'm *slowly* making my way through this, and am very much enjoying having a book that is about digital currency (ish) but also retains a lot of skepticism about cryptocurrency.
+
+## GAMES
+**Like A Dragon: Infinite Wealth**: sometimes I struggle to understand why certain games grab me and others don't. The intangible thing that goes from a game I'll play for a couple of hours to one I'll obsess over for an extended period of time. This fits into the latter camp. There's just _so much_ to it, I can hop on for an hour at a time and do a completely different bunch of activities. It's got the right amount of drama and _absolutely not taking itself seriously_. I'll be playing it for a while I think.
