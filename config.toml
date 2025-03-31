@@ -1,10 +1,12 @@
 baseurl = "https://ruszkow.ski"
 languageCode = "en-uk"
 theme = ["terminal", "reveal-hugo"]
-paginate = 5
 
 # Make URLs case insensitive - NEEDS FIXING
 # disablePathToLower = true
+
+[paginaton]
+pagerSize = 5
 
 [params]
   # dir name of your blog content (default is `content/posts`)
