@@ -9,10 +9,6 @@ description: ""
 showFullContent: false
 ---
 
-
-## FILMS 
-
-
 ## TV
 **Grand Designs**: nothing like being ill for several days to make me yearn for Kevin nodding politely while some bloke insists they won't compromise on their budget, timescale or scope (and then ends up doing so on all three). 
 
