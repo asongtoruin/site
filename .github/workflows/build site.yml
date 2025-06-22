@@ -9,6 +9,10 @@ name: Build Site
 on:
   push:
     branches: [ master ]
+  
+  # Scheduled refresh at midday on the first of the month
+  schedule:
+    - cron:  '1 12 1 * *'
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
