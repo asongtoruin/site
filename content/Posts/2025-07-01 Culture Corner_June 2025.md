@@ -19,7 +19,7 @@ showFullContent: false
 
 **Deftones**: bad outdoor sound mixing slightly spoiled _Be Quiet And Drive (Far Away)_ among others, but getting to sing along extremely loudly with my pals made the rest of the set still enjoyable. The main highlights were Jamie looking in physical pain trying to hit the high "tonight" in the _Sextape_ chorus, and Rogan yelling "oh my god I forgot about _Minerva_".
 
-**Lucy Davis**: only an idiot would book tickets for a gig in London on a Sunday night followed immediately by a gig in Edinburgh on the Monday night. Well, I guess I'm that idiot. Extremely thankful for having booked seats for Lucy (and for the very nice stage show), not thankful to the UK train system and its inevitable delays meaning I didn't even get an hour at home before having to head out again. Will I plan better in future? Almost certainly not.
+**Lucy Dacus**: only an idiot would book tickets for a gig in London on a Sunday night followed immediately by a gig in Edinburgh on the Monday night. Well, I guess I'm that idiot. Extremely thankful for having booked seats for Lucy (and for the very nice stage show), not thankful to the UK train system and its inevitable delays meaning I didn't even get an hour at home before having to head out again. Will I plan better in future? Almost certainly not.
 
 ## GAMES
 **It Takes Two**: Cara and I have been enjoying this recently - a _very specifically_ two player couch co-op game that's about working together to solve puzzles (but that also throws entirely competitive minigames into the mix on occasion) and is much stranger in storyline than I expected. The mechanics change fairly regularly, which does a great job of keeping it from getting stale.
