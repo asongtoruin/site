@@ -15,7 +15,7 @@ showFullContent: false
 **Hot Money Season 2 - The New Narcos**: for someone who _actively avoided a career in finance_ after finishing a maths degree, I sure do like stories of dubious financial goings-on. The first season of Hot Money was about the finances of the porn industry - I listened to it a few years back (and found it very interesting), but only recently remembered they did some other series about different topics. I raced through season two, connecting drug money with murder and government activity. 
 
 ## MUSIC
-**Glastonbury**: am I now at the point of ordering to watch massive festivals on the telly rather than attending then. I think I might be, because the crowd at Glasto looked unfathomably huge. Some very good sets to watch from the sofa though - Lyle Carner was (obviously) fantastic, it was amazing to see Self Esteem drawing a huge crowd, and I really enjoyed the Ezra Collective having never heard them before.
+**Glastonbury**: am I now at the point of ordering to watch massive festivals on the telly rather than attending then. I think I might be, because the crowd at Glasto looked unfathomably huge. Some very good sets to watch from the sofa though - Loyle Carner was (obviously) fantastic, it was amazing to see Self Esteem drawing a huge crowd, and I really enjoyed the Ezra Collective having never heard them before.
 
 **Deftones**: bad outdoor sound mixing slightly spoiled _Be Quiet And Drive (Far Away)_ among others, but getting to sing along extremely loudly with my pals made the rest of the set still enjoyable. The main highlights were Jamie looking in physical pain trying to hit the high "tonight" in the _Sextape_ chorus, and Rogan yelling "oh my god I forgot about _Minerva_".
 
