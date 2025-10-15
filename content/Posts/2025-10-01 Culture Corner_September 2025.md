@@ -20,4 +20,4 @@ showFullContent: false
 **Date Everything**: Cara and I started playing this weird dating sim where you basically have to flirt with inanimate objects around your house. It is absolutely bizarre, but very silly and fun.
 
 ## BOOKS
-**Slow Horses**: Why would you put an entire series of 8 books on sale _apart from_ the 4th one? Very silly to me. But I fairly quickly went through the first book - a fun little espionage-y thriller.
+**Slow Horses**: Why would you put an entire series of 8 books on sale _apart from_ the 4th one? Very unreasonable to me. But I fairly quickly went through the first book - an entertaining little espionage-y thriller.
