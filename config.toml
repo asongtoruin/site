@@ -44,6 +44,12 @@ pagerSize = 5
   weight = 2
   url = "https://letterboxd.com/asongtoruin/"
 
+[[params.social]]
+  name = "Rate Your Music"
+  icon = "fas fa-headphones"
+  weight = 4
+  url = "https://rateyourmusic.com/~asongtoruin"
+
 [languages]
   [languages.en]
     languageName = "English"
