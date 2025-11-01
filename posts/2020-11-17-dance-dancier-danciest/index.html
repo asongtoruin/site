@@ -176,11 +176,13 @@ a single number between 0 and 1. If you&rsquo;re anything like me, this concept
 immediately brought up the idea that we&rsquo;d use this to verify the statement
 provided by TTNG, namely:</p>
 <blockquote>
-<p>Is 26 dancier than 4?</p></blockquote>
+<p>Is 26 dancier than 4?</p>
+</blockquote>
 <p>But, alas, Spotify doesn&rsquo;t provide the <em>danceability</em> analysis for numbers
 alone, only songs. So instead, we can ask a slightly different question:</p>
 <blockquote>
-<p>How danceable is <em>26 Is Dancier Than 4</em>?</p></blockquote>
+<p>How danceable is <em>26 Is Dancier Than 4</em>?</p>
+</blockquote>
 <p>Is this a strangely convoluted excuse to make some graphs? Sure. Just go with me
 on this one.</p>
 <h2 id="but-what-does-the-number-mean">But what does the number <em>mean</em>?</h2>
@@ -188,7 +190,8 @@ on this one.</p>
 <em>danceability</em> value is calculated. Fortunately, Spotify provides one in its
 <a href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/">documentation</a>:</p>
 <blockquote>
-<p>Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.</p></blockquote>
+<p>Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.</p>
+</blockquote>
 <p>This differs somewhat from my own stance on what makes a song danceable (stable
 rhythms are for cowards) but this is what we have to work with.</p>
 <p>First, let&rsquo;s look at how <em>26 Is Dancier Than 4</em> compares to other tracks on
@@ -208,7 +211,8 @@ I don&rsquo;t think Spotify&rsquo;s rating of <em>danceability</em> quite works 
 we should look at another attribute Spotify assigns to each track - <em>energy</em>.
 This is defined by Spotify as follows:</p>
 <blockquote>
-<p>Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</p></blockquote>
+<p>Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</p>
+</blockquote>
 <p>That feels a bit more like it. High energy would make me want to dance. Let&rsquo;s
 instead plot the <em>danceability</em> and <em>energy</em> of every TTNG song. I&rsquo;ve added
 labels to the tracks with the highest and lowest rating for each measure.</p>
@@ -228,13 +232,15 @@ and that TTNG&rsquo;s songs are generally high-energy (that definitely checks ou
 <p>What conclusions can we draw from this though? I&rsquo;ll give you two. Firstly, if we
 just use our most extreme values then we can safely declare that:</p>
 <blockquote>
-<p>Zebra Is Dancier Than Quetzal</p></blockquote>
+<p>Zebra Is Dancier Than Quetzal</p>
+</blockquote>
 <p>Which, I&rsquo;ll be honest, has a fairly nice ring to it. One other thing that we
 can read off this graph that also fits my desire for high <em>energy</em> to dance
 gives us something much more fun to use though. May I instead provide my own
 curious declaration:</p>
 <blockquote>
-<p>Panda Is Dancier Than 26 Is Dancier Than 4</p></blockquote>
+<p>Panda Is Dancier Than 26 Is Dancier Than 4</p>
+</blockquote>
 
   </div>
   
