@@ -213,7 +213,7 @@ cache this token and refresh it when needed, so you should only need to call
 this section of the code once ever. This is the first time we need our Redirect
 URI, and if you want to run this code yourself you&rsquo;ll need to replace my
 username with your own.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> spotipy.util <span style="color:#66d9ef">as</span> util
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> spotipy.util <span style="color:#66d9ef">as</span> util
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>token <span style="color:#f92672">=</span> util<span style="color:#f92672">.</span>prompt_for_user_token(
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;valeadam&#39;</span>, scope<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;user-read-recently-played&#39;</span>, 
@@ -225,7 +225,7 @@ clear to start accessing our information.</p>
 <p>Now we need to set up an authenticated connection. Spotipy makes this fairly
 easy via its <code>Spotify</code> and <code>SpotifyOAuth</code> classes. Again, if you wanted to run
 this you&rsquo;d need to replace my username with your own.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> spotipy
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> spotipy
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> spotipy.oauth2 <span style="color:#f92672">import</span> SpotifyClientCredentials
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
@@ -236,7 +236,7 @@ this you&rsquo;d need to replace my username with your own.</p>
 </span></span><span style="display:flex;"><span>sp <span style="color:#f92672">=</span> spotipy<span style="color:#f92672">.</span>Spotify(auth_manager<span style="color:#f92672">=</span>auth)
 </span></span><span style="display:flex;"><span>print(sp<span style="color:#f92672">.</span>me())
 </span></span></code></pre></div><p>This prints out some information about the connected user:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;display_name&#39;</span>: <span style="color:#e6db74">&#39;valeadam&#39;</span>,
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;external_urls&#39;</span>: {<span style="color:#e6db74">&#39;spotify&#39;</span>: <span style="color:#e6db74">&#39;https://open.spotify.com/user/valeadam&#39;</span>},
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;followers&#39;</span>: {<span style="color:#e6db74">&#39;href&#39;</span>: <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#39;total&#39;</span>: <span style="color:#ae81ff">39</span>},
@@ -260,7 +260,7 @@ hand with ellipses, for a more complete example consult the
 <a href="https://developer.spotify.com/documentation/web-api/reference/player/get-recently-played/">Spotify web api reference</a>
 for this method.The information I&rsquo;ll want to access for the Twitter bot is
 structured as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;items&#39;</span>:
 </span></span><span style="display:flex;"><span>        [
 </span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#39;track&#39;</span>: {<span style="color:#e6db74">&#39;album&#39;</span>: {<span style="color:#e6db74">&#39;album_type&#39;</span>: <span style="color:#e6db74">&#39;album&#39;</span>,
@@ -337,7 +337,7 @@ returned dictionary. Adding another method gives us this flexibilty.</p>
 </li>
 </ul>
 <p>Putting these things together gets us the following class:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SpotifyAlbum</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, resp_dict):
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#66d9ef">None</span>)
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>release_date <span style="color:#f92672">=</span> resp_dict<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;release_date&#39;</span>, <span style="color:#e6db74">&#39;Unknown&#39;</span>)
@@ -381,7 +381,7 @@ track first in the list, whereas for my Twitter bot I want to have the albums
 posted in the order they&rsquo;ve been encountered. This means reversing the items
 passed by the API. It also means we can&rsquo;t just use <code>set</code>, as it ignores order.
 It&rsquo;s not a huge issue, as we need just a few lines of code:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>recently_played <span style="color:#f92672">=</span> sp<span style="color:#f92672">.</span>current_user_recently_played()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>recently_played <span style="color:#f92672">=</span> sp<span style="color:#f92672">.</span>current_user_recently_played()
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>recent_albums <span style="color:#f92672">=</span> []
 </span></span><span style="display:flex;"><span>
@@ -392,7 +392,7 @@ It&rsquo;s not a huge issue, as we need just a few lines of code:</p>
 </span></span></code></pre></div><p>Now, via <code>recent_albums</code>, we have a list of unique recently played albums in the
 order in which they&rsquo;ve been played. This gives us the starting point for the
 rest of the project. Putting all the code together, we get the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> spotipy
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> spotipy
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> spotipy.oauth2 <span style="color:#f92672">import</span> SpotifyClientCredentials
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
